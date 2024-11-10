@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:8.0  # Cambiamos la imagen de PostgreSQL a MySQL
+    environment:
+      MYSQL_DATABASE: crm_db  # Nombre de la base de datos
+      MYSQL_USER: crm_user  # Usuario de la base de datos
+      MYSQL_PASSWORD: crm_password  # Contraseña del usuario
+      MYSQL_ROOT_PASSWORD: root_password  # Contraseña del usuario root de MySQL
+    ports: 
+      - "3306:3306"  # Puerto 3306, que es el predeterminado para MySQL
+    volumes:
+      - mysql_data:/var/lib/mysql  # Cambiamos el volumen para MySQL
+
+volumes:
+  mysql_data:  # Cambiamos el nombre del volumen a mysql_data

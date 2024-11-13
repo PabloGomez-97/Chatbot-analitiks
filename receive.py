@@ -144,21 +144,22 @@ def whatsapp_reply():
             user_state[user_number] = 'menu_shown'
 
     # Si el usuario ya existe, saludarlo una vez y no volver a mostrar el menú cada vez
-    name, company = user
-    if user_number not in user_state or user_state[user_number] != 'menu_shown':
-        response.message(f"Hola {name} de {company}, ¿cómo podemos ayudarte hoy?\n\n"
-                         "1️⃣ *¿Quiénes somos?* - Conoce más sobre nosotros y nuestra misión.\n"
-                         "2️⃣ *¿Qué hacemos?* - Descubre nuestras soluciones tecnológicas.\n"
-                         "3️⃣ *Mercados que atendemos* - Sectores donde nuestra tecnología hace la diferencia.\n"
-                         "4️⃣ *Contacto* - ¿Necesitas hablar con nosotros? ¡Estamos aquí para ti!\n"
-                         "5️⃣ *Asistente técnico inteligente (IA)* 🤖 - Obtén ayuda técnica especializada al instante.\n"
-                         "6️⃣ *Ver historial completo* - Revisa toda tu conversación con nosotros.\n"
-                         "7️⃣ *Finalizar conversación* - Cierra el chat cuando hayas terminado.\n\n"
-                         "✨ ¡Estamos listos para ayudarte a transformar tus procesos con tecnología de vanguardia!")
-        user_state[user_number] = 'menu_shown'
+    if user:
+        name, company = user
+        if user_number not in user_state or user_state[user_number] != 'menu_shown':
+            response.message(f"Hola {name} de {company}, ¿cómo podemos ayudarte hoy?\n\n"
+                             "1️⃣ *¿Quiénes somos?* - Conoce más sobre nosotros y nuestra misión.\n"
+                             "2️⃣ *¿Qué hacemos?* - Descubre nuestras soluciones tecnológicas.\n"
+                             "3️⃣ *Mercados que atendemos* - Sectores donde nuestra tecnología hace la diferencia.\n"
+                             "4️⃣ *Contacto* - ¿Necesitas hablar con nosotros? ¡Estamos aquí para ti!\n"
+                             "5️⃣ *Asistente técnico inteligente (IA)* 🤖 - Obtén ayuda técnica especializada al instante.\n"
+                             "6️⃣ *Ver historial completo* - Revisa toda tu conversación con nosotros.\n"
+                             "7️⃣ *Finalizar conversación* - Cierra el chat cuando hayas terminado.\n\n"
+                             "✨ ¡Estamos listos para ayudarte a transformar tus procesos con tecnología de vanguardia!")
+            user_state[user_number] = 'menu_shown'
 
     # Guardar el mensaje del usuario
-    save_message(user_number, incoming_message, name)
+    save_message(user_number, incoming_message, name if user else 'User')
 
     # Verificar si el usuario está en el flujo de "Asistente técnico inteligente"
     if user_number in user_state and user_state[user_number] == 'assistant_mode':

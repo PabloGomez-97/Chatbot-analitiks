@@ -26,6 +26,8 @@ load_dotenv()
 # Crear una instancia de la aplicación Flask, la función del Flask es crear una aplicación web que pueda recibir y responder mensajes de WhatsApp
 app = Flask(__name__)
 
+#Utilizamos ngrok para exponer nuestro servidor local a internet y poder recibir mensajes de WhatsApp en nuestro servidor local por medio de Twilio.
+
 # Configuración de la clave API de OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
 

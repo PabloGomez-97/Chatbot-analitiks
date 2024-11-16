@@ -1,3 +1,4 @@
-python -m venv venv
+python -m venv venv (solo la primera vez)
 source venv/bin/activate
 deactivate
+pip freeze

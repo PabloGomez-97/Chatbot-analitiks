@@ -23,10 +23,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Crear una instancia de la aplicación Flask, la función del Flask es crear una aplicación web que pueda recibir y responder mensajes de WhatsApp
 app = Flask(__name__)
 
 # Configuración de la clave API de OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
 # Diccionarios para rastrear el estado del usuario y temporizadores de inactividad
 last_interaction_time = {}
 timers = {}

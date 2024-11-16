@@ -1,5 +1,8 @@
 import mysql.connector
 
+# Función para obtener una conexión a la base de datos.
+# Recodemos que estamos utilizando docker, y lo que hace docker es que crea un contenedor con la base de datos.
+
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",

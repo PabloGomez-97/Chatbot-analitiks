@@ -47,7 +47,7 @@ def get_product_info(product_name):
             if product_name.lower() == product["title"].lower():
                 return (f"🔹 *{product['title']}*\n"
                         f"🔗 [Ver producto]({product['url']})\n"
-                        f"🖼️ Imagen: {product['image']}")
+                        f"🖼️ Description: {product['description']}")
         return "Lo siento, no encontré un producto con ese nombre. Asegúrate de escribir el nombre exacto."
     except FileNotFoundError:
         return "No se encontró el archivo de productos. Por favor, actualízalo usando la ruta /update_products."

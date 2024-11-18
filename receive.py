@@ -8,6 +8,7 @@ import mysql.connector
 import json
 import requests
 from bs4 import BeautifulSoup
+
 from utils.product_fetcher import (
     fetch_and_save_products_json, 
     get_product_info

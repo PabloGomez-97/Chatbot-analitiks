@@ -3,728 +3,1417 @@
         {
             "title": "ARD 170",
             "url": "https://analitiks.cl/producto/ard-170/",
-            "categories": [],
-            "description": "El ARD 170 es un portasensor de inmersión diseñado para introducir de manera segura sensores Memosens en medios líquidos. Este dispositivo es ideal para mediciones de campo en tanques, calderas, estanques y canales abiertos con flujo."
+            "categories": [
+                "Inmersión",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nPortasensor sumergible con peso para medición de campo con sensores Memosens."
         },
         {
             "title": "ARD 220",
             "url": "https://analitiks.cl/producto/ard-220/",
-            "categories": [],
-            "description": "El ARD 220 es un portasensor avanzado diseñado para aplicaciones que requieren la introducción de sensores Memosens en entornos industriales complejos. Es ideal para su uso en instalaciones con alta exigencia técnica, ofreciendo precisión y seguridad en las mediciones."
+            "categories": [
+                "Inmersión",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nMedición simultánea con hasta 3 sensores."
         },
         {
             "title": "ARD 230",
             "url": "https://analitiks.cl/producto/ard-230/",
-            "categories": [],
-            "description": "El ARD 230 es un portasensor diseñado para aplicaciones específicas que requieren precisión en el análisis de fluidos industriales. Consulte más detalles en https://analitiks.cl/producto/ard-230/."
+            "categories": [
+                "Inmersión",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nAdaptador de inmersión con diámetro pequeño."
         },
         {
             "title": "ARD 250",
             "url": "https://analitiks.cl/producto/ard-250/",
-            "categories": [],
-            "description": "El ARD 250 es un portasensor diseñado para aplicaciones específicas que requieren precisión en el análisis de fluidos industriales. Consulte más detalles en https://analitiks.cl/producto/ard-250/."
+            "categories": [
+                "Inmersión",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nMontaje para la integración segura y sencilla de sensores con rosca PG 13,5 al proceso."
         },
         {
             "title": "ARD 50",
             "url": "https://analitiks.cl/producto/ard-50/",
-            "categories": [],
-            "description": "El ARD 50 es un portasensor diseñado para aplicaciones específicas que requieren precisión en el análisis de fluidos industriales. Consulte más detalles en https://analitiks.cl/producto/ard-50/."
+            "categories": [
+                "Inmersión",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nAdaptador modular con una extraordinaria gama de funciones para un solo sensor"
         },
         {
             "title": "ARD 75",
             "url": "https://analitiks.cl/producto/ard-75/",
-            "categories": [],
-            "description": "El ARD 75 es un portasensor diseñado para aplicaciones específicas que requieren precisión en el análisis de fluidos industriales. Consulte más detalles en https://analitiks.cl/producto/ard-75/."
+            "categories": [
+                "Inmersión",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nAccesorio modular para mediciones con hasta 3 sensores."
         },
         {
             "title": "ARF 101",
             "url": "https://analitiks.cl/producto/arf-101/",
-            "categories": [],
-            "description": "El ARF 101 es un portasensor diseñado para aplicaciones específicas que requieren precisión en el análisis de fluidos industriales. Consulte más detalles en https://analitiks.cl/producto/arf-101/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo de PVC para el montaje directo de un sensor de 12 mm."
         },
         {
             "title": "ARF 200 /ARF 202",
             "url": "https://analitiks.cl/producto/arf-200-arf-202/",
-            "categories": [],
-            "description": "El ARF 200 /ARF 202 es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/arf-200-arf-202/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo de acero inoxidable para un sensor."
         },
         {
             "title": "ARF 201",
             "url": "https://analitiks.cl/producto/arf-201/",
-            "categories": [],
-            "description": "El ARF 201 es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/arf-201/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo de plástico moldeado para un sensor."
         },
         {
             "title": "ARF 203",
             "url": "https://analitiks.cl/producto/arf-203/",
-            "categories": [],
-            "description": "El ARF 203 es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/arf-203/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo con rosca G 1 1/4″ (25 mm/Conexión Ingold)."
         },
         {
             "title": "ARF 210",
             "url": "https://analitiks.cl/producto/arf-210/",
-            "categories": [],
-            "description": "El ARF 210 es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/arf-210/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo altamente variable de acero inoxidable."
         },
         {
             "title": "ARF 215",
             "url": "https://analitiks.cl/producto/arf-215/",
-            "categories": [],
-            "description": "El ARF 215 es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/arf-215/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo altamente variable de plástico."
         },
         {
             "title": "ARF 240",
             "url": "https://analitiks.cl/producto/arf-240/",
-            "categories": [],
-            "description": "El ARF 240 es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/arf-240/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo con tubo de expansión."
         },
         {
             "title": "ARI 106 (H)",
             "url": "https://analitiks.cl/producto/ari-106-h/",
-            "categories": [],
-            "description": "El ARI 106 (H) es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ari-106-h/."
+            "categories": [
+                "Insercion en línea",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nAccesorio para inserción en línea económico y robusto para sensores de 12 mm, para procesos químicos y aplicaciones higiénicas."
         },
         {
             "title": "BA Series",
             "url": "https://analitiks.cl/producto/ba-series/",
-            "categories": [],
-            "description": "El BA Series es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ba-series/."
+            "categories": [
+                "DQO",
+                "DQO",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nDQO, Demanda Química de Oxígeno es uno de los parámetros más importantes en la caracterización (medición del grado de contaminación) de las aguas residuales."
         },
         {
             "title": "BA-X Series",
             "url": "https://analitiks.cl/producto/ba-x-series/",
-            "categories": [],
-            "description": "El BA-X Series es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ba-x-series/."
+            "categories": [
+                "DBO",
+                "DBO",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSonda sumergible para DBO, proporciona una medición asequible en tiempo real de materia orgánica en agua o aguas residuales."
         },
         {
             "title": "BL Series",
             "url": "https://analitiks.cl/producto/bl-series/",
-            "categories": [],
-            "description": "El BL Series es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/bl-series/."
+            "categories": [
+                "DQO",
+                "DQO",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para muestreo de DBO, proporciona una medición asequible en tiempo real de materia orgánica en agua o aguas residuales."
         },
         {
             "title": "BP Series",
             "url": "https://analitiks.cl/producto/bp-series/",
-            "categories": [],
-            "description": "El BP Series es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/bp-series/."
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nEl medidor portátil de DBO/DQO, proporciona pruebas sencillas y asequibles de materia orgánica en agua o aguas residuales."
         },
         {
             "title": "CA-X Series",
             "url": "https://analitiks.cl/producto/ca-x-series/",
-            "categories": [],
-            "description": "El CA-X Series es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ca-x-series/."
+            "categories": [
+                "Color",
+                "Color",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSonda de color sumergible, proporciona una medición asequible en tiempo real de los cambios de color en el agua o aguas residuales de acuerdo con ISO 6271-2016: 05."
         },
         {
             "title": "CatCon 6 delta",
             "url": "https://analitiks.cl/producto/catcon-6-delta/",
-            "categories": [],
-            "description": "El CatCon 6 delta es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/catcon-6-delta/."
+            "categories": [
+                "Conductividad Catiónica",
+                "Conductividad Catiónica",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nMedición para la conductividad diferencial y la determinación del valor de pH."
         },
         {
             "title": "Container SWAS",
             "url": "https://analitiks.cl/producto/container-swas/",
-            "categories": [],
-            "description": "El Container SWAS es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/container-swas/."
+            "categories": [
+                "Productos",
+                "SWAS"
+            ],
+            "description": "Description\nSistema para la extracción continua y discontinua de muestras del ciclo agua-vapor. Estos sistemas constan de componentes en disposiciones estandarizadas para muestras líquidas o gaseosas. El diseño de los sistemas se adapta a las tareas de medición específicas."
         },
         {
             "title": "CTAir Plus",
             "url": "https://analitiks.cl/producto/ctair-plus/",
-            "categories": [],
-            "description": "El CTAir Plus es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ctair-plus/."
+            "categories": [
+                "Calidad de Aire",
+                "Calidad de Aire",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nLa estación de monitoreo CTair con certificación ATEX es una unidad fija que recopila información de una variedad de sensores y presenta los datos en una interfaz gráfica fácil de entender."
         },
         {
             "title": "CTAir Plus",
             "url": "https://analitiks.cl/producto/ctair-plus-2/",
-            "categories": [],
-            "description": "El CTAir Plus es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ctair-plus-2/."
+            "categories": [
+                "Calidad de Aire",
+                "Calidad de Aire",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nEl laboratorio volador de monitoreo ambiental,  basado en drones, proporciona una plataforma sólida para realizar evaluaciones de impacto y mediciones de la calidad del aire para una amplia gama de aplicaciones. Esto incluye el monitoreo de emisiones fugitivas, emisiones de antorchas, detección de fugas a lo largo de oleoductos, metano en vertederos, emisiones de olores, aplicaciones militares o de emergencia, escaneo urbano y mucho, mucho más."
         },
         {
             "title": "CTAir Plus",
             "url": "https://analitiks.cl/producto/ctair-plus-3/",
-            "categories": [],
-            "description": "El CTAir Plus es un dispositivo especializado diseñado para cumplir con las demandas de precisión y confiabilidad en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/ctair-plus-3/."
+            "categories": [
+                "Calidad de Aire",
+                "Calidad de Aire",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nEl monitor de la calidad del aire interior observa con hasta 12 variedades de sensores, que incluyen presión, temperatura, humedad relativa y GPS. La detección de nuestros sensores varían desde polvo (PM1, 2.5 y 10), ruido, radiación y muchos otros compuestos químicos que se encuentran en interiores."
         },
         {
             "title": "Digox 6.1 K",
             "url": "https://analitiks.cl/producto/digox-6-1-k/",
-            "categories": [],
-            "description": "El Digox 6.1 K es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/digox-6-1-k/."
+            "categories": [
+                "Oxígeno Disuelto",
+                "Oxígeno Disuelto",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nMedición portátil de trazas de oxígeno disuelto."
         },
         {
             "title": "Digox 6.1 KS",
             "url": "https://analitiks.cl/producto/digox-6-1-ks/",
-            "categories": [],
-            "description": "El Digox 6.1 KS es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/digox-6-1-ks/."
+            "categories": [
+                "Oxígeno Disuelto",
+                "Oxígeno Disuelto",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nMedición estacionaria de trazas de oxígeno disuelto."
         },
         {
             "title": "Digox 602 dac",
             "url": "https://analitiks.cl/producto/digox-602-dac/",
-            "categories": [],
-            "description": "El Digox 602 dac es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/digox-602-dac/."
+            "categories": [
+                "Conductividad Degasificada",
+                "Conductividad Degasificada",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nConductividad ácida (conductividad catiónica) después de eliminar el CO2."
         },
         {
             "title": "Distribucion de muestra",
             "url": "https://analitiks.cl/producto/distribucion-de-muestra/",
-            "categories": [],
-            "description": "El Distribucion de muestra es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/distribucion-de-muestra/."
+            "categories": [
+                "Componentes SWAS",
+                "Productos"
+            ],
+            "description": "Description\nLa distribución de la muestra permite separar la muestra para las mediciones de análisis individuales."
         },
         {
             "title": "Enfriadores",
             "url": "https://analitiks.cl/producto/enfriadores/",
-            "categories": [],
-            "description": "El Enfriadores es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/enfriadores/."
+            "categories": [
+                "Componentes SWAS",
+                "Productos"
+            ],
+            "description": "Description\nEnfriadores compactos con alto rendimiento de enfriamiento para muestras de agua o vapor."
         },
         {
             "title": "EXcell 231",
             "url": "https://analitiks.cl/producto/excell-231/",
-            "categories": [],
-            "description": "El EXcell 231 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/excell-231/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "Turbiedad",
+                "Turbiedad"
+            ],
+            "description": "Description\nSensor de absorbancia NIR digital de alta precisión para monitorear procesos de producción."
         },
         {
             "title": "EXcell 241",
             "url": "https://analitiks.cl/producto/excell-241/",
-            "categories": [],
-            "description": "El EXcell 241 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/excell-241/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "Turbiedad",
+                "Turbiedad"
+            ],
+            "description": "Description\n.Sensor de absorbancia NIR digital de alta precisión para monitorear procesos de producción"
         },
         {
             "title": "EXflow 710",
             "url": "https://analitiks.cl/producto/exflow-710/",
-            "categories": [],
-            "description": "El EXflow 710 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/exflow-710/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo fabricada en acero inoxidable, suministrable en diferentes tamaños y con diferentes conexiones de proceso y sensor."
         },
         {
             "title": "EXflow 720",
             "url": "https://analitiks.cl/producto/exflow-720/",
-            "categories": [],
-            "description": "El EXflow 720 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/exflow-720/."
+            "categories": [
+                "Flujo Continuo",
+                "Porta Sensores",
+                "Productos"
+            ],
+            "description": "Description\nCámara de flujo fabricada en PVDF, suministrable en diferentes tamaños y con diferentes conexiones de proceso y sensor."
         },
         {
             "title": "EXspect 231",
             "url": "https://analitiks.cl/producto/exspect-231/",
-            "categories": [],
-            "description": "El EXspect 231 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/exspect-231/."
+            "categories": [
+                "Absorbancia",
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "Turbiedad"
+            ],
+            "description": "Description\nSensor de absorbancia NIR compacto, digital de alta precisión para monitorear procesos de producción."
         },
         {
             "title": "Exspect 271",
             "url": "https://analitiks.cl/producto/exspect-271/",
-            "categories": [],
-            "description": "El Exspect 271 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/exspect-271/."
+            "categories": [
+                "Absorbancia",
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "Turbiedad"
+            ],
+            "description": "Description\nSensor de turbiedad NIR compacto, de alta precisión que monitorea los procesos de producción."
         },
         {
             "title": "Gabinete SWAS",
             "url": "https://analitiks.cl/producto/gabinete-swas/",
-            "categories": [],
-            "description": "El Gabinete SWAS es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/gabinete-swas/."
+            "categories": [
+                "Productos",
+                "SWAS"
+            ],
+            "description": "Description\nSistema para la extracción continua y discontinua de muestras del ciclo agua-vapor. Estos sistemas constan de componentes en disposiciones estandarizadas para muestras líquidas o gaseosas. El diseño de los sistemas se adapta a las tareas de medición específicas."
         },
         {
             "title": "Hand Held LF 6",
             "url": "https://analitiks.cl/producto/hand-held-lf-6/",
-            "categories": [],
-            "description": "El Hand Held LF 6 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/hand-held-lf-6/."
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nInstrumento portátil de uso general para medir la conductividad y temperatura."
         },
         {
             "title": "Hand Held PM 6",
             "url": "https://analitiks.cl/producto/hand-held-pm-6/",
-            "categories": [],
-            "description": "El Hand Held PM 6 es un dispositivo diseñado para optimizar el rendimiento y la precisión en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/hand-held-pm-6/."
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nInstrumento de medición portátil de uso general para medir el pH, ORP y temperatura."
+        },
+        {
+            "title": "HN2A-X",
+            "url": "https://analitiks.cl/producto/hn2a-x/",
+            "categories": [
+                "Nitrito",
+                "Nitrito",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSonda sumergible para nitrito, proporciona una medición asequible en tiempo real de altas concentraciones de Nitrito (NO2) en agua o aguas residuales."
+        },
+        {
+            "title": "HN2L",
+            "url": "https://analitiks.cl/producto/hn2l/",
+            "categories": [
+                "Nitrito",
+                "Nitrito",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para muestreo de nitrito de alto rango, proporciona una medición en tiempo real de nitrito (NO2) en agua o aguas residuales."
+        },
+        {
+            "title": "HN3A-X Series",
+            "url": "https://analitiks.cl/producto/hn3a-x-series/",
+            "categories": [
+                "Nitrato",
+                "Nitrato",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSonda sumergible para nitrato, proporciona una medición asequible en tiempo real de altas concentraciones de Nitrato (NO3) en agua o aguas residuales."
+        },
+        {
+            "title": "HN3L Series",
+            "url": "https://analitiks.cl/producto/hn3l-series/",
+            "categories": [
+                "Nitrato",
+                "Nitrato",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para muestreo de nitrato de alto rango, proporciona una medición en tiempo real de nitrato (NO3) en agua o aguas residuales."
+        },
+        {
+            "title": "Kripton® DIS",
+            "url": "https://analitiks.cl/producto/kripton-dis/",
+            "categories": [
+                "Cloro",
+                "Cloro Libre",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSistema de monitoreo de agua de un solo canal para medir cloro libre, dióxido de cloro, ozono o peróxido de hidrógeno y temperatura."
+        },
+        {
+            "title": "Kripton® DIS Total",
+            "url": "https://analitiks.cl/producto/kripton-dis-total/",
+            "categories": [
+                "Cloro",
+                "Cloro Total",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSistema de monitoreo de agua de un solo canal para medir el cloro total y la temperatura."
+        },
+        {
+            "title": "Kripton® Multi",
+            "url": "https://analitiks.cl/producto/kripton-multi/",
+            "categories": [
+                "Cloro",
+                "Cloro Libre",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSistema de monitoreo de agua multicanal para medición de cloro total, cloro libre, dióxido de cloro, ozono o peróxido de hidrógeno."
+        },
+        {
+            "title": "Memorail",
+            "url": "https://analitiks.cl/producto/memorail/",
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nEl primer analizador digital realmente compacto para medir pH / ORP, conductividad, oxígeno y temperatura con Memosens y sensores digitales."
+        },
+        {
+            "title": "Memorail Modbus",
+            "url": "https://analitiks.cl/producto/memorail-modbus/",
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nDispositivo de medición multiparamétrico compacto para memosens y sensores digitales, con protocolo Modbus RTU."
+        },
+        {
+            "title": "MicroTPI",
+            "url": "https://analitiks.cl/producto/microtpi/",
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nTurbidímetro portátil de campo (infrarrojo) para pruebas de turbidez."
+        },
+        {
+            "title": "MicroTPW",
+            "url": "https://analitiks.cl/producto/microtpw/",
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nTurbidímetro portátil de campo (luz blanca) para pruebas de turbidez."
         },
         {
             "title": "MTOL Plus",
             "url": "https://analitiks.cl/producto/mtol-plus/",
-            "categories": [],
-            "description": "El MTOL Plus es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/mtol-plus/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "Turbiedad",
+                "Turbiedad"
+            ],
+            "description": "Description\nSolución de monitoreo de turbidez en línea precisa y fácil de calibrar con un bajo costo de propiedad."
         },
         {
             "title": "NL Series",
             "url": "https://analitiks.cl/producto/nl-series/",
-            "categories": [],
-            "description": "El NL Series es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/nl-series/."
+            "categories": [
+                "Nitrato",
+                "Nitrato",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para muestreo de nitrato, proporciona una medición en tiempo real de nitrato (NO3) en agua o aguas residuales."
         },
         {
             "title": "OA-X Series",
             "url": "https://analitiks.cl/producto/oa-x-series/",
-            "categories": [],
-            "description": "El OA-X Series es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/oa-x-series/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "TOC",
+                "TOC"
+            ],
+            "description": "Description\nSonda sumergible para TOC, proporciona una medición asequible en tiempo real de materia orgánica en agua o aguas residuales."
         },
         {
             "title": "OL Series",
             "url": "https://analitiks.cl/producto/ol-series/",
-            "categories": [],
-            "description": "El OL Series es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/ol-series/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "TOC",
+                "TOC"
+            ],
+            "description": "Description\nSensor para muestreo de TOC, proporciona una medición asequible en tiempo real de materia orgánica en agua o aguas residuales."
         },
         {
             "title": "Orion™ 2109XP Fluoride Analyzer",
             "url": "https://analitiks.cl/producto/orion-2109xp-fluoride-analyzer/",
-            "categories": [],
-            "description": "El Orion™ 2109XP Fluoride Analyzer es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/orion-2109xp-fluoride-analyzer/."
+            "categories": [
+                "Analizador en Línea",
+                "Fluoruro",
+                "Parámetros",
+                "Productos"
+            ],
+            "description": "Description\nAnalizador de Fluoruro en línea para aplicaciones industriales en línea."
         },
         {
             "title": "Orion™ 2110XP Ammonia Analyzer",
             "url": "https://analitiks.cl/producto/orion-2110xp-ammonia-analyzer/",
-            "categories": [],
-            "description": "El Orion™ 2110XP Ammonia Analyzer es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/orion-2110xp-ammonia-analyzer/."
+            "categories": [
+                "Amoniaco",
+                "Analizador en Línea",
+                "Parámetros",
+                "Productos"
+            ],
+            "description": "Description\nAnalizador de Amoniaco en línea para aplicaciones industriales en línea."
         },
         {
             "title": "Orion™ 2117XP Chloride Analyzer",
             "url": "https://analitiks.cl/producto/orion-2117xp-chloride-analyzer/",
-            "categories": [],
-            "description": "El Orion™ 2117XP Chloride Analyzer es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/orion-2117xp-chloride-analyzer/."
+            "categories": [
+                "Analizador en Línea",
+                "Cloruros",
+                "Parámetros",
+                "Productos"
+            ],
+            "description": "Description\nAnalizador de Cloruros en línea para aplicaciones industriales en línea."
         },
         {
             "title": "Orion™ 2120XP Calcium Hardness Analyzer",
             "url": "https://analitiks.cl/producto/orion-2120xp-calcium-hardness-analyzer/",
-            "categories": [],
-            "description": "El Orion™ 2120XP Calcium Hardness Analyzer es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/orion-2120xp-calcium-hardness-analyzer/."
+            "categories": [
+                "Analizador en Línea",
+                "Dureza de Calcio",
+                "Parámetros",
+                "Productos"
+            ],
+            "description": "Description\nAnalizador de Dureza de Calcio en línea para aplicaciones industriales en línea."
         },
         {
             "title": "Orion™ 2295 Phosphate Analyzer",
             "url": "https://analitiks.cl/producto/orion-2295-phosphate-analyzer/",
-            "categories": [],
-            "description": "El Orion™ 2295 Phosphate Analyzer es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/orion-2295-phosphate-analyzer/."
+            "categories": [
+                "Analizador en Línea",
+                "Fosfato",
+                "Parámetros",
+                "Productos"
+            ],
+            "description": "Description\nAnalizador de fosfato en línea para aplicaciones industriales en línea."
         },
         {
             "title": "Orion™ TRO Analyzer",
             "url": "https://analitiks.cl/producto/orion-tro-analyzer/",
-            "categories": [],
-            "description": "El Orion™ TRO Analyzer es un dispositivo especializado diseñado para medición y análisis en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/orion-tro-analyzer/."
+            "categories": [
+                "Analizador en Línea",
+                "Parámetros",
+                "Productos",
+                "TRO - Oxidante Residual Total"
+            ],
+            "description": "Description\nAnalizador de TRO – Oxidante Residual Total en línea para aplicaciones industriales en línea."
         },
         {
             "title": "Panel SWAS",
             "url": "https://analitiks.cl/producto/panel-swas/",
-            "categories": [],
-            "description": "El Panel SWAS es un dispositivo especializado diseñado para medición y análisis en sistemas de agua y vapor. Consulte más detalles en https://analitiks.cl/producto/panel-swas/."
+            "categories": [
+                "Productos",
+                "SWAS"
+            ],
+            "description": "Description\nSistema para la extracción continua y discontinua de muestras del ciclo agua-vapor. Estos sistemas constan de componentes en disposiciones estandarizadas para muestras líquidas o gaseosas. El diseño de los sistemas se adapta a las tareas de medición específicas."
         },
         {
             "title": "Portavo 907 Multi",
             "url": "https://analitiks.cl/producto/portavo-907-multi/",
-            "categories": [],
-            "description": "El Portavo 907 Multi es un dispositivo portátil ideal para la medición y monitoreo de múltiples parámetros en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/portavo-907-multi/."
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nDispositivo portátil multiparámetro para sensores de pH, conductividad y oxígeno Memosens."
         },
         {
             "title": "Protección de Temperatura",
             "url": "https://analitiks.cl/producto/proteccion-de-temperatura/",
-            "categories": [],
-            "description": "El sistema de Protección de Temperatura está diseñado para garantizar mediciones precisas y seguras en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/proteccion-de-temperatura/."
+            "categories": [
+                "Componentes SWAS",
+                "Productos"
+            ],
+            "description": "Description\nLa protección de temperatura permite cortar el flujo de la muestra en caso de que la temperatura de la muestra supere los 55 ° C debido a la falta de agua de refrigeración."
         },
         {
             "title": "Protos 3400",
             "url": "https://analitiks.cl/producto/protos-3400/",
-            "categories": [],
-            "description": "El Protos 3400 es un analizador avanzado para procesos industriales, especializado en medición de parámetros críticos. Consulte más detalles en https://analitiks.cl/producto/protos-3400/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nSistema de medición universal con 3 ranuras seleccionables por el usuario para módulos de medición, extensión y comunicación. También para uso en áreas peligrosas."
         },
         {
             "title": "Protos II 4400",
             "url": "https://analitiks.cl/producto/protos-ii-4400/",
-            "categories": [],
-            "description": "El Protos II 4400 es un sistema avanzado para análisis y monitoreo en tiempo real en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/protos-ii-4400/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nDispositivo flexible de 4 hilos para las siguientes variables de proceso: pH, ORP, conductividad y oxígeno."
         },
         {
             "title": "Radon DIS-pH",
             "url": "https://analitiks.cl/producto/radon-dis-ph/",
-            "categories": [],
-            "description": "El Radon DIS-pH es un dispositivo diseñado para medición precisa del pH en sistemas industriales y de laboratorio. Consulte más detalles en https://analitiks.cl/producto/radon-dis-ph/."
+            "categories": [
+                "Analizadores Portátiles",
+                "Productos"
+            ],
+            "description": "Description\nFotómetro utilizado para medir cloro libre, dióxido de cloro, ozono, peróxido de hidrógeno y pH."
         },
         {
             "title": "Real Air Clean",
             "url": "https://analitiks.cl/producto/real-air-clean/",
-            "categories": [],
-            "description": "El Real Air Clean es un sistema diseñado para limpieza eficiente de sistemas de aire en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/real-air-clean/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nLos sistemas automáticos de limpieza con aire comprimido ofrecen el método más eficaz para limpiar sensores de sonda óptica sumergibles. La frecuencia de limpieza se puede configurar según las necesidades específicas del sitio, lo que garantiza que se eliminen las incrustaciones de manera eficaz y se minimice la deriva de la medición. Los ciclos de limpieza automáticos ahorran tiempo y reducen el mantenimiento al tiempo que mejoran el funcionamiento general y la precisión del instrumento."
         },
         {
             "title": "Real Air Purge Clean",
             "url": "https://analitiks.cl/producto/real-air-purge-clean/",
-            "categories": [],
-            "description": "El Real Air Purge Clean es un dispositivo especializado para la purga y limpieza de sistemas de aire en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/real-air-purge-clean/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nEquipado con aire comprimido, el sistema purga las líneas de muestreo a intervalos regulares. El sistema también incorpora un componente de limpieza química para minimizar los efectos del ensuciamiento en la celda de medición y un componente de bombeo para suministrar continuamente la muestra al sistema desde un canal abierto. El sistema ahorra tiempo y reduce el mantenimiento al tiempo que mejora el funcionamiento general y la precisión del instrumento."
         },
         {
             "title": "Real Clean",
             "url": "https://analitiks.cl/producto/real-clean/",
-            "categories": [],
-            "description": "El Real Clean es un dispositivo diseñado para optimizar la limpieza en sistemas industriales, garantizando eficiencia y confiabilidad. Consulte más detalles en https://analitiks.cl/producto/real-clean/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nSistema de limpieza química automática para limpiar sensores ópticos. El líquido de limpieza y la frecuencia se pueden configurar según las necesidades específicas del sitio, lo que garantiza que los agentes de ensuciamiento objetivo se eliminen de manera efectiva y se minimice el desvío de medición."
         },
         {
             "title": "Real Controller",
             "url": "https://analitiks.cl/producto/real-controller/",
-            "categories": [],
-            "description": "El Real Controller es un sistema avanzado para el monitoreo y control en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/real-controller/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nCon una pantalla LCD de caracteres, sistema de menú jerárquico y software de correlación. Un solo sensor Real Tech o varios sensores y dispositivos accesorios periféricos se pueden controlar y configurar fácilmente desde una ubicación. Estándar de salida Modbus (RS485) y 4-20 mA. Entrada 4-20 mA, contactos secos, módulo WIFI y módem celular opcional."
         },
         {
             "title": "Real Controller Pro",
             "url": "https://analitiks.cl/producto/real-controller-pro/",
-            "categories": [],
-            "description": "El Real Controller Pro es un controlador profesional diseñado para ofrecer un control preciso en procesos complejos. Consulte más detalles en https://analitiks.cl/producto/real-controller-pro/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nCon una interfaz gráfica de pantalla táctil LCD a color de 12,1 ”, el controlador ofrece una funcionalidad y una capacidad de configuración superiores a la vez que mantiene la facilidad de uso y navegación. El controlador proporciona entradas propietarias para múltiples sensores y accesorios de Real Tech que llevan todos los datos de calidad del agua a una sola ubicación, lo que hace que el análisis sea rápido y simple. Modbus TCP es estándar con Modbus RTU (RS485) opcional, entrada de 4-20 mA, salida de 4-20 mA, contactos secos de E/S digitales, módulo WiFi y módem celular."
         },
         {
             "title": "Real Dilution",
             "url": "https://analitiks.cl/producto/real-dilution/",
-            "categories": [],
-            "description": "El Real Dilution es un dispositivo especializado para la dilución precisa en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/real-dilution/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nEl sistema permite la medición de muestras altamente concentradas. Además de la dilución, el sistema también incorpora un componente de limpieza química para minimizar los efectos del ensuciamiento en la celda de medición y un componente de bombeo para suministrar continuamente la muestra al sistema desde un canal abierto. El sistema ahorra tiempo y reduce el mantenimiento al tiempo que mejora el funcionamiento general y la precisión del instrumento."
         },
         {
             "title": "Real Dual Feed",
             "url": "https://analitiks.cl/producto/real-dual-feed/",
-            "categories": [],
-            "description": "El Real Dual Feed es un sistema avanzado para la alimentación dual en sistemas industriales. Consulte más detalles en https://analitiks.cl/producto/real-dual-feed/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nEl sistema de alimentación dual brinda la capacidad de monitorear dos flujos separados con un solo instrumento. El sistema de montaje en pared externo es fácil de instalar con cualquier sensor Real Tech. El tiempo de muestreo para cada flujo es configurable, con un tiempo de purga opcional entre ellos para minimizar el cruce de muestras. Ideal para monitorear la eliminación a través de un sistema de tratamiento, la alimentación dual es una adición asequible y valiosa para muchas aplicaciones de monitoreo."
         },
         {
             "title": "Real Pump Clean",
             "url": "https://analitiks.cl/producto/real-pump-clean/",
-            "categories": [],
-            "description": "El Real Pump Clean es un sistema eficiente para la limpieza de bombas en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/real-pump-clean/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nEl sistema combina un componente de bombeo de muestras y un componente de limpieza química en uno. La frecuencia de limpieza es programable, lo que permite configurar los ciclos de limpieza para las necesidades específicas del sitio. Los ciclos de limpieza automáticos ahorran tiempo y reducen el mantenimiento al tiempo que mejoran el funcionamiento general y la precisión del instrumento."
         },
         {
             "title": "SA-X Series",
             "url": "https://analitiks.cl/producto/sa-x-series/",
-            "categories": [],
-            "description": "La SA-X Series está diseñada para medición precisa y confiable en una amplia gama de aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/sa-x-series/."
+            "categories": [
+                "Hidrocarburos",
+                "Hidrocarburos",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSonda sumergible de ondas múltiples proporciona una medición asequible en tiempo real de hidrocarburos en agua o aguas residuales."
         },
         {
             "title": "Scentinal SL50",
             "url": "https://analitiks.cl/producto/scentinal-sl50/",
-            "categories": [],
-            "description": "El Scentinal SL50 es un sistema de monitoreo avanzado para aplicaciones ambientales e industriales. Consulte más detalles en https://analitiks.cl/producto/scentinal-sl50/."
+            "categories": [
+                "Calidad de Aire",
+                "Calidad de Aire - Olores",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nLa estación de monitoreo continuo y analizador de calidad del aire ambiental, proporciona una detección de alta precisión (nivel de ppb) de gases olorosos como H2S, NH3, COV, SO2 y concentración de olores."
         },
         {
             "title": "SE 503",
             "url": "https://analitiks.cl/producto/se-503/",
-            "categories": [],
-            "description": "El SE 503 es un sensor de alta precisión diseñado para aplicaciones industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/se-503/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nEl sensor de pH estándar para agua / aguas residuales; robusto y de bajo mantenimiento."
         },
         {
             "title": "SE 515",
             "url": "https://analitiks.cl/producto/se-515/",
-            "categories": [],
-            "description": "El SE 515 es un sensor robusto y confiable para monitoreo en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-515/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de precio razonable para tratamiento de agua y aguas residuales."
         },
         {
             "title": "SE 546",
             "url": "https://analitiks.cl/producto/se-546/",
-            "categories": [],
-            "description": "El SE 546 es un sensor avanzado diseñado para mediciones de alta precisión en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/se-546/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor ISFET resistente a roturas, digital, con tecnología Memosens."
         },
         {
             "title": "SE 554",
             "url": "https://analitiks.cl/producto/se-554/",
-            "categories": [],
-            "description": "El SE 554 es un sensor confiable y versátil, ideal para el monitoreo de procesos industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/se-554/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de bajo mantenimiento para mediciones de pH exigentes en la industria química."
         },
         {
             "title": "SE 555",
             "url": "https://analitiks.cl/producto/se-555/",
-            "categories": [],
-            "description": "El SE 555 es un sensor robusto diseñado para ofrecer resultados precisos en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/se-555/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de pH digital, esterilizable que proporciona alta fiabilidad y precisión."
         },
         {
             "title": "SE 557",
             "url": "https://analitiks.cl/producto/se-557/",
-            "categories": [],
-            "description": "El SE 557 es un sensor de alta precisión ideal para aplicaciones críticas en la industria. Consulte más detalles en https://analitiks.cl/producto/se-557/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nPara requisitos especiales y mediciones de alta precisión con electrolito líquido rellenable."
         },
         {
             "title": "SE 558",
             "url": "https://analitiks.cl/producto/se-558/",
-            "categories": [],
-            "description": "El SE 558 es un sensor diseñado para garantizar mediciones confiables en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-558/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nPara la medición sin complicaciones en agua ultrapura, agua y química analítica."
         },
         {
             "title": "SE 559",
             "url": "https://analitiks.cl/producto/se-559/",
-            "categories": [],
-            "description": "El SE 559 es un sensor avanzado para monitorear parámetros clave en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/se-559/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nPara la medición sin complicaciones en agua y química analítica."
         },
         {
             "title": "SE 560",
             "url": "https://analitiks.cl/producto/se-560/",
-            "categories": [],
-            "description": "El SE 560 es un sensor confiable para mediciones precisas en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/se-560/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nPara los medios de baja conductividad o bajas temperaturas, electrolito líquido rellenable."
         },
         {
             "title": "SE 564",
             "url": "https://analitiks.cl/producto/se-564/",
-            "categories": [],
-            "description": "El SE 564 es un sensor de última generación diseñado para mediciones exactas en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-564/."
+            "categories": [
+                "ORP",
+                "ORP",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de ORP para trabajo pesado, que proporciona alta confiabilidad y precisión."
         },
         {
             "title": "SE 565",
             "url": "https://analitiks.cl/producto/se-565/",
-            "categories": [],
-            "description": "El SE 565 es un sensor innovador, ideal para aplicaciones industriales que requieren alta precisión. Consulte más detalles en https://analitiks.cl/producto/se-565/."
+            "categories": [
+                "ORP",
+                "ORP",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de ORP para procesos higiénicos y aplicaciones estériles."
         },
         {
             "title": "SE 571",
             "url": "https://analitiks.cl/producto/se-571/",
-            "categories": [],
-            "description": "El SE 571 es un sensor especializado para mediciones críticas en la industria. Consulte más detalles en https://analitiks.cl/producto/se-571/."
+            "categories": [
+                "Parámetros",
+                "pH",
+                "pH",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de bajo mantenimiento para las exigentes aplicaciones de procesos en la industria química."
         },
         {
             "title": "SE 600",
             "url": "https://analitiks.cl/producto/se-600/",
-            "categories": [],
-            "description": "El SE 600 es un sensor versátil para monitoreo de parámetros clave en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-600/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de 4 electrodos para aplicaciones de alta presión y alta temperatura."
         },
         {
             "title": "SE 603",
             "url": "https://analitiks.cl/producto/se-603/",
-            "categories": [],
-            "description": "El SE 603 es un sensor robusto y confiable diseñado para entornos industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/se-603/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de 4 electrodos con un rango de medición muy amplio, muy alta resistencia a la corrosión y capacidad de alta presión y temperatura."
         },
         {
             "title": "SE 604",
             "url": "https://analitiks.cl/producto/se-604/",
-            "categories": [],
-            "description": "El SE 604 es un sensor diseñado para mediciones confiables y precisas en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/se-604/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor robusto de 2 electrodos. Para una medición precisa y fiable de conductividades bajas y muy bajas, especialmente en agua ultrapura."
         },
         {
             "title": "SE 605H",
             "url": "https://analitiks.cl/producto/se-605h/",
-            "categories": [],
-            "description": "El SE 605H es un sensor robusto ideal para condiciones industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/se-605h/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor robusto de 2 electrodos. Para una medición precisa y fiable de conductividades bajas y muy bajas, especialmente en agua ultrapura."
         },
         {
             "title": "SE 610",
             "url": "https://analitiks.cl/producto/se-610/",
-            "categories": [],
-            "description": "El SE 610 es un sensor avanzado para mediciones críticas en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/se-610/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nLa solución de bajo costo para la medición de conductividades bajas en agua."
         },
         {
             "title": "SE 615",
             "url": "https://analitiks.cl/producto/se-615/",
-            "categories": [],
-            "description": "El SE 615 es un sensor confiable para aplicaciones de alta precisión en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-615/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de precio razonable para tratamiento de agua y aguas residuales."
         },
         {
             "title": "SE 620",
             "url": "https://analitiks.cl/producto/se-620/",
-            "categories": [],
-            "description": "El SE 620 es un sensor innovador diseñado para garantizar mediciones precisas en la industria. Consulte más detalles en https://analitiks.cl/producto/se-620/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de 2 electrodos compatible con productos farmacéuticos con diseño higiénico."
         },
         {
             "title": "SE 630",
             "url": "https://analitiks.cl/producto/se-630/",
-            "categories": [],
-            "description": "El SE 630 es un sensor avanzado ideal para monitorear parámetros críticos en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-630/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de 2 electrodos para medir valores de conductividad bajos a medios, aplicación flexible; alta resistencia química, térmica y mecánica."
         },
         {
             "title": "SE 655",
             "url": "https://analitiks.cl/producto/se-655/",
-            "categories": [],
-            "description": "El SE 655 es un sensor diseñado para ofrecer resultados confiables en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/se-655/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de conductividad universal y preciso con alta resistencia química."
         },
         {
             "title": "SE 656",
             "url": "https://analitiks.cl/producto/se-656/",
-            "categories": [],
-            "description": "El SE 656 es un sensor robusto para condiciones industriales complejas. Consulte más detalles en https://analitiks.cl/producto/se-656/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de conductividad universal y preciso con máxima resistencia química a medios altamente oxidantes."
         },
         {
             "title": "SE 670",
             "url": "https://analitiks.cl/producto/se-670/",
-            "categories": [],
-            "description": "El SE 670 es un sensor especializado para aplicaciones industriales de alta precisión. Consulte más detalles en https://analitiks.cl/producto/se-670/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor digital de precio competitivo para medir valores de conductividad de bajos a muy altos, insensible a la contaminación y la corrosión."
         },
         {
             "title": "SE 680",
             "url": "https://analitiks.cl/producto/se-680/",
-            "categories": [],
-            "description": "El SE 680 es un sensor versátil para procesos industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/se-680/."
+            "categories": [
+                "Conductividad",
+                "Conductividad",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de alta precisión fabricado con PEEK aprobado por la FDA con un rango de medición extremadamente amplio. Esterilizable por vapor."
         },
         {
             "title": "SE 706",
             "url": "https://analitiks.cl/producto/se-706/",
-            "categories": [],
-            "description": "El SE 706 es un sensor confiable diseñado para mediciones precisas en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/se-706/."
+            "categories": [
+                "Oxígeno Disuelto",
+                "Oxígeno Disuelto",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor en diseño robusto e higiénico de acero inoxidable, alta precisión y bajo límite de detección, mantenimiento simple y rápido gracias a una membrana especial."
         },
         {
             "title": "SE 707",
             "url": "https://analitiks.cl/producto/se-707/",
-            "categories": [],
-            "description": "El SE 707 es un sensor avanzado para monitoreo de parámetros críticos. Consulte más detalles en https://analitiks.cl/producto/se-707/."
+            "categories": [
+                "Oxígeno Disuelto",
+                "Oxígeno Disuelto",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nMedición fiable de trazas de oxígeno también en condiciones estériles e higiénicas; señal estable y robusto."
         },
         {
             "title": "SE 715",
             "url": "https://analitiks.cl/producto/se-715/",
-            "categories": [],
-            "description": "El SE 715 es un sensor diseñado para garantizar resultados precisos en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/se-715/."
+            "categories": [
+                "Oxígeno Disuelto",
+                "Oxígeno Disuelto",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor de precio razonable para aplicaciones de tratamiento de agua y aguas residuales."
         },
         {
             "title": "SE 740",
             "url": "https://analitiks.cl/producto/se-740/",
-            "categories": [],
-            "description": "El SE 740 es un sensor robusto para condiciones industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/se-740/."
+            "categories": [
+                "Oxígeno Disuelto",
+                "Oxígeno Disuelto",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nMedición óptica de oxígeno basada en tecnología de extinción de fluorescencia."
         },
         {
             "title": "Sodio Digox 602",
             "url": "https://analitiks.cl/producto/silice-digox-602/",
-            "categories": [],
-            "description": "El Sodio Digox 602 es un dispositivo especializado para medición precisa en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/silice-digox-602/."
+            "categories": [
+                "Analizador en Línea",
+                "Parámetros Sodio",
+                "Productos",
+                "Sodio"
+            ],
+            "description": "Description\nEl analizador de sodio en línea para bajas concentraciones en el ciclo agua-vapor es de gran importancia en las centrales eléctricas"
         },
         {
             "title": "Stratos Eco",
             "url": "https://analitiks.cl/producto/stratos-eco/",
-            "categories": [],
-            "description": "El Stratos Eco es un sistema avanzado para análisis eficiente en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/stratos-eco/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nAnalizadores de alta tecnología disponibles a precios razonables."
         },
         {
             "title": "Stratos Evo",
             "url": "https://analitiks.cl/producto/stratos-evo/",
-            "categories": [],
-            "description": "El Stratos Evo es un dispositivo innovador para el monitoreo preciso en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/stratos-evo/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nOfrece soluciones pioneras para el análisis de pH, ORP, conductividad (conductiva o inductiva) y oxígeno utilizando tecnología de 4 hilos."
         },
         {
             "title": "Stratos MS",
             "url": "https://analitiks.cl/producto/stratos-ms/",
-            "categories": [],
-            "description": "El Stratos MS es un analizador avanzado para monitoreo de parámetros industriales. Consulte más detalles en https://analitiks.cl/producto/stratos-ms/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nDispositivo multiparamétrico digital se puede configurar para medir pH, ORP, conductividad (conductivo / inductivo) u oxígeno."
         },
         {
             "title": "Stratos Multi",
             "url": "https://analitiks.cl/producto/stratos-multi/",
-            "categories": [],
-            "description": "El Stratos Multi es un sistema de análisis diseñado para aplicaciones complejas en la industria. Consulte más detalles en https://analitiks.cl/producto/stratos-multi/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nLa última generación de nuestros analizadores de procesos Stratos probados para sensores Memosens, digitales y analógicos. La funcionalidad multiparámetro proporciona flexibilidad."
         },
         {
             "title": "Stratos Pro",
             "url": "https://analitiks.cl/producto/stratos-pro/",
-            "categories": [],
-            "description": "El Stratos Pro es un dispositivo de última generación para monitoreo y análisis en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/stratos-pro/."
+            "categories": [
+                "Productos",
+                "Transmisores"
+            ],
+            "description": "Description\nOfrece soluciones pioneras para el análisis de pH, ORP, conductividad (conductiva o inductiva) y oxígeno utilizando tecnología de 2 hilos."
         },
         {
             "title": "TA20XX",
             "url": "https://analitiks.cl/producto/ta20xx/",
-            "categories": [],
-            "description": "El TA20XX es un sistema de análisis robusto para procesos industriales avanzados. Consulte más detalles en https://analitiks.cl/producto/ta20xx/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "TSS",
+                "TSS"
+            ],
+            "description": "Description\nSonda sumergible para una medición asequible en tiempo real de los cambios en los sólidos suspendidos totales (TSS) y / o la concentración de partículas en las aguas residuales."
         },
         {
             "title": "TURB1000X",
             "url": "https://analitiks.cl/producto/turb1000x/",
-            "categories": [],
-            "description": "El TURB1000X es un dispositivo diseñado para análisis preciso de turbidez en la industria. Consulte más detalles en https://analitiks.cl/producto/turb1000x/."
+            "categories": [
+                "Parámetros",
+                "Productos",
+                "Sensores",
+                "Turbiedad",
+                "Turbiedad"
+            ],
+            "description": "Description\nMedición rápida en tiempo real de turbiedad o sólidos suspendidos totales (TSS) en agua o aguas residuales."
         },
         {
             "title": "Unical 9000",
             "url": "https://analitiks.cl/producto/unical-9000/",
-            "categories": [],
-            "description": "El Unical 9000 es un sistema avanzado para calibración automática en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/unical-9000/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nControlador neumático para medición, limpieza y calibración automatizadas de pH."
         },
         {
             "title": "Uniclean 900",
             "url": "https://analitiks.cl/producto/uniclean-900/",
-            "categories": [],
-            "description": "El Uniclean 900 es un dispositivo especializado para limpieza eficiente en sistemas industriales. Consulte más detalles en https://analitiks.cl/producto/uniclean-900/."
+            "categories": [
+                "Productos",
+                "Sistemas"
+            ],
+            "description": "Description\nControlador neumático para medición y limpieza automáticas del pH/ORP."
         },
         {
             "title": "Válvulas de Cierre / Escape",
             "url": "https://analitiks.cl/producto/valvulas-de-cierre-escape/",
-            "categories": [],
-            "description": "Las Válvulas de Cierre / Escape están diseñadas para garantizar la seguridad y eficiencia en sistemas industriales. Consulte más detalles en https://analitiks.cl/producto/valvulas-de-cierre-escape/."
+            "categories": [
+                "Componentes SWAS",
+                "Productos"
+            ],
+            "description": "Description\nVálvula de alta presión para el cierre y venteo de circuitos de muestreo de agua o vapor."
         },
         {
             "title": "Válvulas reductoras de presión",
             "url": "https://analitiks.cl/producto/valvulas-reductoras-de-presion/",
-            "categories": [],
-            "description": "Las Válvulas reductoras de presión están diseñadas para regular de manera segura la presión en sistemas industriales. Consulte más detalles en https://analitiks.cl/producto/valvulas-reductoras-de-presion/."
+            "categories": [
+                "Componentes SWAS",
+                "Productos"
+            ],
+            "description": "Description\nVálvula para la reducción de presión del agua de muestra después del enfriamiento."
         },
         {
             "title": "WA 125",
             "url": "https://analitiks.cl/producto/wa-125/",
-            "categories": [],
-            "description": "El WA 125 es un dispositivo confiable para mediciones de parámetros críticos en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/wa-125/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles Manuales"
+            ],
+            "description": "Description\nAccesorio retráctil manual con válvula de bola de acero inoxidable, incluye sensor de 2 electrodos integrado para medir la conductividad."
         },
         {
             "title": "WA 130",
             "url": "https://analitiks.cl/producto/wa-130/",
-            "categories": [],
-            "description": "El WA 130 es un dispositivo avanzado diseñado para ofrecer resultados precisos en la industria. Consulte más detalles en https://analitiks.cl/producto/wa-130/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil universal operado neumáticamente en un diseño modular para un funcionamiento completamente automático."
         },
         {
             "title": "WA 130 H",
             "url": "https://analitiks.cl/producto/wa-130-h/",
-            "categories": [],
-            "description": "El WA 130 H es un instrumento robusto para aplicaciones industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/wa-130-h/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil higiénico, operado neumáticamente para uso con controladores Unical completamente automáticos."
         },
         {
             "title": "WA 131",
             "url": "https://analitiks.cl/producto/wa-131/",
-            "categories": [],
-            "description": "El WA 131 está diseñado para mediciones precisas en una amplia gama de aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/wa-131/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil universal, operado neumáticamente con un diseño modular para controladores simples."
         },
         {
             "title": "WA 131 H",
             "url": "https://analitiks.cl/producto/wa-131-h/",
-            "categories": [],
-            "description": "El WA 131 H es ideal para condiciones industriales complejas, garantizando precisión y confiabilidad. Consulte más detalles en https://analitiks.cl/producto/wa-131-h/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil operado neumáticamente para controladores simples disponibles comercialmente en aplicaciones higiénicas."
         },
         {
             "title": "WA 131 M",
             "url": "https://analitiks.cl/producto/wa-131-m/",
-            "categories": [],
-            "description": "El WA 131 M es un instrumento especializado para monitoreo en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/wa-131-m/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles Manuales"
+            ],
+            "description": "Description\nAccesorio retráctil manual innovador con accionamiento giratorio de funcionamiento seguro."
         },
         {
             "title": "WA 131 MH",
             "url": "https://analitiks.cl/producto/wa-131-mh/",
-            "categories": [],
-            "description": "El WA 131 MH es un dispositivo robusto diseñado para aplicaciones industriales exigentes. Consulte más detalles en https://analitiks.cl/producto/wa-131-mh/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles Manuales"
+            ],
+            "description": "Description\nAccesorio retráctil manual innovador con accionamiento giratorio fácil de operar para aplicaciones higiénicas."
         },
         {
             "title": "WA 132",
             "url": "https://analitiks.cl/producto/wa-132/",
-            "categories": [],
-            "description": "El WA 132 es un sistema confiable para mediciones precisas en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/wa-132/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil universal operado neumáticamente ultraresistente."
         },
         {
             "title": "WA 133",
             "url": "https://analitiks.cl/producto/wa-133/",
-            "categories": [],
-            "description": "El WA 133 está diseñado para ofrecer resultados consistentes en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/wa-133/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil universal operado neumáticamente ultraresistente."
         },
         {
             "title": "WA 133 M",
             "url": "https://analitiks.cl/producto/wa-133-m/",
-            "categories": [],
-            "description": "El WA 133 M es un dispositivo especializado para aplicaciones industriales avanzadas. Consulte más detalles en https://analitiks.cl/producto/wa-133-m/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles Manuales"
+            ],
+            "description": "Description\nAccesorio retráctil manual ultraresistente."
         },
         {
             "title": "WA 150",
             "url": "https://analitiks.cl/producto/wa-150/",
-            "categories": [],
-            "description": "El WA 150 es un instrumento de medición confiable para la industria. Consulte más detalles en https://analitiks.cl/producto/wa-150/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil con sellado de cerámica para aplicaciones extremas."
         },
         {
             "title": "WA 153",
             "url": "https://analitiks.cl/producto/wa-153/",
-            "categories": [],
-            "description": "El WA 153 está diseñado para aplicaciones industriales exigentes, garantizando resultados precisos. Consulte más detalles en https://analitiks.cl/producto/wa-153/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil con sellado de cerámica para aplicaciones extremas."
         },
         {
             "title": "WA 154",
             "url": "https://analitiks.cl/producto/wa-154/",
-            "categories": [],
-            "description": "El WA 154 es un instrumento robusto para el monitoreo de parámetros industriales críticos. Consulte más detalles en https://analitiks.cl/producto/wa-154/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil con sellado de cerámica para aplicaciones extremas."
         },
         {
             "title": "WA 160",
             "url": "https://analitiks.cl/producto/wa-160/",
-            "categories": [],
-            "description": "El WA 160 es un dispositivo confiable para mediciones precisas en entornos industriales. Consulte más detalles en https://analitiks.cl/producto/wa-160/."
+            "categories": [
+                "Porta Sensores",
+                "Productos",
+                "Retráctiles neumáticos"
+            ],
+            "description": "Description\nAccesorio retráctil con sellado de cerámica para aplicaciones extremas."
         },
         {
             "title": "Zirkon® Gas Cl2",
             "url": "https://analitiks.cl/producto/zirkon-gas-cl2/",
-            "categories": [],
-            "description": "El Zirkon® Gas Cl2 es un sistema avanzado para la medición de gas cloro en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/zirkon-gas-cl2/."
+            "categories": [
+                "Cloro Gas",
+                "Cloro Gas",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para detección de cloro gaseoso (Cl2)."
         },
         {
             "title": "Zirkon® Gas ClO2",
             "url": "https://analitiks.cl/producto/zirkon-gas-clo2/",
-            "categories": [],
-            "description": "El Zirkon® Gas ClO2 es un dispositivo diseñado para monitorear gas dióxido de cloro en procesos industriales. Consulte más detalles en https://analitiks.cl/producto/zirkon-gas-clo2/."
+            "categories": [
+                "Dióxido de Cloro Gas",
+                "Dióxido de Cloro Gas",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para detección de dióxido de cloro (ClO2)."
         },
         {
             "title": "Zirkon® Gas O3",
             "url": "https://analitiks.cl/producto/zirkon-gas-o3/",
-            "categories": [],
-            "description": "El Zirkon® Gas O3 está diseñado para mediciones precisas de ozono en aplicaciones industriales. Consulte más detalles en https://analitiks.cl/producto/zirkon-gas-o3/."
+            "categories": [
+                "Ozono",
+                "Ozono",
+                "Parámetros",
+                "Productos",
+                "Sensores"
+            ],
+            "description": "Description\nSensor para detección de ozono (O3)."
         }
     ]
 }

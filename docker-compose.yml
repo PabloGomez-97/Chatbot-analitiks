@@ -1,16 +1,36 @@
 version: "3.8"
 services:
   db:
-    image: mysql:8.0  # Cambiamos la imagen de PostgreSQL a MySQL
+    image: mysql:8.0
+    container_name: mysql_db
     environment:
-      MYSQL_DATABASE: crm_db  # Nombre de la base de datos
-      MYSQL_USER: crm_user  # Usuario de la base de datos
-      MYSQL_PASSWORD: crm_password  # Contraseña del usuario
-      MYSQL_ROOT_PASSWORD: root_password  # Contraseña del usuario root de MySQL
-    ports: 
-      - "3306:3306"  # Puerto 3306, que es el predeterminado para MySQL
+      MYSQL_DATABASE: crm_db  # Name of the database
+      MYSQL_USER: crm_user  # Database user
+      MYSQL_PASSWORD: crm_password  # Password for the user
+      MYSQL_ROOT_PASSWORD: root_password  # Root user password
+    ports:
+      - "3306:3306"  # Expose MySQL port
     volumes:
-      - mysql_data:/var/lib/mysql  # Cambiamos el volumen para MySQL
+      - mysql_data:/var/lib/mysql  # Persist data
+
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask_app
+    ports:
+      - "9090:9090"  # Expose Flask app port
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Pass OpenAI API key
+      - DB_HOST=db  # Hostname for the MySQL service
+      - DB_PORT=3306  # MySQL default port
+      - DB_NAME=crm_db  # Database name
+      - DB_USER=crm_user  # Database user
+      - DB_PASSWORD=crm_password  # Password for the user
+    depends_on:
+      - db  # Ensure the database starts before the Flask app
+    volumes:
+      - .:/app  # Mount the project directory for development
 
 volumes:
-  mysql_data:  # Cambiamos el nombre del volumen a mysql_data
+  mysql_data:

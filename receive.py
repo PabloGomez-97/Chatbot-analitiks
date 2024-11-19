@@ -8,7 +8,6 @@ import mysql.connector
 import json
 import requests
 from bs4 import BeautifulSoup
-
 from utils.product_fetcher import (
     fetch_and_save_products_json, 
     get_product_info
@@ -20,9 +19,7 @@ from utils.db_helpers import (
     user_exists, 
     save_user
 )
-
 from utils.openai import ask_openai
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -40,7 +37,6 @@ last_interaction_time = {}
 timers = {}
 user_state = {}
 
-# Función para manejar la inactividad del usuario
 def inactivity_warning(user_number):
     if user_number in last_interaction_time:
         current_time = time.time()
@@ -96,19 +92,28 @@ def whatsapp_reply():
                              "6️⃣ *Información de productos*\n")
         return str(response)
 
-    # Verificar si el usuario está en modo de información de productos
+    # Verificar estados específicos antes del menú principal
+    if user_state.get(user_number) == 'product_search_options':
+        if incoming_message == '1':
+            user_state[user_number] = 'product_info'
+            response.message("Perfecto, por favor ingresa el nombre exacto del producto que estás buscando.")
+        elif incoming_message == '2':
+            user_state[user_number] = 'assistant_mode'
+            response.message("Entendido, dime qué necesitas y nuestro asistente técnico con IA te ayudará.")
+        else:
+            response.message("Opción no válida. Por favor selecciona:\n"
+                             "1️⃣ *Conozco el nombre del producto*\n"
+                             "2️⃣ *No conozco el nombre del producto*")
+        return str(response)
+
     if user_state.get(user_number) == 'product_info':
-        # Procesar el nombre del producto y mostrar la información
         product_info = get_product_info(incoming_message)
         save_message(user_number, product_info, 'Bot')
         response.message(product_info)
-        # Restablecer el estado del usuario para que regrese al menú principal después de recibir la información del producto
-        user_state[user_number] = 'menu_shown'
+        user_state[user_number] = 'menu_shown'  # Regresar al menú principal después de la respuesta
         return str(response)
 
-
     if user_state.get(user_number) == 'assistant_mode':
-        # Llama a la función ask_openai() para procesar la pregunta
         respuesta_ai = ask_openai(incoming_message)
         save_message(user_number, respuesta_ai, 'Bot')
         response.message(respuesta_ai)
@@ -144,15 +149,14 @@ def whatsapp_reply():
             del timers[user_number]
             user_state.pop(user_number, None)
         elif incoming_message == '6':
-            response.message("¿Qué producto te interesa? Por favor, ingresa el nombre exacto del producto.")
-            user_state[user_number] = 'product_info'
+            response.message("Por favor selecciona una opción:\n"
+                             "1️⃣ *Conozco el nombre del producto*\n"
+                             "2️⃣ *No conozco el nombre del producto* - No te preocupes, nuestro asistente virtual te ayudará a encontrarlo.")
+            user_state[user_number] = 'product_search_options'
 
     save_message(user_number, incoming_message, 'User')
     return str(response)
 
-@app.route('/test', methods=['GET'])
-def test():
-    return "¡Funciona!", 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9090)

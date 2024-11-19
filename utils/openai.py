@@ -1,4 +1,4 @@
-import OpenAI
+import openai
 
 def ask_openai(question):
     response = openai.ChatCompletion.create(

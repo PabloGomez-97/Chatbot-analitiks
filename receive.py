@@ -20,6 +20,9 @@ from utils.db_helpers import (
     user_exists, 
     save_user
 )
+
+from utils.openai import ask_openai
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -36,19 +39,6 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 last_interaction_time = {}
 timers = {}
 user_state = {}
-
-# Función para hacer preguntas a OpenAI
-def ask_openai(question):
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "Eres un asistente de ventas que ayuda a resolver dudas de dispositivos de medición."},
-            {"role": "user", "content": question}
-        ],
-        max_tokens=150,
-        temperature=0.7
-    )
-    return response['choices'][0]['message']['content'].strip()
 
 # Función para manejar la inactividad del usuario
 def inactivity_warning(user_number):

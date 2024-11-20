@@ -83,4 +83,6 @@ def get_product_info(product_name):
     except FileNotFoundError:
         return "No se encontró el archivo de productos. Por favor, actualízalo usando la ruta /update_products."
 
-fetch_and_save_products_json()
+
+#Utilizar solo en caso de querer actualizar el archivo productos.json
+#fetch_and_save_products_json()

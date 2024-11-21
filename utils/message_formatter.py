@@ -27,7 +27,7 @@ def format_product_info(product_info):
         "_Para más detalles, contacta a nuestro equipo comercial_"
     )
 
-def format_history(responses):
+def format_history(responses, name):
     #Formatea el historial de conversación asegurando que no exceda los límites de WhatsApp.
     if not responses:
         return "📝 *HISTORIAL*\n━━━━━━━━\n\n_No hay conversaciones registradas_"

@@ -1,13 +1,13 @@
 import os
-from flask import Flask, request
-from twilio.twiml.messaging_response import MessagingResponse
-import openai
 import time
 from threading import Timer
-import mysql.connector
-import json
-import requests
-from bs4 import BeautifulSoup
+
+import openai
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
+from dotenv import load_dotenv
+
+# Importaciones personalizadas
 from utils.product_fetcher import (
     fetch_and_save_products_json, 
     get_product_info
@@ -34,19 +34,26 @@ from utils.message_formatter import (
     format_assistant_mode,
     format_assistant_response
 )
-from dotenv import load_dotenv
 
+# Cargar variables de entorno
 load_dotenv()
 
+# Configuración de la aplicación
 app = Flask(__name__)
-
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+# Variables globales para seguimiento de estado
 last_interaction_time = {}
 timers = {}
 user_state = {}
 
 def inactivity_warning(user_number):
+    """
+    Maneja el tiempo de inactividad del usuario y envía una despedida.
+    
+    Args:
+        user_number (str): Número de teléfono del usuario
+    """
     if user_number in last_interaction_time:
         current_time = time.time()
         if current_time - last_interaction_time[user_number] > 300:
@@ -58,82 +65,121 @@ def inactivity_warning(user_number):
 
 @app.route('/update_products', methods=['GET'])
 def update_products():
+    """
+    Actualiza la base de datos de productos.
+    
+    Returns:
+        tuple: Mensaje de confirmación y código de estado
+    """
     fetch_and_save_products_json()
     return "✅ Datos de productos actualizados exitosamente", 200
 
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_reply():
+    """
+    Maneja las respuestas entrantes de WhatsApp.
+    
+    Returns:
+        str: Respuesta generada para el usuario
+    """
+    # Obtener detalles del mensaje entrante
     incoming_message = request.values.get('Body', '').strip()
     user_number = request.values.get('From').replace('whatsapp:', '')
 
+    # Inicializar respuesta
     response = MessagingResponse()
     last_interaction_time[user_number] = time.time()
 
+    # Gestionar temporizador de inactividad
     if user_number in timers:
         timers[user_number].cancel()
     timers[user_number] = Timer(300, inactivity_warning, args=[user_number])
     timers[user_number].start()
 
+    # Verificar si el usuario existe
     user = user_exists(user_number)
 
     # Flujo para usuarios no registrados
     if not user:
-        if user_number not in user_state:
-            user_state[user_number] = 'awaiting_name'
-            response.message(format_welcome_message())
-        elif user_state[user_number] == 'awaiting_name':
-            user_state[user_number] = 'awaiting_company'
-            user_state['name'] = incoming_message
-            response.message(format_company_request())
-        elif user_state[user_number] == 'awaiting_company':
-            name = user_state.pop('name')
-            save_user(user_number, name, incoming_message)
-            user_state[user_number] = 'registered'
-            response.message(create_menu_message(name, incoming_message))
-        return str(response)
+        return _handle_new_user_flow(user_number, incoming_message, response)
 
     # Flujo para búsqueda de productos
     if user_state.get(user_number) == 'product_search_options':
-        if incoming_message == '1':
-            user_state[user_number] = 'product_info'
-            response.message(
-                "🔍 *BÚSQUEDA DE PRODUCTO*\n"
-                "━━━━━━━━━━━━━━━━━━\n\n"
-                "Por favor, ingresa el nombre exacto del producto que estás buscando"
-            )
-        elif incoming_message == '2':
-            user_state[user_number] = 'assistant_mode'
-            response.message(
-                "🤖 *ASISTENTE DE BÚSQUEDA*\n"
-                "━━━━━━━━━━━━━━━━━━\n\n"
-                "Describe el producto que necesitas y te ayudaré a encontrarlo"
-            )
-        else:
-            response.message(
-                "⚠️ *Opción no válida*\n\n"
-                "Por favor selecciona:\n"
-                "1️⃣ *Conozco el nombre del producto*\n"
-                "2️⃣ *No conozco el nombre del producto*"
-            )
-        return str(response)
+        return _handle_product_search_options(user_number, incoming_message, response, user)
 
     # Flujo para información de producto específico
     if user_state.get(user_number) == 'product_info':
-        product_info = get_product_info(incoming_message)
-        save_message(user_number, product_info, 'Bot')
-        response.message(format_product_info(product_info))
-        user_state[user_number] = 'menu_shown'
-        return str(response)
+        return _handle_specific_product_info(user_number, incoming_message, response)
 
     # Flujo para modo asistente
     if user_state.get(user_number) == 'assistant_mode':
-        respuesta_ai = ask_openai(incoming_message)
-        save_message(user_number, respuesta_ai, 'Bot')
-        response.message(format_assistant_response(respuesta_ai))
-        return str(response)
+        return _handle_assistant_mode(user_number, incoming_message, response)
 
     # Flujo principal para usuarios registrados
+    return _handle_main_menu_flow(user_number, incoming_message, response, user)
+
+def _handle_new_user_flow(user_number, incoming_message, response):
+    """Maneja el flujo de registro de nuevos usuarios."""
+    if user_number not in user_state:
+        user_state[user_number] = 'awaiting_name'
+        response.message(format_welcome_message())
+    elif user_state[user_number] == 'awaiting_name':
+        user_state[user_number] = 'awaiting_company'
+        user_state['name'] = incoming_message
+        response.message(format_company_request())
+    elif user_state[user_number] == 'awaiting_company':
+        name = user_state.pop('name')
+        save_user(user_number, name, incoming_message)
+        user_state[user_number] = 'registered'
+        response.message(create_menu_message(name, incoming_message))
+    return str(response)
+
+def _handle_product_search_options(user_number, incoming_message, response, user):
+    """Maneja las opciones de búsqueda de productos."""
     name, company = user
+    
+    if incoming_message == '1':
+        user_state[user_number] = 'product_info'
+        response.message(
+            "🔍 *BÚSQUEDA DE PRODUCTO*\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "Por favor, ingresa el nombre exacto del producto que estás buscando"
+        )
+    elif incoming_message == '2':
+        user_state[user_number] = 'assistant_mode'
+        response.message(
+            "🤖 *ASISTENTE DE BÚSQUEDA*\n"
+            "━━━━━━━━━━━━━━━━━━\n\n"
+            "Describe el producto que necesitas y te ayudaré a encontrarlo"
+        )
+    else:
+        response.message(
+            "⚠️ *Opción no válida*\n\n"
+            "Por favor selecciona:\n"
+            "1️⃣ *Conozco el nombre del producto*\n"
+            "2️⃣ *No conozco el nombre del producto*"
+        )
+    return str(response)
+
+def _handle_specific_product_info(user_number, incoming_message, response):
+    """Maneja la búsqueda de información de un producto específico."""
+    product_info = get_product_info(incoming_message)
+    save_message(user_number, product_info, 'Bot')
+    response.message(format_product_info(product_info))
+    user_state[user_number] = 'menu_shown'
+    return str(response)
+
+def _handle_assistant_mode(user_number, incoming_message, response):
+    """Maneja el modo de asistente de IA."""
+    respuesta_ai = ask_openai(incoming_message)
+    save_message(user_number, respuesta_ai, 'Bot')
+    response.message(format_assistant_response(respuesta_ai))
+    return str(response)
+
+def _handle_main_menu_flow(user_number, incoming_message, response, user):
+    """Maneja las opciones del menú principal para usuarios registrados."""
+    name, company = user
+    
     if incoming_message.lower() == "hola" or incoming_message not in ['1', '2', '3', '4', '5', '6']:
         response.message(create_menu_message(name, company))
     else:
@@ -147,7 +193,9 @@ def whatsapp_reply():
             response.message(format_assistant_mode())
         elif incoming_message == '4':
             responses = get_user_responses(user_number)
-            response.message(format_history(responses))
+            formatted_history = format_history(responses)
+            # Enviar todo el historial en un solo mensaje
+            response.message(formatted_history)
         elif incoming_message == '5':
             response.message(format_goodbye(name))
             del last_interaction_time[user_number]

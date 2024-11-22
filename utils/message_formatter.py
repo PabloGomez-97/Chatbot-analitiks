@@ -116,7 +116,7 @@ def format_assistant_mode():
         "🤖 *ASISTENTE TÉCNICO*\n"
         "━━━━━━━━━━━━━━━\n\n"
         "¿En qué puedo ayudarte hoy? Describe tu consulta técnica y "
-        "te brindaré la mejor asistencia posible."
+        "te brindaré la mejor asistencia posible. Escribe 'salir' para volver al menú principal."
     )
 
 def format_assistant_response(response):

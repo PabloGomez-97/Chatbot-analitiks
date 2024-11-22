@@ -106,7 +106,9 @@ def whatsapp_reply():
 
     # Flujo para modo asistente
     if user_state.get(user_number) == 'assistant_mode':
-        return handle_assistant_mode(user_number, incoming_message, response)
+        name, company = user
+        return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
+
 
     # Flujo principal para usuarios registrados
     return _handle_main_menu_flow(user_number, incoming_message, response, user)

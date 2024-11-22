@@ -41,12 +41,6 @@ timers = {}
 user_state = {}
 
 def inactivity_warning(user_number):
-    """
-    Maneja el tiempo de inactividad del usuario y envía una despedida.
-    
-    Args:
-        user_number (str): Número de teléfono del usuario
-    """
     if user_number in last_interaction_time:
         current_time = time.time()
         if current_time - last_interaction_time[user_number] > 300:
@@ -119,7 +113,7 @@ def whatsapp_reply():
 
 def _handle_main_menu_flow(user_number, incoming_message, response, user):
     """Maneja las opciones del menú principal para usuarios registrados."""
-    name, company = user
+    name, company = user  # Extraer `name` y `company` del usuario
     
     if incoming_message.lower() == "hola" or incoming_message not in ['1', '2', '3', '4', '5', '6']:
         response.message(create_menu_message(name, company))
@@ -134,8 +128,7 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             response.message(format_assistant_mode())
         elif incoming_message == '4':
             responses = get_user_responses(user_number)
-            formatted_history = format_history(responses)
-            # Enviar todo el historial en un solo mensaje
+            formatted_history = format_history(responses, name)  # Pasar el nombre
             response.message(formatted_history)
         elif incoming_message == '6':
             response.message(format_goodbye(name))
@@ -149,6 +142,7 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
 
     save_message(user_number, incoming_message, 'User')
     return str(response)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9090)

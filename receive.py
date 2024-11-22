@@ -7,33 +7,26 @@ from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 from dotenv import load_dotenv
 
-# Importaciones personalizadas
-from utils.product_fetcher import (
-    fetch_and_save_products_json, 
-    get_product_info
-)
+# Importaciones de utils
+from utils.product_fetcher import fetch_and_save_products_json
 from utils.db_helpers import (
-    get_db_connection, 
-    save_message, 
-    get_user_responses, 
-    user_exists, 
-    save_user
+    get_db_connection,
+    save_message,
+    get_user_responses,
+    user_exists
 )
-from utils.openai import ask_openai
 from utils.message_formatter import (
-    format_timestamp,
     create_menu_message,
-    format_product_info,
     format_history,
-    format_welcome_message,
-    format_company_request,
-    format_product_search_options,
     format_about_us,
     format_contact_info,
     format_goodbye,
     format_assistant_mode,
-    format_assistant_response
+    format_product_search_options
 )
+from utils.user_handlers import handle_new_user_flow
+from utils.product_handlers import handle_product_search_options, handle_specific_product_info
+from utils.assistant_handlers import handle_assistant_mode
 
 # Cargar variables de entorno
 load_dotenv()
@@ -71,14 +64,12 @@ def update_products():
 @app.route('/getleads', methods=['GET'])
 def get_recent_users():
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)  # dictionary=True para retornar un formato JSON directo
+    cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM users WHERE `create` >= NOW() - INTERVAL 1 DAY")
     users = cursor.fetchall()
     conn.close()
     return {"users": users}, 200
 
-
-#crear un endpoint para revisar los users actuales que estan en la base de datos
 @app.route('/getusers', methods=['GET'])
 def get_users():
     conn = get_db_connection()
@@ -109,80 +100,22 @@ def whatsapp_reply():
 
     # Flujo para usuarios no registrados
     if not user:
-        return _handle_new_user_flow(user_number, incoming_message, response)
+        return handle_new_user_flow(user_number, incoming_message, response, user_state)
 
     # Flujo para búsqueda de productos
     if user_state.get(user_number) == 'product_search_options':
-        return _handle_product_search_options(user_number, incoming_message, response, user)
+        return handle_product_search_options(user_number, incoming_message, response, user, user_state)
 
     # Flujo para información de producto específico
     if user_state.get(user_number) == 'product_info':
-        return _handle_specific_product_info(user_number, incoming_message, response)
+        return handle_specific_product_info(user_number, incoming_message, response, user_state)
 
     # Flujo para modo asistente
     if user_state.get(user_number) == 'assistant_mode':
-        return _handle_assistant_mode(user_number, incoming_message, response)
+        return handle_assistant_mode(user_number, incoming_message, response)
 
     # Flujo principal para usuarios registrados
     return _handle_main_menu_flow(user_number, incoming_message, response, user)
-
-def _handle_new_user_flow(user_number, incoming_message, response):
-    """Maneja el flujo de registro de nuevos usuarios."""
-    if user_number not in user_state:
-        user_state[user_number] = 'awaiting_name'
-        response.message(format_welcome_message())
-    elif user_state[user_number] == 'awaiting_name':
-        user_state[user_number] = 'awaiting_company'
-        user_state['name'] = incoming_message
-        response.message(format_company_request())
-    elif user_state[user_number] == 'awaiting_company':
-        name = user_state.pop('name')
-        save_user(user_number, name, incoming_message)
-        user_state[user_number] = 'registered'
-        response.message(create_menu_message(name, incoming_message))
-    return str(response)
-
-def _handle_product_search_options(user_number, incoming_message, response, user):
-    """Maneja las opciones de búsqueda de productos."""
-    name, company = user
-    
-    if incoming_message == '1':
-        user_state[user_number] = 'product_info'
-        response.message(
-            "🔍 *BÚSQUEDA DE PRODUCTO*\n"
-            "━━━━━━━━━━━━━━━━━━\n\n"
-            "Por favor, ingresa el nombre exacto del producto que estás buscando"
-        )
-    elif incoming_message == '2':
-        user_state[user_number] = 'assistant_mode'
-        response.message(
-            "🤖 *ASISTENTE DE BÚSQUEDA*\n"
-            "━━━━━━━━━━━━━━━━━━\n\n"
-            "Describe el producto que necesitas y te ayudaré a encontrarlo"
-        )
-    else:
-        response.message(
-            "⚠️ *Opción no válida*\n\n"
-            "Por favor selecciona:\n"
-            "1️⃣ *Conozco el nombre del producto*\n"
-            "2️⃣ *No conozco el nombre del producto*"
-        )
-    return str(response)
-
-def _handle_specific_product_info(user_number, incoming_message, response):
-    """Maneja la búsqueda de información de un producto específico."""
-    product_info = get_product_info(incoming_message)
-    save_message(user_number, product_info, 'Bot')
-    response.message(format_product_info(product_info))
-    user_state[user_number] = 'menu_shown'
-    return str(response)
-
-def _handle_assistant_mode(user_number, incoming_message, response):
-    """Maneja el modo de asistente de IA."""
-    respuesta_ai = ask_openai(incoming_message)
-    save_message(user_number, respuesta_ai, 'Bot')
-    response.message(format_assistant_response(respuesta_ai))
-    return str(response)
 
 def _handle_main_menu_flow(user_number, incoming_message, response, user):
     """Maneja las opciones del menú principal para usuarios registrados."""

@@ -65,23 +65,31 @@ def inactivity_warning(user_number):
 
 @app.route('/update_products', methods=['GET'])
 def update_products():
-    """
-    Actualiza la base de datos de productos.
-    
-    Returns:
-        tuple: Mensaje de confirmación y código de estado
-    """
     fetch_and_save_products_json()
     return "✅ Datos de productos actualizados exitosamente", 200
 
+@app.route('/getleads', methods=['GET'])
+def get_recent_users():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)  # dictionary=True para retornar un formato JSON directo
+    cursor.execute("SELECT * FROM users WHERE `create` >= NOW() - INTERVAL 1 DAY")
+    users = cursor.fetchall()
+    conn.close()
+    return {"users": users}, 200
+
+
+#crear un endpoint para revisar los users actuales que estan en la base de datos
+@app.route('/getusers', methods=['GET'])
+def get_users():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM users")
+    users = cursor.fetchall()
+    conn.close()
+    return {"users": users}
+
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_reply():
-    """
-    Maneja las respuestas entrantes de WhatsApp.
-    
-    Returns:
-        str: Respuesta generada para el usuario
-    """
     # Obtener detalles del mensaje entrante
     incoming_message = request.values.get('Body', '').strip()
     user_number = request.values.get('From').replace('whatsapp:', '')
@@ -196,13 +204,13 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             formatted_history = format_history(responses)
             # Enviar todo el historial en un solo mensaje
             response.message(formatted_history)
-        elif incoming_message == '5':
+        elif incoming_message == '6':
             response.message(format_goodbye(name))
             del last_interaction_time[user_number]
             timers[user_number].cancel()
             del timers[user_number]
             user_state.pop(user_number, None)
-        elif incoming_message == '6':
+        elif incoming_message == '5':
             response.message(format_product_search_options())
             user_state[user_number] = 'product_search_options'
 

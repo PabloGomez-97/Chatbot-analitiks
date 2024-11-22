@@ -13,8 +13,8 @@ def create_menu_message(name, company):
         "2️⃣ *Contacto* 📱\n"
         "3️⃣ *Asistente técnico (IA)* 🤖\n"
         "4️⃣ *Ver historial completo* 📝\n"
-        "5️⃣ *Finalizar conversación* 👋\n"
-        "6️⃣ *Información de productos* 📦\n\n"
+        "5️⃣ *Información de productos* 📦\n"
+        "6️⃣ *Finalizar conversación* 👋\n\n"
         "_Selecciona un número para continuar_"
     )
 

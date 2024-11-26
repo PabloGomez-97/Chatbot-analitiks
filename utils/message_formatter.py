@@ -75,15 +75,34 @@ def format_company_request():
         "🏢 Ahora, por favor ingresa el *nombre de tu empresa*"
     )
 
+def handle_product_search(user_number, incoming_message, response, user_state, name, company):
+    """Maneja la búsqueda de productos."""
+    from .message_formatter import create_menu_message
+
+    # Verificar si el usuario quiere salir al menú principal
+    if incoming_message.lower() == "salir":
+        # Limpiar el estado del usuario
+        user_state.pop(user_number, None)
+        
+        # Mensaje de salida y regreso al menú principal
+        response.message(f"Has salido del modo de búsqueda de productos, {name}. Volviendo al menú principal...")
+        response.message(create_menu_message(name, company))  # Generar el menú principal con el nombre
+        return str(response)
+
+    # Mostrar opciones de búsqueda de productos
+    response.message(format_product_search_options())
+    return str(response)
+
 def format_product_search_options():
     return (
         "📦 *INFORMACIÓN DE PRODUCTOS*\n"
         "━━━━━━━━━━━━━━━━━━━\n\n"
-        "Por favor selecciona una opción:\n\n"
+        "Por favor selecciona una opción o escribe *salir* para volver al menú principal:\n\n"
         "1️⃣ *Conozco el nombre del producto*\n"
         "2️⃣ *No conozco el nombre del producto*\n\n"
         "_Nuestro asistente virtual te ayudará a encontrar lo que necesitas_"
     )
+
 
 def format_about_us():
     return (
@@ -122,7 +141,7 @@ def format_assistant_mode():
 def format_assistant_response(response):
     return (
         "🤖 *RESPUESTA DEL ASISTENTE*\n"
-        "━━━━━━━━━━━━━━━━━━━\n\n"
+        "━━━━━━━━━━━━━━━\n\n"
         f"{response}\n\n"
-        "_¿Hay algo más en lo que pueda ayudarte?_"
+        "_¿Hay algo más en lo que pueda ayudarte?_ recuerda que para volver al menú principal puedes escribir 'salir'."
     )

@@ -96,6 +96,14 @@ def whatsapp_reply():
     if not user:
         return handle_new_user_flow(user_number, incoming_message, response, user_state)
 
+    # Manejar comando "salir" global
+    if incoming_message.lower() == "salir":
+        name, company = user
+        user_state.pop(user_number, None)  # Limpiar el estado
+        response.message(f"Has salido del flujo actual, {name}. Volviendo al menú principal...")
+        response.message(create_menu_message(name, company))
+        return str(response)
+
     # Flujo para búsqueda de productos
     if user_state.get(user_number) == 'product_search_options':
         return handle_product_search_options(user_number, incoming_message, response, user, user_state)
@@ -108,7 +116,6 @@ def whatsapp_reply():
     if user_state.get(user_number) == 'assistant_mode':
         name, company = user
         return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
-
 
     # Flujo principal para usuarios registrados
     return _handle_main_menu_flow(user_number, incoming_message, response, user)

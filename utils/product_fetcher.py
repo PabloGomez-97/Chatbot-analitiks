@@ -36,7 +36,6 @@ def fetch_and_save_products_json():
             description = description.text.strip() if description else "Descripción no disponible."
 
             # Extract the URL of the ficha técnica
-            # Dentro del bucle que recorre los productos
             ficha_tecnica = product_soup.find("a", string=lambda text: text and "Ficha Técnica" in text)
             ficha_tecnica_url = ficha_tecnica["href"] if ficha_tecnica else None
 
@@ -44,15 +43,25 @@ def fetch_and_save_products_json():
             if ficha_tecnica_url:
                 ficha_tecnica_url = quote(ficha_tecnica_url, safe=":/")
 
+            # Add cotizacion field with a cleaner mailto link
+            mailto_link = (
+                f"mailto:cotizaciones@analitiks.cl?"
+                f"subject=Cotización%20producto%20{quote(product.select_one('h2.woocommerce-loop-product__title').text.strip())}&"
+                f"body=Hola,%me%interesaría%obtener%una%cotización%de%este%producto.%Por%favor,%indicar%detalles%y%precio."
+            )
+            cotizacion_message = (
+                f"Solicita una cotización aquí: ,({mailto_link})."
+            )
+
             product_data = {
                 "title": product.select_one("h2.woocommerce-loop-product__title").text.strip(),
                 "url": product_url,
                 "categories": categories,
                 "description": description,
-                "ficha_tecnica": ficha_tecnica_url
+                "ficha_tecnica": ficha_tecnica_url,
+                "cotizacion": cotizacion_message
             }
             products.append(product_data)
-
 
         print(f"Productos obtenidos de la página {page}.")
         page += 1
@@ -61,7 +70,6 @@ def fetch_and_save_products_json():
         json.dump({"products": products}, file, ensure_ascii=False, indent=4)
     
     print("Todos los productos han sido guardados en productos.json")
-
 
 
 # Función para obtener información de productos desde productos.json
@@ -74,15 +82,14 @@ def get_product_info(product_name):
                 ficha_tecnica_msg = (f"📑 [Ficha técnica]({product['ficha_tecnica']})" 
                                      if product['ficha_tecnica'] 
                                      else "📑 Ficha técnica no disponible.")
-                return (f"🔹 *{product['title']}*\n"
-                        f"🔗 [Ver producto]({product['url']})\n"
+                return (f"🔹 *{product['title']} {product['url']}*\n"
                         f"📂 Categorías: {', '.join(product['categories'])}\n"
-                        f"📄 Descripción: {product['description']}\n"
-                        f"{ficha_tecnica_msg}")
+                        f"{ficha_tecnica_msg}\n"
+                        f"📄 {product['description']}\n"
+                        f"{product['cotizacion']}")
         return "Lo siento, no encontré un producto con ese nombre. Asegúrate de escribir el nombre exacto."
     except FileNotFoundError:
         return "No se encontró el archivo de productos. Por favor, actualízalo usando la ruta /update_products."
 
-
-#Utilizar solo en caso de querer actualizar el archivo productos.json
-#fetch_and_save_products_json()
+# Utilizar solo en caso de querer actualizar el archivo productos.json
+# fetch_and_save_products_json()

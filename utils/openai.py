@@ -18,7 +18,7 @@ SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 
 chat_sessions = {}
 
-def send_email_with_smtp(to_email, subject, client_id, client_message):
+def send_email_with_smtp(to_email, subject, client_id, client_name, client_message):
     """
     Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     """
@@ -31,7 +31,11 @@ def send_email_with_smtp(to_email, subject, client_id, client_message):
             html_template = file.read()
 
         # Reemplazar variables en la plantilla
-        html_content = html_template.replace("{{client_id}}", client_id).replace("{{client_message}}", client_message)
+        html_content = (
+            html_template.replace("{{client_id}}", client_id)
+                         .replace("{{client_name}}", client_name)
+                         .replace("{{client_message}}", client_message)
+        )
 
         # Crear el mensaje
         msg = MIMEMultipart("alternative")
@@ -52,15 +56,19 @@ def send_email_with_smtp(to_email, subject, client_id, client_message):
     except Exception as e:
         print(f"Error al enviar correo mediante SMTP: {e}")
 
-def notify_executive_smtp(client_id, question):
+
+def notify_executive_smtp(client_id, client_name, question):
     """
     Función para notificar a un ejecutivo sobre una solicitud de cotización.
     """
     subject = "Nueva Solicitud de Cotización"
-    send_email_with_smtp("pgomezvillouta@gmail.com", subject, client_id, question)
+    send_email_with_smtp("pgomezvillouta@gmail.com", subject, client_id, client_name, question)
 
 
-def ask_openai(client_id, question):
+def ask_openai(client_id, question, name):
+    """
+    Función principal para manejar la lógica de OpenAI y enviar correos según las intenciones detectadas.
+    """
     # Grupos de palabras clave según la intención
     keywords_quote = [
         "presupuesto", "cotización", "precio", "coste", "cuánto cuesta", "valores"
@@ -87,7 +95,7 @@ def ask_openai(client_id, question):
     
     # Detectar intención según palabras clave
     if any(keyword in question.lower() for keyword in keywords_quote):
-        notify_executive_smtp(client_id, question)  # Cambiar a SMTP
+        notify_executive_smtp(client_id, name, question)
         return (
             "Para nosotros es un placer que quiera realizar un presupuesto con nosotros. Le hemos notificado a uno de nuestros asesores para que se ponga en contacto con usted a la brevedad.\n\n"
             "En el caso que necesite atención inmediata, favor contactar a nuestros canales directos:\n"
@@ -118,13 +126,6 @@ def ask_openai(client_id, question):
         chat_sessions[client_id]['history'].append({"role": "user", "content": question})
         chat_sessions[client_id]['history'].append({"role": "assistant", "content": answer})
         
-        # Verificar si la respuesta no es útil
-        if "no estoy seguro" in answer.lower() or "no sé" in answer.lower():
-            return (
-                "Lamentablemente, no tengo esa información en este momento. Por favor, contacta a un asistente real "
-                "al +56992193809 o escribe a analitiks@contacto.cl para obtener ayuda más detallada."
-            )
-        
         return answer
     
     except Exception as e:
@@ -132,3 +133,4 @@ def ask_openai(client_id, question):
             "Hubo un error al procesar tu solicitud. Por favor, contacta al número +56992193809 "
             "o al correo analitiks@contacto.cl para asistencia."
         )
+

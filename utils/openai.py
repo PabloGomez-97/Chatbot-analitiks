@@ -1,35 +1,46 @@
 import openai
-import requests  # Para manejar las solicitudes a la API de Mailgun
+import smtplib
+import requests
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+import os
+
+# Cargar variables del archivo .env
+load_dotenv()
+
+# Configuración de SMTP
+SMTP_SERVER = "smtp.mailgun.org"
+SMTP_PORT = 587  # Puerto para STARTTLS
+SMTP_USER = os.getenv("MAILGUN_SMTP_USER")  # Usuario SMTP (postmaster@tu-dominio)
+SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 
 chat_sessions = {}
 
-# Configuración de Mailgun
-MAILGUN_API_KEY = "f874943f195f9449572f002b97b79614-c02fd0ba-655bf0ce"  # Reemplaza con tu clave API de Mailgun
-MAILGUN_DOMAIN = "https://app.mailgun.com/app/sending/domains/sandbox8d913135564844ddbf5cf1265f4a3c30.mailgun.org"  # Reemplaza con tu dominio de Mailgun
-MAILGUN_FROM_EMAIL = "no-reply@yourdomain.com"  # Correo que aparece como remitente
-
-def send_email_with_mailgun(to_email, subject, body):
+def send_email_with_smtp(to_email, subject, body):
     """
-    Función para enviar un correo electrónico utilizando Mailgun.
+    Función para enviar un correo electrónico utilizando SMTP.
     """
-    mailgun_url = f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages"
-    payload = {
-        "from": MAILGUN_FROM_EMAIL,
-        "to": to_email,
-        "subject": subject,
-        "text": body
-    }
     try:
-        response = requests.post(mailgun_url, auth=("api", MAILGUN_API_KEY), data=payload)
-        if response.status_code == 200:
-            print("Correo enviado exitosamente a través de Mailgun.")
-        else:
-            print(f"Error al enviar correo: {response.status_code} - {response.text}")
-    except Exception as e:
-        print(f"Error al comunicarse con Mailgun: {e}")
+        # Crear el mensaje
+        msg = MIMEMultipart()
+        msg["From"] = SMTP_USER
+        msg["To"] = to_email
+        msg["Subject"] = subject
+        msg.attach(MIMEText(body, "plain"))
 
-def notify_executive_mailgun(client_id, question):
+        # Conectar al servidor SMTP y enviar el correo
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.starttls()  # Iniciar comunicación segura
+            server.login(SMTP_USER, SMTP_PASSWORD)
+            server.sendmail(SMTP_USER, to_email, msg.as_string())
+            print("Correo enviado exitosamente mediante SMTP.")
+
+    except Exception as e:
+        print(f"Error al enviar correo mediante SMTP: {e}")
+
+def notify_executive_smtp(client_id, question):
     """
     Función para notificar a un ejecutivo sobre una solicitud de cotización.
     """
@@ -40,7 +51,7 @@ def notify_executive_mailgun(client_id, question):
         f"Mensaje del cliente: {question}\n\n"
         f"Por favor, póngase en contacto con el cliente lo antes posible."
     )
-    send_email_with_mailgun("contacto@analitiks.cl", subject, body)
+    send_email_with_smtp("pgomezvillouta@gmail.com", subject, body)  # Cambia el destinatario
 
 def ask_openai(client_id, question):
     # Grupos de palabras clave según la intención
@@ -69,7 +80,7 @@ def ask_openai(client_id, question):
     
     # Detectar intención según palabras clave
     if any(keyword in question.lower() for keyword in keywords_quote):
-        notify_executive_mailgun(client_id, question)  # Notificar al ejecutivo con Mailgun
+        notify_executive_smtp(client_id, question)  # Cambiar a SMTP
         return (
             "Para nosotros es un placer que quiera realizar un presupuesto con nosotros. Le hemos notificado a uno de nuestros asesores para que se ponga en contacto con usted a la brevedad.\n\n"
             "En el caso que necesite atención inmediata, favor contactar a nuestros canales directos:\n"

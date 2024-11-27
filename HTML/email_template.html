@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background: #4CAF50;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+            color: #333333;
+        }
+        .email-body p {
+            margin: 10px 0;
+        }
+        .email-footer {
+            text-align: center;
+            background: #f4f4f4;
+            padding: 10px;
+            font-size: 14px;
+            color: #777777;
+        }
+        .email-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Nueva Solicitud de Cotización</h1>
+        </div>
+        <div class="email-body">
+            <p><strong>ID del Cliente:</strong> {{client_id}}</p>
+            <p><strong>Mensaje del Cliente:</strong></p>
+            <p>{{client_message}}</p>
+            <p>Por favor, póngase en contacto con el cliente a la brevedad.</p>
+        </div>
+        <div class="email-footer">
+            <p>Analitiks SpA © 2024</p>
+            <p><a href="https://www.analitiks.cl">Visitar Sitio Web</a></p>
+        </div>
+    </div>
+</body>
+</html>

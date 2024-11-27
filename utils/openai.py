@@ -18,24 +18,36 @@ SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 
 chat_sessions = {}
 
-def send_email_with_smtp(to_email, subject, body):
+def send_email_with_smtp(to_email, subject, client_id, client_message):
     """
-    Función para enviar un correo electrónico utilizando SMTP.
+    Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     """
     try:
+        # Construir la ruta absoluta al archivo HTML
+        html_path = os.path.join(os.getcwd(), "HTML", "email_template.html")
+
+        # Leer el archivo HTML de plantilla
+        with open(html_path, "r", encoding="utf-8") as file:
+            html_template = file.read()
+
+        # Reemplazar variables en la plantilla
+        html_content = html_template.replace("{{client_id}}", client_id).replace("{{client_message}}", client_message)
+
         # Crear el mensaje
-        msg = MIMEMultipart()
+        msg = MIMEMultipart("alternative")
         msg["From"] = SMTP_USER
         msg["To"] = to_email
         msg["Subject"] = subject
-        msg.attach(MIMEText(body, "plain"))
+
+        # Adjuntar el contenido HTML
+        msg.attach(MIMEText(html_content, "html"))
 
         # Conectar al servidor SMTP y enviar el correo
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
             server.starttls()  # Iniciar comunicación segura
             server.login(SMTP_USER, SMTP_PASSWORD)
             server.sendmail(SMTP_USER, to_email, msg.as_string())
-            print("Correo enviado exitosamente mediante SMTP.")
+            print("Correo enviado exitosamente mediante SMTP con HTML.")
 
     except Exception as e:
         print(f"Error al enviar correo mediante SMTP: {e}")
@@ -45,13 +57,8 @@ def notify_executive_smtp(client_id, question):
     Función para notificar a un ejecutivo sobre una solicitud de cotización.
     """
     subject = "Nueva Solicitud de Cotización"
-    body = (
-        f"Se ha recibido una solicitud de cotización de un cliente.\n\n"
-        f"ID del cliente: {client_id}\n"
-        f"Mensaje del cliente: {question}\n\n"
-        f"Por favor, póngase en contacto con el cliente lo antes posible."
-    )
-    send_email_with_smtp("pgomezvillouta@gmail.com", subject, body)  # Cambia el destinatario
+    send_email_with_smtp("pgomezvillouta@gmail.com", subject, client_id, question)
+
 
 def ask_openai(client_id, question):
     # Grupos de palabras clave según la intención

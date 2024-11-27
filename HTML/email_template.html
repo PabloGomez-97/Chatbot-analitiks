@@ -47,6 +47,12 @@
             color: #4CAF50;
             text-decoration: none;
         }
+        .client-message {
+        border: 2px solid #0000ff;
+        padding: 10px;
+        background-color: #e8f5e9;
+        margin-top: 10px;
+    }
     </style>
 </head>
 <body>
@@ -56,13 +62,14 @@
         </div>
         <div class="email-body">
             <p><strong>ID del Cliente:</strong> {{client_id}}</p>
+            <p><strong>Nombre del cliente:</strong> {{client_id}}</p>
             <p><strong>Mensaje del Cliente:</strong></p>
-            <p>{{client_message}}</p>
+            <p class="client-message">{{client_message}}</p>
             <p>Por favor, póngase en contacto con el cliente a la brevedad.</p>
         </div>
         <div class="email-footer">
             <p>Analitiks SpA © 2024</p>
-            <p><a href="https://www.analitiks.cl">Visitar Sitio Web</a></p>
+            <p><a href="https://www.analitiks.cl">Revisar Conversación (En Espera)</a></p>
         </div>
     </div>
 </body>

@@ -5,7 +5,7 @@ import mysql.connector
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
+        host="mysql_db",
         user="crm_user",
         password="crm_password",
         database="crm_db",
@@ -37,6 +37,7 @@ def user_exists(user_number):
     cursor.close()
     conn.close()
     return user
+
 
 def save_user(user_number, name, company):
     conn = get_db_connection()

@@ -15,7 +15,7 @@ def handle_assistant_mode(user_number, incoming_message, response, user_state, n
         return str(response)
 
     # Procesar el mensaje con OpenAI
-    respuesta_ai = ask_openai(user_number, incoming_message, name) # Se pasa el `user_number` como `client_id`
+    respuesta_ai = ask_openai(user_number, incoming_message, name, company) # Se pasa el `user_number` como `client_id`
     save_message(user_number, respuesta_ai, 'Bot')
     response.message(format_assistant_response(respuesta_ai))
     return str(response)

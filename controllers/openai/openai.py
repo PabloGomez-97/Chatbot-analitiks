@@ -1,10 +1,12 @@
 import openai
 from datetime import datetime, timedelta
 from controllers.smtp.smtp_utils import notify_executive_smtp  # Importar desde el nuevo módulo
+from utils.db_helpers import user_exists
+
 
 chat_sessions = {}
 
-def ask_openai(client_id, question, name):
+def ask_openai(client_id, question, name, company):
     """
     Función principal para manejar la lógica de OpenAI y enviar correos según las intenciones detectadas.
     """
@@ -34,7 +36,9 @@ def ask_openai(client_id, question, name):
     
     # Detectar intención según palabras clave
     if any(keyword in question.lower() for keyword in keywords_quote):
-        notify_executive_smtp(client_id, name, question)
+        # Obtener el nombre y la compañía del cliente
+        name, company = user_exists(client_id)  # Asegúrate de que esta línea devuelve correctamente la compañía
+        notify_executive_smtp(client_id, name, company, question)
         return (
             "Para nosotros es un placer que quiera realizar un presupuesto con nosotros. Le hemos notificado a uno de nuestros asesores para que se ponga en contacto con usted a la brevedad.\n\n"
             "En el caso que necesite atención inmediata, favor contactar a nuestros canales directos:\n"

@@ -113,12 +113,14 @@ def get_messages():
         responses = [(msg["message"], msg["sender"], msg["timestamp"]) for msg in messages]
         user = user_exists(user_number)  # Asumimos que retorna (name, company)
         name = user[0] if user else "Cliente"  # Usar un nombre predeterminado si no existe
+        company = user[1] if user else "No especificada"  # Usar una empresa predeterminada si no existe
         formatted_history = format_history(responses, name)
 
         # Devolver historial como JSON
         return jsonify({
             "user_number": user_number,
             "user_name": name,
+            "company": company,
             "history": formatted_history
         }), 200
 

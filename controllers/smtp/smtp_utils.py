@@ -15,7 +15,7 @@ SMTP_USER = os.getenv("MAILGUN_SMTP_USER")  # Usuario SMTP (postmaster@tu-domini
 SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 
 # URL del endpoint que devuelve el historial de conversaciones
-HISTORY_ENDPOINT = "http://localhost:9090/getmessages"
+HISTORY_ENDPOINT = "http://34.224.89.101:9090/getmessages"
 
 def format_client_history(responses):
     """
@@ -41,7 +41,7 @@ def format_client_history(responses):
 
 
 
-def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history):
+def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history, client_company):
     """
     Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     """
@@ -58,7 +58,8 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
             html_template.replace("{{client_id}}", client_id)
                          .replace("{{client_name}}", client_name)
                          .replace("{{client_message}}", client_message)
-                         .replace("{{client_history}}", client_history)  # Incluir historial formateado como HTML
+                         .replace("{{client_history}}", client_history)
+                         .replace("{{client_company}}", client_company)  # Añadir compañía del cliente
         )
 
         # Crear el mensaje con el contenido HTML
@@ -68,7 +69,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
         msg["Subject"] = subject
 
         # Adjuntar el contenido HTML
-        msg.attach(MIMEText(html_content, "html"))  # Esto asegura que el contenido se renderiza como HTML
+        msg.attach(MIMEText(html_content, "html"))
 
         # Conectar al servidor SMTP y enviar el correo
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
@@ -82,7 +83,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
 
 
 
-def notify_executive_smtp(client_id, client_name, question):
+def notify_executive_smtp(client_id, client_name, client_company, question):
     """
     Notifica al ejecutivo sobre una solicitud de cotización e incluye el historial del cliente.
     """
@@ -103,6 +104,7 @@ def notify_executive_smtp(client_id, client_name, question):
             subject=subject,
             client_id=client_id,
             client_name=client_name,
+            client_company=client_company,  # Asegúrate de que este parámetro se incluya
             client_message=question,
             client_history=client_history
         )

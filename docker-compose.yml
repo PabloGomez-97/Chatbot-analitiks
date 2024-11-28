@@ -31,7 +31,7 @@ services:
       - db  # Ensure the database starts before the Flask app
     volumes:
       - .:/app  # Mount the project directory for development
-      - ./html:/app/html  # Explicitly mount the html folder
+      - ./html:/app/html  # Explicitly mount the html folde
 
 volumes:
   mysql_data:

@@ -62,6 +62,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
                          .replace("{{client_company}}", client_company)  # Añadir compañía del cliente
         )
 
+
         # Crear el mensaje con el contenido HTML
         msg = MIMEMultipart("alternative")
         msg["From"] = SMTP_USER

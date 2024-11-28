@@ -1,8 +1,8 @@
 def handle_assistant_mode(user_number, incoming_message, response, user_state, name, company):
     """Maneja el modo de asistente de IA."""
-    from .openai import ask_openai
-    from .message_formatter import format_assistant_response, create_menu_message
-    from .db_helpers import save_message
+    from controllers.openai.openai import ask_openai
+    from utils.message_formatter import format_assistant_response, create_menu_message
+    from utils.db_helpers import save_message
 
     # Verificar si el usuario quiere salir del modo asistente
     if incoming_message.lower() == "salir":

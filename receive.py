@@ -1,7 +1,6 @@
 import os
 import time
 from threading import Timer
-
 import openai
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
@@ -26,7 +25,7 @@ from utils.message_formatter import (
 )
 from utils.user_handlers import handle_new_user_flow
 from utils.product_handlers import handle_product_search_options, handle_specific_product_info
-from utils.assistant_handlers import handle_assistant_mode
+from controllers.openai.chat_mode import handle_assistant_mode
 
 # Cargar variables de entorno
 load_dotenv()

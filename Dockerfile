@@ -1,20 +1,23 @@
-# Use an official Python runtime as a parent image
+# Usar una imagen base de Python
 FROM python:3.9-slim
 
-# Set the working directory in the container
-WORKDIR /
+# Crear y establecer el directorio de trabajo
+WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . .
-
-# Install any needed packages specified in requirements.txt
+# Copiar requirements.txt y luego instalar dependencias (optimiza la caché de Docker)
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port that Flask will run on
+# Copiar el resto del proyecto al contenedor
+COPY . /app
+COPY html /app/html
+
+
+# Exponer el puerto para la aplicación Flask
 EXPOSE 9090
 
-# Set environment variables to ensure output is sent straight to the terminal
+# Configurar variables de entorno para logs en tiempo real
 ENV PYTHONUNBUFFERED=1
 
-# Run the command to start the Flask app
+# Comando para iniciar la aplicación
 CMD ["python", "receive.py"]

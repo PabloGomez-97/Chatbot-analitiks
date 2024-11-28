@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 def format_timestamp(timestamp):
     return timestamp.strftime("%d/%m/%Y %H:%M")
 
@@ -27,40 +28,35 @@ def format_product_info(product_info):
         "_Para más detalles, contacta a nuestro equipo comercial_"
     )
 
+
 def format_history(responses, name):
-    #Formatea el historial de conversación asegurando que no exceda los límites de WhatsApp.
+    """
+    Formatea el historial de conversación asegurando que no se trunque ningún mensaje.
+    """
     if not responses:
-        return "📝 *HISTORIAL*\n━━━━━━━━\n\n_No hay conversaciones registradas_"
-    
-    try:
-        # Encabezado
-        formatted_history = "📝 *HISTORIAL DE CONVERSACIÓN*\n━━━━━━━━━━━━━━━━━━\n\n"
-        
-        # Procesar cada mensaje
-        for message, sender, timestamp in responses:
-            # Convertir el mensaje a string y limpiar
-            message = str(message).strip()
-            if len(message) > 200:  # Limitar longitud individual de mensajes
-                message = message[:197] + "..."
-            
-            # Agregar el mensaje al historial
-            icon = "Tú" if sender == "User" else "🤖"
-            formatted_time = format_timestamp(timestamp)
-            formatted_history += f"{icon} [{formatted_time}]\n{message}\n\n"
-            
-        # Si el mensaje es muy largo, tomar solo los últimos mensajes
-        if len(formatted_history) > 1500:  # WhatsApp tiene un límite aproximado de 1600 caracteres
-            formatted_history = (
-                "📝 *HISTORIAL DE CONVERSACIÓN* (últimos mensajes)\n"
-                "━━━━━━━━━━━━━━━━━━\n\n"
-                + formatted_history[-1400:]  # Dejar espacio para el encabezado
-            )
-        
-        return formatted_history
-        
-    except Exception as e:
-        print(f"Error formateando historial: {str(e)}")
-        return "❌ Lo siento, hubo un error al recuperar el historial."
+        return "<p>No hay mensajes registrados del cliente.</p>"
+
+    formatted_history = "<div style='background-color: #f9f9f9; padding: 10px; border-radius: 8px;'>"
+    formatted_history += "<h3 style='color: #4CAF50;'>Historial de Conversación</h3>"
+
+    for response in responses:
+        message = response[0]  # Mensaje completo
+        timestamp = response[2]  # Fecha y hora
+
+        # Formatear el mensaje para HTML
+        formatted_history += f"""
+        <div style='margin-bottom: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;'>
+            <p><strong>{name}:</strong> {message}</p>
+            <small style='color: #666;'>{timestamp.strftime('%d/%m/%Y %H:%M')}</small>
+        </div>
+        """
+
+    formatted_history += "</div>"
+    return formatted_history
+
+
+
+
 
 def format_welcome_message():
     return (

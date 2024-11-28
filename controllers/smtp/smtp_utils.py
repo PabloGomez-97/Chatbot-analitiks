@@ -3,6 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
+import requests  # Para llamar al endpoint y obtener el historial
 
 # Cargar variables del archivo .env
 load_dotenv()
@@ -13,8 +14,34 @@ SMTP_PORT = 587  # Puerto para STARTTLS
 SMTP_USER = os.getenv("MAILGUN_SMTP_USER")  # Usuario SMTP (postmaster@tu-dominio)
 SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 
+# URL del endpoint que devuelve el historial de conversaciones
+HISTORY_ENDPOINT = "http://localhost:9090/getmessages"
 
-def send_email_with_smtp(to_email, subject, client_id, client_name, client_message):
+def format_client_history(responses):
+    """
+    Formatea el historial de conversaciones en HTML con estilo de chat.
+    """
+    if not responses:
+        return "<p>No hay mensajes registrados del cliente.</p>"
+
+    formatted_history = ""
+    for response in responses:
+        # Manejo seguro de cada campo
+        message = response[0]  # Primer campo: mensaje
+        timestamp = response[2] if len(response) > 2 else None  # Tercer campo opcional: timestamp
+
+        formatted_history += f"""
+        <div class="message user">
+            <p>{message}</p>
+            <div class="timestamp">{timestamp.strftime('%d/%m/%Y %H:%M') if timestamp else ''}</div>
+        </div>
+        """
+    return formatted_history
+
+
+
+
+def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history):
     """
     Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     """
@@ -31,16 +58,17 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
             html_template.replace("{{client_id}}", client_id)
                          .replace("{{client_name}}", client_name)
                          .replace("{{client_message}}", client_message)
+                         .replace("{{client_history}}", client_history)  # Incluir historial formateado como HTML
         )
 
-        # Crear el mensaje
+        # Crear el mensaje con el contenido HTML
         msg = MIMEMultipart("alternative")
         msg["From"] = SMTP_USER
         msg["To"] = to_email
         msg["Subject"] = subject
 
         # Adjuntar el contenido HTML
-        msg.attach(MIMEText(html_content, "html"))
+        msg.attach(MIMEText(html_content, "html"))  # Esto asegura que el contenido se renderiza como HTML
 
         # Conectar al servidor SMTP y enviar el correo
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
@@ -53,9 +81,31 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
         print(f"Error al enviar correo mediante SMTP: {e}")
 
 
+
 def notify_executive_smtp(client_id, client_name, question):
     """
-    Función para notificar a un ejecutivo sobre una solicitud de cotización.
+    Notifica al ejecutivo sobre una solicitud de cotización e incluye el historial del cliente.
     """
-    subject = "Nueva Solicitud de Cotización"
-    send_email_with_smtp("pgomezvillouta@gmail.com", subject, client_id, client_name, question)
+    try:
+        # Llamar al endpoint para obtener el historial del cliente
+        response = requests.get(HISTORY_ENDPOINT, params={"user_number": client_id})
+
+        if response.status_code != 200:
+            print(f"Error al recuperar historial: {response.json()}")
+            client_history = "No se pudo recuperar el historial de conversaciones."
+        else:
+            client_history = response.json().get("history", "No hay historial disponible.")
+
+        # Enviar el correo al ejecutivo
+        subject = f"Nueva Solicitud de Cotización de {client_name}"
+        send_email_with_smtp(
+            to_email="pgomezvillouta@gmail.com",
+            subject=subject,
+            client_id=client_id,
+            client_name=client_name,
+            client_message=question,
+            client_history=client_history
+        )
+
+    except Exception as e:
+        print(f"Error al notificar al ejecutivo: {e}")

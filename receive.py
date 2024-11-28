@@ -2,7 +2,7 @@ import os
 import time
 from threading import Timer
 import openai
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from twilio.twiml.messaging_response import MessagingResponse
 from dotenv import load_dotenv
 
@@ -72,6 +72,61 @@ def get_users():
     conn.close()
     return {"users": users}
 
+@app.route('/getmessages', methods=['GET'])
+def get_messages():
+    """
+    Endpoint para obtener el historial de conversación del cliente actual basado en user_number,
+    mostrando solo los mensajes enviados por el cliente desde la tabla conversations.
+    """
+    # Obtener el `user_number` del cliente desde los parámetros de la solicitud
+    user_number = request.args.get("user_number")
+
+    if not user_number:
+        return jsonify({"error": "El parámetro user_number es obligatorio"}), 400
+
+    try:
+        # Conexión a la base de datos
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        # Obtener mensajes específicos para el user_number enviados solo por el cliente
+        query = """
+        SELECT message, sender, timestamp 
+        FROM conversations 
+        WHERE user_number = %s AND sender = 'User' 
+        ORDER BY timestamp DESC 
+        LIMIT 6
+        """
+        cursor.execute(query, (user_number,))
+        messages = cursor.fetchall()[::-1]  # Invertir para mostrar del más antiguo al más reciente
+
+        conn.close()
+
+        # Si no hay mensajes registrados
+        if not messages:
+            return jsonify({
+                "user_number": user_number,
+                "history": "No hay mensajes registrados del cliente"
+            }), 200
+
+        # Formatear historial
+        responses = [(msg["message"], msg["sender"], msg["timestamp"]) for msg in messages]
+        user = user_exists(user_number)  # Asumimos que retorna (name, company)
+        name = user[0] if user else "Cliente"  # Usar un nombre predeterminado si no existe
+        formatted_history = format_history(responses, name)
+
+        # Devolver historial como JSON
+        return jsonify({
+            "user_number": user_number,
+            "user_name": name,
+            "history": formatted_history
+        }), 200
+
+    except Exception as e:
+        print(f"Error al obtener mensajes: {str(e)}")
+        return jsonify({"error": "Hubo un problema al recuperar el historial"}), 500
+
+
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_reply():
     # Obtener detalles del mensaje entrante
@@ -114,19 +169,19 @@ def whatsapp_reply():
     # Flujo para modo asistente
     if user_state.get(user_number) == 'assistant_mode':
         name, company = user
+        save_message(user_number, incoming_message, 'User')  # Guarda el mensaje completo
         return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
+
 
     # Flujo principal para usuarios registrados
     return _handle_main_menu_flow(user_number, incoming_message, response, user)
 
 def _handle_main_menu_flow(user_number, incoming_message, response, user):
-    """Maneja las opciones del menú principal para usuarios registrados."""
     name, company = user  # Extraer `name` y `company` del usuario
-    
+
     if incoming_message.lower() == "hola" or incoming_message not in ['1', '2', '3', '4', '5', '6']:
         response.message(create_menu_message(name, company))
     else:
-        # Manejo de opciones del menú principal
         if incoming_message == '1':
             response.message(format_about_us())
         elif incoming_message == '2':
@@ -138,16 +193,17 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             responses = get_user_responses(user_number)
             formatted_history = format_history(responses, name)  # Pasar el nombre
             response.message(formatted_history)
+        elif incoming_message == '5':
+            response.message(format_product_search_options())
+            user_state[user_number] = 'product_search_options'
         elif incoming_message == '6':
             response.message(format_goodbye(name))
             del last_interaction_time[user_number]
             timers[user_number].cancel()
             del timers[user_number]
             user_state.pop(user_number, None)
-        elif incoming_message == '5':
-            response.message(format_product_search_options())
-            user_state[user_number] = 'product_search_options'
 
+    # Guarda siempre todos los mensajes, no solo las opciones
     save_message(user_number, incoming_message, 'User')
     return str(response)
 

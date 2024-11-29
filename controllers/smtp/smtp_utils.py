@@ -15,7 +15,7 @@ SMTP_USER = os.getenv("MAILGUN_SMTP_USER")  # Usuario SMTP (postmaster@tu-domini
 SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 
 # URL del endpoint que devuelve el historial de conversaciones
-HISTORY_ENDPOINT = "http://34.224.89.101:9090/getmessages"
+HISTORY_ENDPOINT = "http://localhost:9090/getmessages"
 
 def format_client_history(responses):
     """
@@ -47,7 +47,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
     """
     try:
         # Construir la ruta absoluta al archivo HTML
-        html_path = os.path.join(os.getcwd(), "HTML", "email_template.html")
+        html_path = "../../HTML/email_template.html"
 
         # Leer el archivo HTML de plantilla
         with open(html_path, "r", encoding="utf-8") as file:

@@ -11,9 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar el resto del proyecto al contenedor
 COPY . /app
 
-# Copiar explícitamente la carpeta html al contenedor
-COPY html /app/html
-
 # Exponer el puerto para la aplicación Flask
 EXPOSE 9090
 

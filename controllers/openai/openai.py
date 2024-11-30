@@ -12,7 +12,7 @@ def ask_openai(client_id, question, name, company):
     """
     # Grupos de palabras clave según la intención
     keywords_quote = [
-        "presupuesto", "cotización", "precio", "coste", "cuánto cuesta", "valores"
+        "presupuesto", "cotización", "precio", "costo", "cuánto cuesta", "valores"
     ]
     keywords_human = [
         "contacto", "hablar con alguien", "asistencia", "ayuda real", "soporte humano", 

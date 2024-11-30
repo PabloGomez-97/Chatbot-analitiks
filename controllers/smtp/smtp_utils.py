@@ -8,6 +8,8 @@ import requests
 # Cargar variables del archivo .env
 load_dotenv()
 
+EXECUTIVE_EMAIL = os.getenv("EXECUTIVE_EMAIL")
+
 # Configuración de SMTP
 SMTP_SERVER = "smtp.mailgun.org"
 SMTP_PORT = 587  # Puerto para STARTTLS
@@ -93,7 +95,7 @@ def notify_executive_smtp(client_id, client_name, client_company, question):
         # Enviar el correo al ejecutivo
         subject = f"Nueva Solicitud de Cotización de {client_name}"
         send_email_with_smtp(
-            to_email="pgomezvillouta@gmail.com",
+            to_email=EXECUTIVE_EMAIL, # Modificar correo desde el .env
             subject=subject,
             client_id=client_id,
             client_name=client_name,

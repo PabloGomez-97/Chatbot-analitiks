@@ -3,7 +3,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
-import requests  # Para llamar al endpoint y obtener el historial
+import requests
 
 # Cargar variables del archivo .env
 load_dotenv()
@@ -18,9 +18,7 @@ SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
 HISTORY_ENDPOINT = "http://localhost:9090/getmessages"
 
 def format_client_history(responses):
-    """
-    Formatea el historial de conversaciones en HTML con estilo de chat.
-    """
+    #Formatea el historial de conversaciones en HTML con estilo de chat.
     if not responses:
         return "<p>No hay mensajes registrados del cliente.</p>"
 
@@ -39,12 +37,8 @@ def format_client_history(responses):
     return formatted_history
 
 
-
-
 def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history, client_company):
-    """
-    Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
-    """
+    #Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     try:
         # Construir la ruta absoluta al archivo HTML
         html_path = "../../HTML/email_template.html"
@@ -85,9 +79,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
 
 
 def notify_executive_smtp(client_id, client_name, client_company, question):
-    """
-    Notifica al ejecutivo sobre una solicitud de cotización e incluye el historial del cliente.
-    """
+    #Notifica al ejecutivo sobre una solicitud de cotización e incluye el historial del cliente.
     try:
         # Llamar al endpoint para obtener el historial del cliente
         response = requests.get(HISTORY_ENDPOINT, params={"user_number": client_id})
@@ -112,3 +104,6 @@ def notify_executive_smtp(client_id, client_name, client_company, question):
 
     except Exception as e:
         print(f"Error al notificar al ejecutivo: {e}")
+
+
+# Revisado el día 30 de noviembre del 2024

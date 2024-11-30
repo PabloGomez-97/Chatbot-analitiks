@@ -22,17 +22,13 @@ def create_menu_message(name, company):
 def format_product_info(product_info):
     #Formatea la información del producto de manera atractiva
     return (
-        "📦 *INFORMACIÓN DEL PRODUCTO*\n"
-        "━━━━━━━━━━━━━━━━━━━━\n\n"
         f"{product_info}\n\n"
-        "_Para más detalles, contacta a nuestro equipo comercial_"
+        "_Para más detalles, contacta a nuestro equipo comercial, escribe 'salir' para volver al menú principal_"
     )
 
 
 def format_history(responses, name):
-    """
-    Formatea el historial de conversación asegurando que no se trunque ningún mensaje.
-    """
+    # Formatea el historial de conversación asegurando que no se trunque ningún mensaje.
     if not responses:
         return "<p>No hay mensajes registrados del cliente.</p>"
 
@@ -72,7 +68,7 @@ def format_company_request():
     )
 
 def handle_product_search(user_number, incoming_message, response, user_state, name, company):
-    """Maneja la búsqueda de productos."""
+    #Maneja la búsqueda de productos.
     from .message_formatter import create_menu_message
 
     # Verificar si el usuario quiere salir al menú principal
@@ -91,19 +87,15 @@ def handle_product_search(user_number, incoming_message, response, user_state, n
 
 def format_product_search_options():
     return (
-        "📦 *INFORMACIÓN DE PRODUCTOS*\n"
-        "━━━━━━━━━━━━━━━━━━━\n\n"
-        "Por favor selecciona una opción o escribe *salir* para volver al menú principal:\n\n"
+        "Por favor selecciona una opción:\n\n"
         "1️⃣ *Conozco el nombre del producto*\n"
         "2️⃣ *No conozco el nombre del producto*\n\n"
-        "_Nuestro asistente virtual te ayudará a encontrar lo que necesitas_"
+        "_Nuestro asistente virtual te ayudará a encontrar lo que necesitas, escribe 'salir' para volver al menú principal_"
     )
 
 
 def format_about_us():
     return (
-        "🏢 *SOBRE ANALITIKS*\n"
-        "━━━━━━━━━━━━━━\n\n"
         "Somos la única compañía nacional 100% dedicada a entregar la más alta tecnología "
         "de análisis en línea para procesos industriales en Chile. 🇨🇱\n\n"
         "_¡Estamos aquí para ayudarte a optimizar tus procesos!_"
@@ -111,33 +103,28 @@ def format_about_us():
 
 def format_contact_info():
     return (
-        "📱 *INFORMACIÓN DE CONTACTO*\n"
-        "━━━━━━━━━━━━━━━━━━━\n\n"
-        "📧 Email: contacto@analitiks.cl\n"
+        "📧 Email: info@analitiks.cl\n"
+        "📞 Teléfono: +56 9 9918 5050 o +56 9 9799 8501\n"
         "🌐 Web: www.analitiks.cl\n\n"
         "_¡Esperamos tu mensaje!_"
     )
 
 def format_goodbye(name):
     return (
-        "👋 *¡HASTA PRONTO!*\n"
-        "━━━━━━━━━━━━━\n\n"
         f"Gracias por contactar con Analitiks, {name}.\n"
         "¡Que tengas un excelente día! ✨"
     )
 
 def format_assistant_mode():
     return (
-        "🤖 *ASISTENTE TÉCNICO*\n"
-        "━━━━━━━━━━━━━━━\n\n"
         "¿En qué puedo ayudarte hoy? Describe tu consulta técnica y "
         "te brindaré la mejor asistencia posible. Escribe 'salir' para volver al menú principal."
     )
 
 def format_assistant_response(response):
     return (
-        "🤖 *RESPUESTA DEL ASISTENTE*\n"
-        "━━━━━━━━━━━━━━━\n\n"
         f"{response}\n\n"
-        "_¿Hay algo más en lo que pueda ayudarte?_ recuerda que para volver al menú principal puedes escribir 'salir'."
+        "_¿Hay algo más en lo que pueda ayudarte? Escribe 'salir' para volver al menú principal_"
     )
+
+# Revisado el día 30 de noviembre del 2024

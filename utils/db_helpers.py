@@ -46,3 +46,5 @@ def save_user(user_number, name, company):
     conn.commit()
     cursor.close()
     conn.close()
+
+# Revisado el día 30 de noviembre del 2024

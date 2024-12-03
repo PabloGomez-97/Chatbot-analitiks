@@ -5,7 +5,7 @@ import mysql.connector
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
+        host="mysql_db",
         user="crm_user",
         password="crm_password",
         database="crm_db",

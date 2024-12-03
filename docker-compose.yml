@@ -12,6 +12,8 @@ services:
       - "3306:3306" # Expose MySQL port
     volumes:
       - mysql_data:/var/lib/mysql # Persist data
+    networks:
+      - backend-network
 
   flask-app:
     build:
@@ -31,6 +33,23 @@ services:
       - db # Ensure the database starts before the Flask app
     volumes:
       - .:/app # Mount the project directory for development
+    networks:
+      - backend-network
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
 
 volumes:
   mysql_data:

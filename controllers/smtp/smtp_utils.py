@@ -43,6 +43,8 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
     #Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     try:
         # Construir la ruta absoluta al archivo HTML
+        # print working directory
+        print(os.getcwd())
         html_path = "../../html/email_template.html"
 
         # Leer el archivo HTML de plantilla

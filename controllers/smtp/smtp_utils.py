@@ -45,7 +45,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
         # Construir la ruta absoluta al archivo HTML
         # print working directory
         print(os.getcwd())
-        html_path = "/html/email_template.html"
+        html_path = "/app/html/email_template.html"
 
         # Leer el archivo HTML de plantilla
         with open(html_path, "r", encoding="utf-8") as file:

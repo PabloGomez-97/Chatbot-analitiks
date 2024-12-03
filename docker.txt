@@ -1,17 +1,3 @@
-version: "3.8"
-services:
-  db:
-    image: mysql:8.0
-    container_name: mysql_db
-    environment:
-      MYSQL_DATABASE: crm_db # Name of the database
-      MYSQL_USER: crm_user # Database user
-      MYSQL_PASSWORD: crm_password # Password for the user
-      MYSQL_ROOT_PASSWORD: root_password # Root user password
-    ports:
-      - "3306:3306" # Expose MySQL port
-    volumes:
-      - mysql_data:/var/lib/mysql # Persist data
 
   flask-app:
     build:
@@ -31,6 +17,3 @@ services:
       - db # Ensure the database starts before the Flask app
     volumes:
       - .:/app # Mount the project directory for development
-
-volumes:
-  mysql_data:

@@ -1,6 +1,6 @@
 # utils/user_handlers.py
 def handle_new_user_flow(user_number, incoming_message, response, user_state):
-    """Maneja el flujo de registro de nuevos usuarios."""
+    # Maneja el flujo de registro de nuevos usuarios.
     from .message_formatter import format_welcome_message, format_company_request, create_menu_message
     from .db_helpers import save_user
     
@@ -17,3 +17,5 @@ def handle_new_user_flow(user_number, incoming_message, response, user_state):
         user_state[user_number] = 'registered'
         response.message(create_menu_message(name, incoming_message))
     return str(response)
+
+# Revisado el día 30 de noviembre del 2024

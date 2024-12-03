@@ -5,15 +5,11 @@ def handle_product_search_options(user_number, incoming_message, response, user,
     if incoming_message == '1':
         user_state[user_number] = 'product_info'
         response.message(
-            "🔍 *BÚSQUEDA DE PRODUCTO*\n"
-            "━━━━━━━━━━━━━━━━━━\n\n"
             "Por favor, ingresa el nombre exacto del producto que estás buscando"
         )
     elif incoming_message == '2':
         user_state[user_number] = 'assistant_mode'
         response.message(
-            "🤖 *ASISTENTE DE BÚSQUEDA*\n"
-            "━━━━━━━━━━━━━━━━━━\n\n"
             "Describe el producto que necesitas y te ayudaré a encontrarlo"
         )
     else:
@@ -26,7 +22,7 @@ def handle_product_search_options(user_number, incoming_message, response, user,
     return str(response)
 
 def handle_specific_product_info(user_number, incoming_message, response, user_state):
-    """Maneja la búsqueda de información de un producto específico."""
+    #Maneja la búsqueda de información de un producto específico.
     from .product_fetcher import get_product_info
     from .message_formatter import format_product_info
     from .db_helpers import save_message
@@ -36,3 +32,5 @@ def handle_specific_product_info(user_number, incoming_message, response, user_s
     response.message(format_product_info(product_info))
     user_state[user_number] = 'menu_shown'
     return str(response)
+
+# Revisado el día 30 de noviembre del 2024

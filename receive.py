@@ -74,10 +74,6 @@ def get_users():
 
 @app.route('/getmessages', methods=['GET'])
 def get_messages():
-    """
-    Endpoint para obtener el historial de conversación del cliente actual basado en user_number,
-    mostrando solo los mensajes enviados por el cliente desde la tabla conversations.
-    """
     # Obtener el `user_number` del cliente desde los parámetros de la solicitud
     user_number = request.args.get("user_number")
 

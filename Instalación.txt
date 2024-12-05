@@ -1,0 +1,42 @@
+- Cómo instalar el programa desde 0.
+
+python -m venv venv (solo la primera vez)
+source venv/bin/activate
+pip install -r requirement.txt
+
+
+
+- Creamos en el docker compose la imagen
+
+docker compose build
+docker compose up -d (puede ser sin -d)
+
+
+
+- Creamos las tablas dentro de la base de datos
+
+docker-compose exec db mysql -u crm_user -p (clave crm_password)
+Use crm_db;
+
+
+
+- Tabla de users y conversations
+
+CREATE TABLE conversations (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_number VARCHAR(50) NOT NULL,
+    message TEXT DEFAULT NULL,
+    sender VARCHAR(10) DEFAULT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE users (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_number VARCHAR(100) UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    company VARCHAR(100) NOT NULL,
+    `create` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+

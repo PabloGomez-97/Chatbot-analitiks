@@ -1,5 +1,14 @@
 from datetime import datetime
 
+def format_consent_request():
+    return (
+        "🔒 *Consentimiento requerido*\n"
+        "Antes de continuar, necesitamos tu consentimiento para procesar tus datos de acuerdo con nuestra política de privacidad.\n"
+        "https://business.whatsapp.com/policy\n"
+        "Por favor, responde *'si'* para aceptar y continuar, o cualquier otra cosa para finalizar la conversación."
+    )
+
+
 
 def format_timestamp(timestamp):
     return timestamp.strftime("%d/%m/%Y %H:%M")
@@ -15,9 +24,11 @@ def create_menu_message(name, company):
         "3️⃣ *Asistente técnico (IA)* 🤖\n"
         "4️⃣ *Ver historial completo* 📝\n"
         "5️⃣ *Información de productos* 📦\n"
-        "6️⃣ *Finalizar conversación* 👋\n\n"
+        "6️⃣ *Finalizar conversación* 👋\n"
+        "7️⃣ *Hablar con un ejecutivo de ventas* 💼\n\n"
         "_Selecciona un número para continuar_"
     )
+
 
 def format_product_info(product_info):
     #Formatea la información del producto de manera atractiva

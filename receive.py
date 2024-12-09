@@ -5,6 +5,9 @@ import openai
 from flask import Flask, request, jsonify
 from twilio.twiml.messaging_response import MessagingResponse
 from dotenv import load_dotenv
+from twilio.rest import Client
+from utils.global_state import user_state, timers, last_interaction_time
+
 
 # Importaciones de utils
 from utils.product_fetcher import fetch_and_save_products_json
@@ -14,8 +17,10 @@ from utils.db_helpers import (
     get_user_responses,
     user_exists
 )
+
 from utils.message_formatter import (
     create_menu_message,
+    handle_option_7,
     format_history,
     format_about_us,
     format_contact_info,
@@ -33,11 +38,6 @@ load_dotenv()
 # Configuración de la aplicación
 app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
-# Variables globales para seguimiento de estado
-last_interaction_time = {}
-timers = {}
-user_state = {}
 
 def inactivity_warning(user_number):
     if user_number in last_interaction_time:
@@ -128,7 +128,7 @@ def get_messages():
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_reply():
     # Obtener detalles del mensaje entrante
-    incoming_message = request.values.get('Body', '').strip()
+    incoming_message = request.values.get('Body', '').strip().lower()
     user_number = request.values.get('From').replace('whatsapp:', '')
 
     # Inicializar respuesta
@@ -141,6 +141,18 @@ def whatsapp_reply():
     timers[user_number] = Timer(300, inactivity_warning, args=[user_number])
     timers[user_number].start()
 
+    # Verificar si el usuario está en executive_mode
+    if user_state.get(user_number) == 'executive_mode':
+        if incoming_message == "salir":
+            # Salir del modo ejecutivo
+            user_state.pop(user_number, None)
+            response.message("👋 Has salido de la conversación con el ejecutivo. Volviendo al menú principal...")
+            response.message(create_menu_message("Cliente", "Tu empresa"))  # Cambia "Cliente" y "Tu empresa" según sea necesario
+        else:
+            # Permitir la conversación con el ejecutivo
+            response.message()
+        return str(response)
+
     # Verificar si el usuario existe
     user = user_exists(user_number)
 
@@ -148,36 +160,14 @@ def whatsapp_reply():
     if not user:
         return handle_new_user_flow(user_number, incoming_message, response, user_state)
 
-    # Manejar comando "salir" global
-    if incoming_message.lower() == "salir":
-        name, company = user
-        user_state.pop(user_number, None)  # Limpiar el estado
-        response.message(f"Has salido del flujo actual, {name}. Volviendo al menú principal...")
-        response.message(create_menu_message(name, company))
-        return str(response)
-
-    # Flujo para búsqueda de productos
-    if user_state.get(user_number) == 'product_search_options':
-        return handle_product_search_options(user_number, incoming_message, response, user, user_state)
-
-    # Flujo para información de producto específico
-    if user_state.get(user_number) == 'product_info':
-        return handle_specific_product_info(user_number, incoming_message, response, user_state)
-
-    # Flujo para modo asistente
-    if user_state.get(user_number) == 'assistant_mode':
-        name, company = user
-        save_message(user_number, incoming_message, 'User')  # Guarda el mensaje completo
-        return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
-
-
-    # Flujo principal para usuarios registrados
+    # Manejar otros flujos
     return _handle_main_menu_flow(user_number, incoming_message, response, user)
+
 
 def _handle_main_menu_flow(user_number, incoming_message, response, user):
     name, company = user  # Extraer `name` y `company` del usuario
 
-    if incoming_message.lower() == "hola" or incoming_message not in ['1', '2', '3', '4', '5', '6']:
+    if incoming_message.lower() == "hola" or incoming_message not in ['1', '2', '3', '4', '5', '6', '7']:
         response.message(create_menu_message(name, company))
     else:
         if incoming_message == '1':
@@ -189,7 +179,7 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             response.message(format_assistant_mode())
         elif incoming_message == '4':
             responses = get_user_responses(user_number)
-            formatted_history = format_history(responses, name)  # Pasar el nombre
+            formatted_history = format_history(responses, name)
             response.message(formatted_history)
         elif incoming_message == '5':
             response.message(format_product_search_options())
@@ -200,8 +190,11 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             timers[user_number].cancel()
             del timers[user_number]
             user_state.pop(user_number, None)
+        elif incoming_message == '7':
+            # Llamar a handle_option_7
+            return handle_option_7(user_number, response)
 
-    # Guarda siempre todos los mensajes, no solo las opciones
+    # Guarda siempre todos los mensajes
     save_message(user_number, incoming_message, 'User')
     return str(response)
 

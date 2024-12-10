@@ -25,7 +25,7 @@ def handle_product_search_options(user_number, incoming_message, response, user,
         )
     return str(response)
 
-                """ Es utilizado en -> utils/product_handlers.py opción 1"""
+""" Es utilizado en -> utils/product_handlers.py opción 1"""
 def handle_specific_product_info(user_number, incoming_message, response, user_state):
     product_info = get_product_info(incoming_message)
     save_message(user_number, product_info, 'Bot')

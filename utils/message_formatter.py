@@ -3,7 +3,7 @@ from datetime import datetime
 from twilio.rest import Client
 from utils.global_state import user_state, timers, last_interaction_time #
 
-                """ Utilizado en -> utils.user_handlers.py """
+""" Utilizado en -> utils.user_handlers.py """
 def format_consent_request():
     return (
         "🔒 *Consentimiento requerido*\n"
@@ -16,8 +16,8 @@ def format_consent_request():
 def format_timestamp(timestamp):
     return timestamp.strftime("%d/%m/%Y %H:%M")
 
-                """ Utilizado en -> utils/user_handlers.py """
-                """ Utilizado en -> controllers/openai/chat_mode.py """
+""" Utilizado en -> utils/user_handlers.py """
+""" Utilizado en -> controllers/openai/chat_mode.py """
 def create_menu_message(name, company):
     return (
         f"👋 ¡Hola {name} de *{company}*!\n\n"
@@ -34,7 +34,7 @@ def create_menu_message(name, company):
         "_Selecciona un número para continuar_"
     )
 
-                """ Utilizado en -> utils/product_handlers.py """
+""" Utilizado en -> utils/product_handlers.py """
 def format_product_info(product_info):
     #Formatea la información del producto de manera atractiva
     return (
@@ -100,14 +100,14 @@ def handle_option_7(user_number, response):
         )
         return str(response)
 
-                    """ Utilizado en -> utils.user_handlers.py """
+""" Utilizado en -> utils.user_handlers.py """
 def format_welcome_message():
     return (
         "👋 *¡Bienvenido a Analitiks!*\n\n"
         "Para brindarte una mejor atención, necesitamos algunos datos:\n\n"
         "🎯 Por favor, ingresa tu *nombre completo*"
     )
-                    """ Utilizado en -> utils.user_handlers.py """
+""" Utilizado en -> utils.user_handlers.py """
 def format_company_request():
     return (
         "¡Gracias! ✨\n\n"
@@ -160,9 +160,9 @@ def format_assistant_mode():
         "te brindaré la mejor asistencia posible. Escribe 'salir' para volver al menú principal."
     )
 
-                """ Utilizado en -> controllers/openai/openai.py """
+""" Utilizado en -> controllers/openai/openai.py """
 def format_assistant_response(response):
     return (
         f"{response}\n\n"
-        "_¿Hay algo más en lo que pueda ayudarte? Escribe 'salir' para volver al menú principal_"
+        "_Escribe 'salir' para volver al menú principal_"
     )

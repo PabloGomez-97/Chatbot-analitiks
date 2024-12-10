@@ -153,6 +153,10 @@ def whatsapp_reply():
             response.message()
         return str(response)
 
+    # Verificar si el usuario está en assistant_mode
+    if user_state.get(user_number) == 'assistant_mode':
+        return handle_assistant_mode(user_number, incoming_message, response, user_state, "Cliente", "Tu empresa")
+
     # Verificar si el usuario existe
     user = user_exists(user_number)
 
@@ -162,6 +166,7 @@ def whatsapp_reply():
 
     # Manejar otros flujos
     return _handle_main_menu_flow(user_number, incoming_message, response, user)
+
 
 
 def _handle_main_menu_flow(user_number, incoming_message, response, user):
@@ -191,7 +196,6 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             del timers[user_number]
             user_state.pop(user_number, None)
         elif incoming_message == '7':
-            # Llamar a handle_option_7
             return handle_option_7(user_number, response)
 
     # Guarda siempre todos los mensajes

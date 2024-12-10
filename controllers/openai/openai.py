@@ -1,8 +1,8 @@
 import openai
 from datetime import datetime, timedelta
-from controllers.smtp.smtp_utils import notify_executive_smtp  # Notificar a un ejecutivo
-from utils.db_helpers import user_exists  # Consultar datos de usuarios
-from utils.product_logic import search_products  # Buscar productos en productos.json
+from controllers.smtp.smtp_utils import notify_executive_smtp
+from utils.db_helpers import user_exists
+from utils.product_logic import search_products
 
 chat_sessions = {}
 
@@ -53,8 +53,8 @@ def ask_openai(client_id, question, name, company):
         product_results = search_products(question)
 
         if product_results:
-            response_message = "Encontré algunos productos que podrían interesarte:\n\n"
-            for product in product_results[:5]:  # Mostrar hasta 5 productos
+            response_message = "Encontré algunos productos que podrían interesarte, además de otros que podrían ser relevantes:\n\n"
+            for product in product_results[:5]:
                 response_message += f"- {product['title']}: {product.get('url', 'No disponible')}\n"
             response_message += "\nSi necesitas más información, no dudes en pedírmelo."
             return response_message

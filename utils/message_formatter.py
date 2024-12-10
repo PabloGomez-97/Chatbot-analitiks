@@ -22,16 +22,12 @@ def create_menu_message(name, company):
     return (
         f"👋 ¡Hola {name} de *{company}*!\n\n"
         "¿Cómo podemos ayudarte hoy? 🤝\n\n"
-        "📌 *MENÚ PRINCIPAL*\n"
-        "━━━━━━━━━━━━━━━\n"
         "1️⃣ *¿Quiénes somos?* 🏢\n"
         "2️⃣ *Contacto* 📱\n"
         "3️⃣ *Asistente técnico (IA)* 🤖\n"
-        "4️⃣ *Ver historial completo* 📝\n"
-        "5️⃣ *Información de productos* 📦\n"
+        "4️⃣ *Información de productos* 📦\n"
+        "5️⃣ *Hablar con un ejecutivo de ventas* 💼"
         "6️⃣ *Finalizar conversación* 👋\n"
-        "7️⃣ *Hablar con un ejecutivo de ventas* 💼\n\n"
-        "_Selecciona un número para continuar_"
     )
 
 """ Utilizado en -> utils/product_handlers.py """

@@ -2,7 +2,6 @@ import openai
 from datetime import datetime, timedelta
 from controllers.smtp.smtp_utils import notify_executive_smtp
 from utils.db_helpers import user_exists
-from utils.product_logic import search_products
 
 chat_sessions = {}
 
@@ -47,19 +46,6 @@ def ask_openai(client_id, question, name, company):
     messages = [{"role": "system", "content": "Eres un asistente de ventas que ayuda a resolver dudas de dispositivos de medición enfocado en la empresa Analitiks."}]
     messages.extend(history)
     messages.append({"role": "user", "content": question})
-    
-    """ Si el usuario pregunta por productos, buscar en productos.json """
-    if any(keyword in question.lower() for keyword in keywords_product):
-        product_results = search_products(question)
-
-        if product_results:
-            response_message = "Encontré algunos productos que podrían interesarte, además de otros que podrían ser relevantes:\n\n"
-            for product in product_results[:5]:
-                response_message += f"- {product['title']}: {product.get('url', 'No disponible')}\n"
-            response_message += "\nSi necesitas más información, no dudes en pedírmelo."
-            return response_message
-        else:
-            return "Lo siento, no encontré ningún producto que coincida con tu consulta. Por favor, danos más detalles."
 
     """ Si el usuario pregunta por una cotización, notificar a un ejecutivo """
     if any(keyword in question.lower() for keyword in keywords_quote):

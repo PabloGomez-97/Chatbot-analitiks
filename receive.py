@@ -129,6 +129,16 @@ def whatsapp_reply():
     timers[user_number] = Timer(300, inactivity_warning, args=[user_number])
     timers[user_number].start()
 
+    # Verificar si el usuario existe
+    user = user_exists(user_number)
+
+    # Si el usuario no está registrado
+    if not user:
+        return handle_new_user_flow(user_number, incoming_message, response, user_state)
+
+    # Extraer `name` y `company` del usuario registrado
+    name, company = user
+
     if user_state.get(user_number) == 'executive_mode':
         if incoming_message == "salir":
             user_state.pop(user_number, None)
@@ -141,11 +151,7 @@ def whatsapp_reply():
     if user_state.get(user_number) == 'assistant_mode':
         return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
 
-    user = user_exists(user_number)
-
-    if not user:
-        return handle_new_user_flow(user_number, incoming_message, response, user_state)
-
+    # Manejar otros flujos
     return _handle_main_menu_flow(user_number, incoming_message, response, user)
 
 

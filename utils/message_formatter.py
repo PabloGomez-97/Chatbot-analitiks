@@ -26,8 +26,8 @@ def create_menu_message(name, company):
         "2️⃣ *Contacto* 📱\n"
         "3️⃣ *Asistente técnico (IA)* 🤖\n"
         "4️⃣ *Información de productos* 📦\n"
-        "5️⃣ *Hablar con un ejecutivo de ventas* 💼"
-        "6️⃣ *Finalizar conversación* 👋\n"
+        "5️⃣ *Hablar con un ejecutivo de ventas* 💼\n"
+        "6️⃣ *Finalizar conversación* 👋"
     )
 
 """ Utilizado en -> utils/product_handlers.py """
@@ -35,7 +35,7 @@ def format_product_info(product_info):
     #Formatea la información del producto de manera atractiva
     return (
         f"{product_info}\n\n"
-        "_Para más detalles, contacta a nuestro equipo comercial, escribe 'salir' para volver al menú principal_"
+        "_Para más detalles, contacta a nuestro equipo comercial\n\nEscribe 'salir' para volver al menú principal_"
     )
 
 
@@ -85,7 +85,7 @@ def handle_option_7(user_number, response):
               .messages \
               .create(author="system", body="Te hemos conectado con un representante humano. Por favor, espera mientras te respondemos.")
         response.message(
-            "👨‍💼 Ahora estás conectado con un humano. Si deseas salir de la conversación, escribe 'salir'."
+            "👨‍💼 Ahora estás conectado con un humano. \n\n Si deseas salir de la conversación, escribe 'salir'."
         )
         return str(response)
 
@@ -153,7 +153,7 @@ def format_goodbye(name):
 def format_assistant_mode():
     return (
         "¿En qué puedo ayudarte hoy? Describe tu consulta técnica y "
-        "te brindaré la mejor asistencia posible. Escribe 'salir' para volver al menú principal."
+        "te brindaré la mejor asistencia posible.\n\n Escribe 'salir' para volver al menú principal."
     )
 
 """ Utilizado en -> controllers/openai/openai.py """

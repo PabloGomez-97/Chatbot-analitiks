@@ -133,13 +133,13 @@ def whatsapp_reply():
         if incoming_message == "salir":
             user_state.pop(user_number, None)
             response.message("👋 Has salido de la conversación con el ejecutivo. Volviendo al menú principal...")
-            response.message(create_menu_message("Cliente", "Tu empresa"))
+            response.message(create_menu_message(name, company))
         else:
             response.message()
         return str(response)
 
     if user_state.get(user_number) == 'assistant_mode':
-        return handle_assistant_mode(user_number, incoming_message, response, user_state, "Cliente", "Tu empresa")
+        return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
 
     user = user_exists(user_number)
 

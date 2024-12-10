@@ -1,9 +1,9 @@
 import os
 from datetime import datetime
 from twilio.rest import Client
-from utils.global_state import user_state, timers, last_interaction_time
+from utils.global_state import user_state, timers, last_interaction_time #
 
-
+                """ Utilizado en -> utils.user_handlers.py """
 def format_consent_request():
     return (
         "🔒 *Consentimiento requerido*\n"
@@ -16,6 +16,8 @@ def format_consent_request():
 def format_timestamp(timestamp):
     return timestamp.strftime("%d/%m/%Y %H:%M")
 
+                """ Utilizado en -> utils/user_handlers.py """
+                """ Utilizado en -> controllers/openai/chat_mode.py """
 def create_menu_message(name, company):
     return (
         f"👋 ¡Hola {name} de *{company}*!\n\n"
@@ -32,7 +34,7 @@ def create_menu_message(name, company):
         "_Selecciona un número para continuar_"
     )
 
-
+                """ Utilizado en -> utils/product_handlers.py """
 def format_product_info(product_info):
     #Formatea la información del producto de manera atractiva
     return (
@@ -42,7 +44,6 @@ def format_product_info(product_info):
 
 
 def format_history(responses, name):
-    # Formatea el historial de conversación asegurando que no se trunque ningún mensaje.
     if not responses:
         return "<p>No hay mensajes registrados del cliente.</p>"
 
@@ -50,10 +51,8 @@ def format_history(responses, name):
     formatted_history += "<h3 style='color: #4CAF50;'>Historial de Conversación</h3>"
 
     for response in responses:
-        message = response[0]  # Mensaje completo
-        timestamp = response[2]  # Fecha y hora
-
-        # Formatear el mensaje para HTML
+        message = response[0]
+        timestamp = response[2]
         formatted_history += f"""
         <div style='margin-bottom: 10px; padding: 10px; background: #e8f5e9; border-radius: 5px;'>
             <p><strong>{name}:</strong> {message}</p>
@@ -65,17 +64,11 @@ def format_history(responses, name):
     return formatted_history
 
 def handle_option_7(user_number, response):
-    """
-    Conecta al cliente con un humano a través de Twilio Conversations.
-    """
     try:
-        # Configuración de Twilio
         account_sid = os.getenv('TWILIO_ACCOUNT_SID')
         auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-        conversation_sid = os.getenv('TWILIO_CONVERSATION_SID')  # SID de la conversación
+        conversation_sid = os.getenv('TWILIO_CONVERSATION_SID')
         client = Client(account_sid, auth_token)
-
-        # Agregar al cliente como participante si no está ya agregado
         participants = client.conversations \
                              .v1 \
                              .conversations(conversation_sid) \
@@ -89,17 +82,12 @@ def handle_option_7(user_number, response):
                   .participants \
                   .create(identity=user_number)
 
-        # Cambiar el estado del usuario a 'executive_mode'
         user_state[user_number] = 'executive_mode'
-
-        # Enviar un mensaje inicial al cliente
         client.conversations \
               .v1 \
               .conversations(conversation_sid) \
               .messages \
               .create(author="system", body="Te hemos conectado con un representante humano. Por favor, espera mientras te respondemos.")
-
-        # Responder al cliente en WhatsApp
         response.message(
             "👨‍💼 Ahora estás conectado con un humano. Si deseas salir de la conversación, escribe 'salir'."
         )
@@ -112,15 +100,14 @@ def handle_option_7(user_number, response):
         )
         return str(response)
 
-
-
+                    """ Utilizado en -> utils.user_handlers.py """
 def format_welcome_message():
     return (
         "👋 *¡Bienvenido a Analitiks!*\n\n"
         "Para brindarte una mejor atención, necesitamos algunos datos:\n\n"
         "🎯 Por favor, ingresa tu *nombre completo*"
     )
-
+                    """ Utilizado en -> utils.user_handlers.py """
 def format_company_request():
     return (
         "¡Gracias! ✨\n\n"
@@ -128,20 +115,12 @@ def format_company_request():
     )
 
 def handle_product_search(user_number, incoming_message, response, user_state, name, company):
-    #Maneja la búsqueda de productos.
-    from .message_formatter import create_menu_message
-
-    # Verificar si el usuario quiere salir al menú principal
     if incoming_message.lower() == "salir":
-        # Limpiar el estado del usuario
         user_state.pop(user_number, None)
-        
-        # Mensaje de salida y regreso al menú principal
         response.message(f"Has salido del modo de búsqueda de productos, {name}. Volviendo al menú principal...")
-        response.message(create_menu_message(name, company))  # Generar el menú principal con el nombre
+        response.message(create_menu_message(name, company))
         return str(response)
 
-    # Mostrar opciones de búsqueda de productos
     response.message(format_product_search_options())
     return str(response)
 
@@ -181,10 +160,9 @@ def format_assistant_mode():
         "te brindaré la mejor asistencia posible. Escribe 'salir' para volver al menú principal."
     )
 
+                """ Utilizado en -> controllers/openai/openai.py """
 def format_assistant_response(response):
     return (
         f"{response}\n\n"
         "_¿Hay algo más en lo que pueda ayudarte? Escribe 'salir' para volver al menú principal_"
     )
-
-# Revisado el día 30 de noviembre del 2024

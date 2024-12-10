@@ -72,7 +72,7 @@ def fetch_and_save_products_json():
     print("Todos los productos han sido guardados en productos.json")
 
 
-# Función para obtener información de productos desde productos.json
+                """" Es utilizado en -> utils/product_handler.py """
 def get_product_info(product_name):
     try:
         with open('productos.json', encoding="utf-8") as file:

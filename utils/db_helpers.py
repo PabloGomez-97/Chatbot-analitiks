@@ -1,17 +1,16 @@
 import mysql.connector
 
-# Función para obtener una conexión a la base de datos.
-# Recodemos que estamos utilizando docker, y lo que hace docker es que crea un contenedor con la base de datos.
-
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
+        host="localhost", # es lo único que hay que modificar cuando subimos a la EC2
         user="crm_user",
         password="crm_password",
         database="crm_db",
         port=3306
     )
 
+                """ Es utilizado en -> controllers/openai/chat_mode.py """
+                """ Es utilizado en -> utils/product_handler.py """
 def save_message(user_number, message, sender):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -29,6 +28,7 @@ def get_user_responses(user_number):
     conn.close()
     return responses
 
+                """ Es utilizado en -> controllers/openai/openai.py """
 def user_exists(user_number):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -38,7 +38,7 @@ def user_exists(user_number):
     conn.close()
     return user
 
-
+                """ Es utilizado en -> utils/user_handlers.py """
 def save_user(user_number, name, company):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -46,5 +46,3 @@ def save_user(user_number, name, company):
     conn.commit()
     cursor.close()
     conn.close()
-
-# Revisado el día 30 de noviembre del 2024

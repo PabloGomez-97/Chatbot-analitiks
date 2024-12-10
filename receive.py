@@ -94,7 +94,7 @@ def get_messages():
         LIMIT 6
         """
         cursor.execute(query, (user_number,))
-        messages = cursor.fetchall()[::-1]  # Invertir para mostrar del más antiguo al más reciente
+        messages = cursor.etchall()[::-1]  # Invertir para mostrar del más antiguo al más reciente
 
         conn.close()
 

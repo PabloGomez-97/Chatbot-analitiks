@@ -5,30 +5,25 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import requests
 
-# Cargar variables del archivo .env
 load_dotenv()
 
 EXECUTIVE_EMAIL = os.getenv("EXECUTIVE_EMAIL")
 
-# Configuración de SMTP
 SMTP_SERVER = "smtp.mailgun.org"
-SMTP_PORT = 587  # Puerto para STARTTLS
-SMTP_USER = os.getenv("MAILGUN_SMTP_USER")  # Usuario SMTP (postmaster@tu-dominio)
-SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")  # Contraseña SMTP
+SMTP_PORT = 587 
+SMTP_USER = os.getenv("MAILGUN_SMTP_USER")
+SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")
 
-# URL del endpoint que devuelve el historial de conversaciones
 HISTORY_ENDPOINT = "http://localhost:9090/getmessages"
 
 def format_client_history(responses):
-    #Formatea el historial de conversaciones en HTML con estilo de chat.
     if not responses:
         return "<p>No hay mensajes registrados del cliente.</p>"
 
     formatted_history = ""
     for response in responses:
-        # Manejo seguro de cada campo
-        message = response[0]  # Primer campo: mensaje
-        timestamp = response[2] if len(response) > 2 else None  # Tercer campo opcional: timestamp
+        message = response[0] 
+        timestamp = response[2] if len(response) > 2 else None
 
         formatted_history += f"""
         <div class="message user">
@@ -38,41 +33,32 @@ def format_client_history(responses):
         """
     return formatted_history
 
-
+                """ Es utilizado en este mismo código """
 def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history, client_company):
-    #Función para enviar un correo electrónico utilizando SMTP con un diseño HTML.
     try:
-        # Construir la ruta absoluta al archivo HTML
-        # print working directory
         print(os.getcwd())
         html_path = "/app/html/email_template.html"
 
-        # Leer el archivo HTML de plantilla
         with open(html_path, "r", encoding="utf-8") as file:
             html_template = file.read()
 
-        # Reemplazar variables en la plantilla
         html_content = (
             html_template.replace("{{client_id}}", client_id)
                          .replace("{{client_name}}", client_name)
                          .replace("{{client_message}}", client_message)
                          .replace("{{client_history}}", client_history)
-                         .replace("{{client_company}}", client_company)  # Añadir compañía del cliente
+                         .replace("{{client_company}}", client_company)
         )
 
-
-        # Crear el mensaje con el contenido HTML
         msg = MIMEMultipart("alternative")
         msg["From"] = SMTP_USER
         msg["To"] = to_email
         msg["Subject"] = subject
 
-        # Adjuntar el contenido HTML
         msg.attach(MIMEText(html_content, "html"))
 
-        # Conectar al servidor SMTP y enviar el correo
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-            server.starttls()  # Iniciar comunicación segura
+            server.starttls()
             server.login(SMTP_USER, SMTP_PASSWORD)
             server.sendmail(SMTP_USER, to_email, msg.as_string())
             print("Correo enviado exitosamente mediante SMTP con HTML.")
@@ -80,12 +66,9 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
     except Exception as e:
         print(f"Error al enviar correo mediante SMTP: {e}")
 
-
-
+                """ Es utilizado en openai.openai.py """
 def notify_executive_smtp(client_id, client_name, client_company, question):
-    #Notifica al ejecutivo sobre una solicitud de cotización e incluye el historial del cliente.
     try:
-        # Llamar al endpoint para obtener el historial del cliente
         response = requests.get(HISTORY_ENDPOINT, params={"user_number": client_id})
 
         if response.status_code != 200:
@@ -94,20 +77,15 @@ def notify_executive_smtp(client_id, client_name, client_company, question):
         else:
             client_history = response.json().get("history", "No hay historial disponible.")
 
-        # Enviar el correo al ejecutivo
         subject = f"Nueva Solicitud de Cotización de {client_name}"
         send_email_with_smtp(
-            to_email=EXECUTIVE_EMAIL, # Modificar correo desde el .env
+            to_email=EXECUTIVE_EMAIL, #Atento en agregar el correo en el .env
             subject=subject,
             client_id=client_id,
             client_name=client_name,
-            client_company=client_company,  # Asegúrate de que este parámetro se incluya
+            client_company=client_company,
             client_message=question,
             client_history=client_history
         )
-
     except Exception as e:
         print(f"Error al notificar al ejecutivo: {e}")
-
-
-# Revisado el día 30 de noviembre del 2024

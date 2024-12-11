@@ -36,6 +36,19 @@ services:
     networks:
       - backend-network
 
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    networks:
+      - backend-network
+
+
 networks:
   backend-network:
 

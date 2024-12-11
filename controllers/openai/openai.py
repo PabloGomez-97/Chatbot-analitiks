@@ -10,8 +10,8 @@ def ask_openai(client_id, question, name, company):
 
     """ Palabras clave para detectar si el usuario necesita una cotización """
     keywords_quote = [
-        "presupuesto", "cotización", "precio", "costo", "cuánto cuesta", "valores", "oferta", 
-        "tarifa", "pago", "gasto", "inversión", "compra", "cuánto vale", "cuál es el costo",
+        "presupuesto", "cotización", "cotizacion", "precio", "presio", "costo", "cuánto cuesta", "cuanto cuesta", "valores", "oferta", 
+        "tarifa", "pago", "gasto", "inversión", "inversion", "compra", "cuánto vale", "cuál es el costo",
         "coste", "estimado", "propuesta", "plan de pago", "detalles de precio", 
         "cuánto debo pagar", "valor", "monto", "importe", "consulta de precios", "factura",
         "precios actualizados", "descuento", "rebaja", "precio especial", "paquete", 

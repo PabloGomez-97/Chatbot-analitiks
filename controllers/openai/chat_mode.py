@@ -5,7 +5,6 @@ from utils.db_helpers import save_message #
 def handle_assistant_mode(user_number, incoming_message, response, user_state, name, company):
     if incoming_message.lower() == "salir":
         user_state.pop(user_number, None)
-        response.message(f"Has salido del modo asistente, {name}. Volviendo al menú principal...")
         response.message(create_menu_message(name, company))
         return str(response)
 

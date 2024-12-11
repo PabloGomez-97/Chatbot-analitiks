@@ -37,7 +37,7 @@ def format_client_history(responses):
 def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history, client_company):
     try:
         print(os.getcwd())
-        html_path = "/app/html/email_template.html"
+        html_path = "/app/HTML/email_template.html"
 
         with open(html_path, "r", encoding="utf-8") as file:
             html_template = file.read()

@@ -3,8 +3,9 @@ from datetime import datetime
 from twilio.rest import Client
 from utils.global_state import user_state, timers, last_interaction_time #
 
-""" Utilizado en -> utils.user_handlers.py """
+
 def format_consent_request():
+    """ Utilizado en -> utils.user_handlers.py """
     return (
         "🔒 *Consentimiento requerido*\n"
         "Antes de continuar, necesitamos tu consentimiento para procesar tus datos de acuerdo con nuestra política de privacidad.\n"
@@ -16,12 +17,13 @@ def format_consent_request():
 def format_timestamp(timestamp):
     return timestamp.strftime("%d/%m/%Y %H:%M")
 
-""" Utilizado en -> utils/user_handlers.py """
-""" Utilizado en -> controllers/openai/chat_mode.py """
+
 def create_menu_message(name, company):
+    """ Utilizado en -> utils/user_handlers.py """
+    """ Utilizado en -> controllers/openai/chat_mode.py """
     return (
-        f"👋 ¡Hola {name} de *{company}*!\n\n"
-        "¿Cómo podemos ayudarte hoy? 🤝\n\n"
+        f"*👋 Hola {name}! Soy tu asistente virtual*\n\n"
+        "Escoge una opción para poder ayudarte 👇\n\n"
         "1️⃣ *¿Quiénes somos?* 🏢\n"
         "2️⃣ *Contacto* 📱\n"
         "3️⃣ *Asistente técnico (IA)* 🤖\n"
@@ -30,12 +32,11 @@ def create_menu_message(name, company):
         "6️⃣ *Finalizar conversación* 👋"
     )
 
-""" Utilizado en -> utils/product_handlers.py """
+
 def format_product_info(product_info):
-    #Formatea la información del producto de manera atractiva
+    """ Utilizado en -> utils/product_handlers.py """
     return (
-        f"{product_info}\n\n"
-        "_Para más detalles, contacta a nuestro equipo comercial\n\nEscribe 'salir' para volver al menú principal_"
+        f"{product_info}"
     )
 
 
@@ -59,56 +60,33 @@ def format_history(responses, name):
     formatted_history += "</div>"
     return formatted_history
 
-def handle_option_7(user_number, response):
-    try:
-        account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-        auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-        conversation_sid = os.getenv('TWILIO_CONVERSATION_SID')
-        client = Client(account_sid, auth_token)
-        participants = client.conversations \
-                             .v1 \
-                             .conversations(conversation_sid) \
-                             .participants \
-                             .list()
 
-        if not any(p.identity == user_number for p in participants):
-            client.conversations \
-                  .v1 \
-                  .conversations(conversation_sid) \
-                  .participants \
-                  .create(identity=user_number)
-
-        user_state[user_number] = 'executive_mode'
-        client.conversations \
-              .v1 \
-              .conversations(conversation_sid) \
-              .messages \
-              .create(author="system", body="Te hemos conectado con un representante humano. Por favor, espera mientras te respondemos.")
-        response.message(
-            "👨‍💼 Ahora estás conectado con un humano. \n\n Si deseas salir de la conversación, escribe 'salir'."
-        )
-        return str(response)
-
-    except Exception as e:
-        print(f"Error en la opción 7: {str(e)}")
-        response.message(
-            "⚠️ Lo sentimos, ocurrió un problema al conectarte con un representante. Por favor, intenta de nuevo más tarde."
-        )
-        return str(response)
-
-""" Utilizado en -> utils.user_handlers.py """
 def format_welcome_message():
+    """ Utilizado en -> utils.user_handlers.py """
     return (
-        "👋 *¡Bienvenido a Analitiks!*\n\n"
+        "👋 *¡Bienvenido al chat de Analitiks!*\n\n"
         "Para brindarte una mejor atención, necesitamos algunos datos:\n\n"
-        "🎯 Por favor, ingresa tu *nombre completo*"
+        "🎯 Por favor, ingresa tu *Nombre*"
     )
-""" Utilizado en -> utils.user_handlers.py """
+
+
 def format_company_request():
+    """ Utilizado en -> utils.user_handlers.py """
     return (
         "¡Gracias! ✨\n\n"
-        "🏢 Ahora, por favor ingresa el *nombre de tu empresa*"
+        "🏢 Ahora, por favor ingresa el *Nombre de tu Empresa*"
     )
+
+
+def format_product_search_options():
+    """ Utilizado en -> receive.py """
+    return (
+        "Por favor selecciona una opción:\n\n"
+        "1️⃣ *Conozco el nombre del producto*\n"
+        "2️⃣ *No conozco el nombre del producto*\n\n"
+        "Escribe _'salir'_ para volver al menú principal."
+    )
+
 
 def handle_product_search(user_number, incoming_message, response, user_state, name, company):
     if incoming_message.lower() == "salir":
@@ -120,23 +98,18 @@ def handle_product_search(user_number, incoming_message, response, user_state, n
     response.message(format_product_search_options())
     return str(response)
 
-def format_product_search_options():
-    return (
-        "Por favor selecciona una opción:\n\n"
-        "1️⃣ *Conozco el nombre del producto*\n"
-        "2️⃣ *No conozco el nombre del producto*\n\n"
-        "_Nuestro asistente virtual te ayudará a encontrar lo que necesitas, escribe 'salir' para volver al menú principal_"
-    )
-
 
 def format_about_us():
+    """ Utilizado en -> receive.py """
     return (
         "Somos la única compañía nacional 100% dedicada a entregar la más alta tecnología "
         "de análisis en línea para procesos industriales en Chile. 🇨🇱\n\n"
         "_¡Estamos aquí para ayudarte a optimizar tus procesos!_"
     )
 
+
 def format_contact_info():
+    """ Utilizado en -> receive.py """
     return (
         "📧 Email: info@analitiks.cl\n"
         "📞 Teléfono: +56 9 9918 5050 o +56 9 9799 8501\n"
@@ -144,21 +117,25 @@ def format_contact_info():
         "_¡Esperamos tu mensaje!_"
     )
 
+
 def format_goodbye(name):
+    """ Utilizado en -> receive.py"""
     return (
         f"Gracias por contactar con Analitiks, {name}.\n"
         "¡Que tengas un excelente día! ✨"
     )
 
+
 def format_assistant_mode():
+    """ Utilizado en -> receive.py """
     return (
         "¿En qué puedo ayudarte hoy? Describe tu consulta técnica y "
         "te brindaré la mejor asistencia posible.\n\n Escribe 'salir' para volver al menú principal."
     )
 
-""" Utilizado en -> controllers/openai/openai.py """
+
 def format_assistant_response(response):
+    """ Utilizado en -> controllers/openai/chat_mode.py """
     return (
         f"{response}\n\n"
-        "_Escribe 'salir' para volver al menú principal_"
     )

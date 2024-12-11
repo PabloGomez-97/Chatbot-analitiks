@@ -42,3 +42,5 @@ def handle_option_7(user_number, response):
             "⚠️ Lo sentimos, ocurrió un problema al conectarte con un representante. Por favor, intenta de nuevo más tarde."
         )
         return str(response)
+
+#permiso

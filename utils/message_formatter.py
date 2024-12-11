@@ -14,7 +14,7 @@ def format_consent_request():
     )
 
 
-def format_timestamp(timestamp):
+def format_timestamp(timestamp): # Hay que chequear si se utiliza en algún lado
     return timestamp.strftime("%d/%m/%Y %H:%M")
 
 

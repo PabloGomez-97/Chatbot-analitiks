@@ -78,13 +78,13 @@ def format_company_request():
     )
 
 
-def format_product_search_options():
+def format_product_search_options(user_number):
     """ Utilizado en -> receive.py """
+    user_state[user_number] = 'product_info'
     return (
-        "Por favor selecciona una opción:\n\n"
-        "1️⃣ *Conozco el nombre del producto*\n"
-        "2️⃣ *No conozco el nombre del producto*\n\n"
-        "Escribe _'salir'_ para volver al menú principal."
+        "Te invitamos a revisar nuestra página web https://analitiks.cl/categoria-producto/productos/ para conocer más sobre nuestros productos.\n\n"
+        "Si tienes una duda respecto a un producto en especifico, por favor escriba el nombre del producto y te entregaremos más información.\n\n"
+        "Para salir al menú principal, solo escriba _'salir'_."
     )
 
 
@@ -111,11 +111,17 @@ def format_about_us():
 def format_contact_info():
     """ Utilizado en -> receive.py """
     return (
-        "📧 Email: info@analitiks.cl\n"
-        "📞 Teléfono: +56 9 9918 5050 o +56 9 9799 8501\n"
-        "🌐 Web: www.analitiks.cl\n\n"
-        "_¡Esperamos tu mensaje!_"
+        "🌐 Web: www.analitiks.cl\n"
+        "📧 Email: info@analitiks.cl\n\n"
+        "👤 *Ejecutivo Alfredo Matus*\n"
+        "   📞 Teléfono: +56 9 9799 8501\n"
+        "   📧 Correo: alfredo.matus@analitiks.cl\n\n"
+        "👤 *Ejecutivo Sebastián Alfaro*\n"
+        "   📞 Teléfono: +56 9 9918 5050\n"
+        "   📧 Correo: sebastian.alfaro@analitiks.cl\n\n"
+        "✨ ¡Esperamos tu mensaje!"
     )
+
 
 
 def format_goodbye(name):

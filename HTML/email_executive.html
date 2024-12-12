@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.8;
+                margin: 0;
+                padding: 0;
+                background-color: #f9fafb;
+            }
+            
+            .chat-container {
+                max-width: 700px;
+                margin: 30px auto;
+                background: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                border: 1px solid #ddd;
+            }
+            .chat-header {
+                background: linear-gradient(135deg, #ff7b00, #ffaf40);
+                color: #ffffff;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .chat-header h1 {
+                margin: 0;
+                font-size: 28px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            .chat-body {
+                padding: 5px 30px;
+                color: #333333;
+                text-align: justify;
+            }
+            .chat-body h2 {
+                font-size: 20px;
+                color: #ff7b00;
+                margin-bottom: 15px;
+                border-bottom: 2px solid #f0f0f0;
+                padding-bottom: 5px;
+            }
+            .chat-body p {
+                margin: 10px 0;
+            }
+            .chat-link {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .chat-link a {
+                display: inline-block;
+                background: #ff7b00;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: background 0.3s ease;
+            }
+            .chat-link a:hover {
+                background: #e06600;
+            }
+            .chat-footer {
+                background: #f0f0f0;
+                text-align: center;
+                padding: 20px;
+                font-size: 14px;
+                color: #555555;
+            }
+            .email-footer {
+                text-align: center;
+                background: #f4f4f4;
+                padding: 10px;
+                font-size: 14px;
+                color: #777777;
+            }
+        </style>
+    </head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Cliente en Espera</h1>
+            <h1>analitiks</h1>
+        </div>
+        <div class="chat-body">
+            <p><strong>Estimados ejecutivos, un cliente se encuentra esperando ser atendido en el chat. A continuación, se detallan los datos del cliente para que puedan responder de manera inmediata.</strong></p>
+            <h2>Detalles del Cliente</h2>
+            <p><strong>Nombre del Cliente:</strong> {{client_name}}</p>
+            <p><strong>Compañía del Cliente:</strong> {{client_company}}</p>
+            <p><strong>Número de teléfono del Cliente:</strong> {{client_id}}</p>
+            
+            <div class="chat-link">
+                <a href="https://console.twilio.com/us1/develop/conversations/tryout/whatsapp/user#start-a-conversation-wa-user-initiated" target="_blank">
+                    Ir al chat con el cliente
+                </a>
+            </div>
+        </div>
+        <div class="email-footer">
+            <p>Analitiks SpA © 2024</p>
+        </div>
+    </div>
+</body>
+</html>

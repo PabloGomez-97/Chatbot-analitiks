@@ -8,7 +8,7 @@ def handle_assistant_mode(user_number, incoming_message, response, user_state, n
         response.message(create_menu_message(name, company))
         return str(response)
 
-    respuesta_ai = ask_openai(user_number, incoming_message, name, company)
+    respuesta_ai = ask_openai(user_number, incoming_message, name, company, user_number, user_state, response)
     save_message(user_number, respuesta_ai, 'Bot')
     response.message(format_assistant_response(respuesta_ai))
     return str(response)

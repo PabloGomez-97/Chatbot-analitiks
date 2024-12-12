@@ -4,7 +4,7 @@ from utils.message_formatter import format_history
 
 messages_bp = Blueprint('messages', __name__)
 
-@messages_bp.route('/getmessages', methods=['GET'])
+@messages_bp.route('/getmessages', methods=['GET']) # Debe estar presente para que funcionen los correos
 def get_messages():
     user_number = request.args.get("user_number")
 

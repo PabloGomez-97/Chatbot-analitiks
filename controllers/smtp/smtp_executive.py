@@ -34,10 +34,10 @@ def format_client_history(responses):
     return formatted_history
 
 
-def send_email_with_smtp(to_email, subject, client_id, client_name, client_message, client_history, client_company):
+def send_email_with_smtp1(to_email, subject, client_id, client_name, client_message, client_history, client_company):
     try:
         print(os.getcwd())
-        html_path = os.path.join(os.getcwd(), "html", "email_template.html")
+        html_path = os.path.join(os.getcwd(), "html", "email_executive.html")
         with open(html_path, "r", encoding="utf-8") as file:
             html_template = file.read()
         html_content = (
@@ -64,7 +64,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
         print(f"Error al enviar correo mediante SMTP: {e}")
 
 
-def notify_executive_smtp(client_id, client_name, client_company, question):
+def notify_executive_smtp1(client_id, client_name, client_company, question):
     try:
         response = requests.get(HISTORY_ENDPOINT, params={"user_number": client_id})
 
@@ -74,8 +74,8 @@ def notify_executive_smtp(client_id, client_name, client_company, question):
         else:
             client_history = response.json().get("history", "No hay historial disponible.")
 
-        subject = f"Nueva Solicitud de Cotización de {client_name}"
-        send_email_with_smtp(
+        subject = f"Nueva Solicitud de Conversación de {client_name}"
+        send_email_with_smtp1(
             to_email=EXECUTIVE_EMAIL,
             subject=subject,
             client_id=client_id,

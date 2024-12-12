@@ -74,8 +74,7 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             user_state[user_number] = 'assistant_mode'
             response.message(format_assistant_mode())
         elif incoming_message == '4':
-            response.message(format_product_search_options())
-            user_state[user_number] = 'product_search_options'
+            response.message(format_product_search_options(user_number))
         elif incoming_message == '6':
             response.message(format_goodbye(name))
             del last_interaction_time[user_number]
@@ -92,7 +91,7 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
 def inactivity_warning(user_number):
     if user_number in last_interaction_time:
         current_time = time.time()
-        if current_time - last_interaction_time[user_number] > 300:
+        if current_time - last_interaction_time[user_number] > 10:
             print(f"Despedida enviada a {user_number}")
             last_interaction_time.pop(user_number, None)
             if user_number in timers:

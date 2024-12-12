@@ -2,7 +2,7 @@ import mysql.connector
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="mysql_db", # es lo único que hay que modificar cuando subimos a la EC2
+        host="localhost", # es lo único que hay que modificar cuando subimos a la EC2
         user="crm_user",
         password="crm_password",
         database="crm_db",

@@ -1,14 +1,17 @@
 from twilio.rest import Client
 import os
+from dotenv import load_dotenv
 import time
 from utils.global_state import user_state, timers, last_interaction_time
+
+load_dotenv()
 
 """ Utilizado en -> receive.py """
 def handle_option_7(user_number, response):
     try:
         account_sid = os.getenv('TWILIO_ACCOUNT_SID')
         auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-        conversation_sid = os.getenv('TWILIO_CONVERSATION_SID')
+        conversation_sid = "CH515a8e663ca94c298573851e016256ac" # Hay que hacer un chequeo de este problema
         client = Client(account_sid, auth_token)
         participants = client.conversations \
                              .v1 \
@@ -36,7 +39,7 @@ def handle_option_7(user_number, response):
         return str(response)
 
     except Exception as e:
-        print(f"Error en la opción 7: {str(e)}")
+        print(f"Error en la opción 5: {str(e)}")
         response.message(
             "⚠️ Lo sentimos, ocurrió un problema al conectarte con un representante. Por favor, intenta de nuevo más tarde."
         )

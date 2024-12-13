@@ -81,14 +81,14 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
 def inactivity_warning(user_number):
     if user_number in last_interaction_time:
         current_time = time.time()
-        if current_time - last_interaction_time[user_number] > 10:
+        if current_time - last_interaction_time[user_number] > 180:
             print(f"Warning 1 enviado a {user_number}")
 
             # Enviar mensaje usando Twilio
             client = Client(os.getenv("TWILIO_ACCOUNT_SID"), os.getenv("TWILIO_AUTH_TOKEN"))
             try:
                 client.messages.create(
-                    body="Hola, ¿sigues en línea? Por favor responde si aún necesitas ayuda.",
+                    body="¿Sigues en línea?",
                     from_=f"whatsapp:{os.getenv('TWILIO_WHATSAPP_NUMBER')}",
                     to=f"whatsapp:{user_number}"
                 )
@@ -104,14 +104,14 @@ def inactivity_warning(user_number):
 def inactivity_warning2(user_number):
     if user_number in last_interaction_time:
         current_time = time.time()
-        if current_time - last_interaction_time[user_number] > 15:
+        if current_time - last_interaction_time[user_number] > 300:
             print(f"Warning 2 enviado a {user_number}")
 
             # Enviar mensaje usando Twilio
             client = Client(os.getenv("TWILIO_ACCOUNT_SID"), os.getenv("TWILIO_AUTH_TOKEN"))
             try:
                 client.messages.create(
-                    body="Veo que ya no necesitas ayuda, para volver solo escribe.",
+                    body="Gracias por escribirnos, estamos para ayudarte. 😉",
                     from_=f"whatsapp:{os.getenv('TWILIO_WHATSAPP_NUMBER')}",
                     to=f"whatsapp:{user_number}"
                 )

@@ -10,13 +10,11 @@ def handle_product_search_options(user_number, incoming_message, response, user,
     name, company = user
     if incoming_message == '1':
         user_state[user_number] = 'product_info'
-        """ Opción 1: Cambia el estado a 'product_info' y redirige a la lógica en utils.product_handlers.py -> handle_specific_product_info. """
         response.message(
             "Por favor, ingresa el nombre exacto del producto que estás buscando"
         )
     elif incoming_message == '2':
         user_state[user_number] = 'assistant_mode'
-        """ Opción 2: Cambia el estado a 'assistant_mode' y redirige a la lógica en openai.chat_mode.py -> handle_assistant_mode. """
         response.message(
             "Describe el producto que necesitas y te ayudaré a encontrarlo"
         )
@@ -30,7 +28,6 @@ def handle_product_search_options(user_number, incoming_message, response, user,
     return str(response)
 
 
-"""" Es utilizado en -> utils/product_handler.py """
 def get_product_info(product_name):
     try:
         with open('productos.json', encoding="utf-8") as file:
@@ -49,7 +46,6 @@ def get_product_info(product_name):
         return "No se encontró el archivo de productos. Por favor, actualízalo usando la ruta /update_products."
 
 
-""" Es utilizado en -> utils/product_handlers.py opción 1"""
 def handle_specific_product_info(user_number, incoming_message, response, user_state, name, company):
     if incoming_message.lower() == "salir":
         user_state.pop(user_number, None)
@@ -82,8 +78,6 @@ def fetch_and_save_products_json():
 
         for product in product_elements:
             product_url = product.select_one("a.woocommerce-LoopProduct-link")["href"]
-            
-            # Fetch the product detail page to extract description, categories, and ficha técnica
             product_response = requests.get(product_url)
             if product_response.status_code != 200:
                 print(f"Error al acceder a la página del producto: {product_url}. Código de estado: {product_response.status_code}")
@@ -93,16 +87,11 @@ def fetch_and_save_products_json():
             categories = [cat.text.strip() for cat in product_soup.select(".posted_in a")]
             description = product_soup.select_one(".woocommerce-Tabs-panel--description")
             description = description.text.strip() if description else "Descripción no disponible."
-
-            # Extract the URL of the ficha técnica
             ficha_tecnica = product_soup.find("a", string=lambda text: text and "Ficha Técnica" in text)
             ficha_tecnica_url = ficha_tecnica["href"] if ficha_tecnica else None
-
-            # Encode the ficha_tecnica_url
             if ficha_tecnica_url:
                 ficha_tecnica_url = quote(ficha_tecnica_url, safe=":/")
 
-            # Add cotizacion field with a cleaner mailto link
             mailto_link = (
                 f"mailto:cotizaciones@analitiks.cl?"
                 f"subject=Cotización%20producto%20{quote(product.select_one('h2.woocommerce-loop-product__title').text.strip())}&"

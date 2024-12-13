@@ -1,11 +1,7 @@
-import os
-from datetime import datetime
-from twilio.rest import Client
-from utils.global_state import user_state, timers, last_interaction_time #
+from utils.global_state import user_state
 
 
 def format_consent_request():
-    """ Utilizado en -> utils.user_handlers.py """
     return (
         "🔒 *Consentimiento requerido*\n"
         "Antes de continuar, necesitamos tu consentimiento para procesar tus datos de acuerdo con nuestra política de privacidad.\n"
@@ -19,8 +15,6 @@ def format_timestamp(timestamp): # Hay que chequear si se utiliza en algún lado
 
 
 def create_menu_message(name, company):
-    """ Utilizado en -> utils/user_handlers.py """
-    """ Utilizado en -> controllers/openai/chat_mode.py """
     return (
         f"*👋 Hola {name}! Soy tu asistente virtual*\n\n"
         "Escoge una opción para poder ayudarte 👇\n\n"
@@ -34,7 +28,6 @@ def create_menu_message(name, company):
 
 
 def format_product_info(product_info):
-    """ Utilizado en -> utils/product_handlers.py """
     return (
         f"{product_info}"
     )
@@ -62,7 +55,6 @@ def format_history(responses, name):
 
 
 def format_welcome_message():
-    """ Utilizado en -> utils.user_handlers.py """
     return (
         "👋 *¡Bienvenido al chat de Analitiks!*\n\n"
         "Para brindarte una mejor atención, necesitamos algunos datos:\n\n"
@@ -71,7 +63,6 @@ def format_welcome_message():
 
 
 def format_company_request():
-    """ Utilizado en -> utils.user_handlers.py """
     return (
         "¡Gracias! ✨\n\n"
         "🏢 Ahora, por favor ingresa el *Nombre de tu Empresa*"
@@ -79,7 +70,6 @@ def format_company_request():
 
 
 def format_product_search_options(user_number):
-    """ Utilizado en -> receive.py """
     user_state[user_number] = 'product_info'
     return (
         "Te invitamos a revisar nuestra página web https://analitiks.cl/categoria-producto/productos/ para conocer más sobre nuestros productos.\n\n"
@@ -100,7 +90,6 @@ def handle_product_search(user_number, incoming_message, response, user_state, n
 
 
 def format_about_us():
-    """ Utilizado en -> receive.py """
     return (
         "Somos la única compañía nacional 100% dedicada a entregar la más alta tecnología "
         "de análisis en línea para procesos industriales en Chile. 🇨🇱\n\n"
@@ -109,7 +98,6 @@ def format_about_us():
 
 
 def format_contact_info():
-    """ Utilizado en -> receive.py """
     return (
         "🌐 Web: www.analitiks.cl\n"
         "📧 Email: info@analitiks.cl\n\n"
@@ -123,9 +111,7 @@ def format_contact_info():
     )
 
 
-
 def format_goodbye(name):
-    """ Utilizado en -> receive.py"""
     return (
         f"Gracias por contactar con Analitiks, {name}.\n"
         "¡Que tengas un excelente día! ✨"
@@ -133,7 +119,6 @@ def format_goodbye(name):
 
 
 def format_assistant_mode():
-    """ Utilizado en -> receive.py """
     return (
         "¿En qué puedo ayudarte hoy? Describe tu consulta técnica y "
         "te brindaré la mejor asistencia posible.\n\n Escribe 'salir' para volver al menú principal."
@@ -141,7 +126,6 @@ def format_assistant_mode():
 
 
 def format_assistant_response(response):
-    """ Utilizado en -> controllers/openai/chat_mode.py """
     return (
         f"{response}\n\n"
     )

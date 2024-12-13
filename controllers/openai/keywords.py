@@ -1,4 +1,3 @@
-""" Palabras clave para detectar si el usuario necesita una cotización """
 keywords_quote = [
     "presupuesto", "cotización", "cotizacion", "precio", "presio", "costo", "cuánto cuesta", "cuanto cuesta", "valores", "oferta", "tarifa", "pago", "gasto", "inversión", "inversion", "compra", "cuánto vale", "cuál es el costo",
     "coste", "estimado", "propuesta", "plan de pago", "detalles de precio", 

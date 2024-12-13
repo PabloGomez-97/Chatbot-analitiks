@@ -1,13 +1,11 @@
 from twilio.rest import Client
 import os
 from dotenv import load_dotenv
-import time
-from utils.global_state import user_state, timers, last_interaction_time
+from utils.global_state import user_state
 
 load_dotenv()
 
-""" Utilizado en -> receive.py """
-def handle_option_7(user_number, response):
+def handle_option_5(user_number, response):
     try:
         account_sid = os.getenv('TWILIO_ACCOUNT_SID')
         auth_token = os.getenv('TWILIO_AUTH_TOKEN')
@@ -40,5 +38,3 @@ def handle_option_7(user_number, response):
             "⚠️ Lo sentimos, ocurrió un problema al conectarte con un representante. Por favor, intenta de nuevo más tarde."
         )
         return str(response)
-
-#permiso

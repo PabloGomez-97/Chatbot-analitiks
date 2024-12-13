@@ -1,14 +1,27 @@
 import openai
 from datetime import datetime, timedelta
-from controllers.smtp.smtp_utils import notify_executive_smtp
+from controllers.smtp.smtp_quotes import notify_executive_smtp
 from controllers.smtp.smtp_executive import notify_executive_smtp1
+from utils.message_formatter import format_assistant_response, create_menu_message
+from utils.db_helpers import save_message
 from utils.db_helpers import user_exists
 from controllers.openai.keywords import keywords_quote, keywords_human, keywords_product
 
-
 chat_sessions = {}
 
-""" Es utilizado en -> controllers/openai/chat_mode.py """
+
+def handle_assistant_mode(user_number, incoming_message, response, user_state, name, company):
+    if incoming_message.lower() == "salir":
+        user_state.pop(user_number, None)
+        response.message(create_menu_message(name, company))
+        return str(response)
+
+    respuesta_ai = ask_openai(user_number, incoming_message, name, company, user_number, user_state, response)
+    save_message(user_number, respuesta_ai, 'Bot')
+    response.message(format_assistant_response(respuesta_ai))
+    return str(response)
+
+
 def ask_openai(client_id, question, name, company, user_number, user_state, response):
 
     # Verificar si el cliente tiene una sesión activa
@@ -38,7 +51,7 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
             "   📧 Correo: sebastian.alfaro@analitiks.cl\n\n"
         )
 
-    """ Si el usuario pregunta por un ejecutivo, notificar a un ejecutivo """
+    """ Si el usuario pregunta por un ejecutivo, notificar a un ejecutivo y además lo mete dentro del estado 'executive_mode' """
     if any(keyword in question.lower() for keyword in keywords_human):
         notify_executive_smtp1(client_id, name, company, question)
         user_state[user_number] = 'executive_mode'
@@ -46,7 +59,7 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
             "¡Espéranos en línea mientras buscamos un agente! 🙌"
         )
     
-    """ Si el usuario pregunta por productos, enviarlo a la página https://analitiks.cl/categoria-producto/productos/ """
+    """ Si el usuario pregunta por productos, enviarlo a la página https://analitiks.cl/categoria-producto/productos/ además lo mete dentro del estado 'product_info' """
     if any(keyword in question.lower() for keyword in keywords_product):
         user_state[user_number] = 'product_info'
         return (

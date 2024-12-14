@@ -1,10 +1,8 @@
 import openai
 from datetime import datetime, timedelta
-from controllers.smtp.smtp_quotes import notify_executive_smtp
-from controllers.smtp.smtp_executive import notify_executive_smtp1
+from controllers.smtp.notify4email import notify_executive_smtp, notify_executive_smtp1
 from utils.message_formatter import format_assistant_response, create_menu_message
-from utils.db_helpers import save_message
-from utils.db_helpers import user_exists
+from utils.db_helpers import save_message, user_exists
 from controllers.openai.keywords import keywords_quote, keywords_human, keywords_product
 
 chat_sessions = {}
@@ -24,20 +22,16 @@ def handle_assistant_mode(user_number, incoming_message, response, user_state, n
 
 def ask_openai(client_id, question, name, company, user_number, user_state, response):
 
-    # Verificar si el cliente tiene una sesión activa
     if client_id not in chat_sessions or chat_sessions[client_id]['last_interaction'] < datetime.now() - timedelta(minutes=5):
         chat_sessions[client_id] = {'history': [], 'last_interaction': datetime.now()}
     
     chat_sessions[client_id]['last_interaction'] = datetime.now()
-    
-    # Preparar historial para OpenAI
     history = chat_sessions[client_id]['history']
     messages = [{"role": "system", "content": "Eres un asistente de ventas que ayuda a resolver dudas de dispositivos de medición enfocado en la empresa Analitiks."}]
     messages.extend(history)
     messages.append({"role": "user", "content": question})
 
-    """ Si el usuario pregunta por una cotización, notificar a un ejecutivo """
-    if any(keyword in question.lower() for keyword in keywords_quote):
+    if any(keyword in question.lower() for keyword in keywords_quote): # Si el usuario pregunta por una cotización
         name, company = user_exists(client_id)
         notify_executive_smtp(client_id, name, company, question)
         return (
@@ -51,16 +45,14 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
             "   📧 Correo: sebastian.alfaro@analitiks.cl\n\n"
         )
 
-    """ Si el usuario pregunta por un ejecutivo, notificar a un ejecutivo y además lo mete dentro del estado 'executive_mode' """
-    if any(keyword in question.lower() for keyword in keywords_human):
+    if any(keyword in question.lower() for keyword in keywords_human): # Si el usuario pregunta por un ejecutivo
         notify_executive_smtp1(client_id, name, company, question)
         user_state[user_number] = 'executive_mode'
         return (
             "¡Espéranos en línea mientras buscamos un agente! 🙌"
         )
     
-    """ Si el usuario pregunta por productos, enviarlo a la página https://analitiks.cl/categoria-producto/productos/ además lo mete dentro del estado 'product_info' """
-    if any(keyword in question.lower() for keyword in keywords_product):
+    if any(keyword in question.lower() for keyword in keywords_product): # Si el usuario pregunta por un producto
         user_state[user_number] = 'product_info'
         return (
             "Te invitamos a revisar nuestra página web https://analitiks.cl/categoria-producto/productos/ para conocer más sobre nuestros productos.\n\n"
@@ -68,9 +60,7 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
             "Para salir al menú principal, solo escriba _'salir'_."
         )
     
-    
     try:
-        # Procesar mensaje con OpenAI
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
@@ -78,11 +68,8 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
             temperature=0.7
         )
         answer = response['choices'][0]['message']['content'].strip()
-
-        # Actualizar historial del chat
         chat_sessions[client_id]['history'].append({"role": "user", "content": question})
         chat_sessions[client_id]['history'].append({"role": "assistant", "content": answer})
-        
         return answer
     
     except Exception as e:

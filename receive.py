@@ -14,7 +14,7 @@ from utils.db_helpers import (
     save_message,
     user_exists
 )
-from controllers.twilio.connect_to_executives import handle_option_5
+from controllers.twilio.connect2executives import handle_option_5
 from utils.message_formatter import (
     create_menu_message,
     format_about_us,

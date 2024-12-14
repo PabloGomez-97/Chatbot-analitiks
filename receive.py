@@ -10,19 +10,9 @@ from routes.products import products_bp
 from routes.leads import leads_bp
 from routes.users import users_bp
 from routes.messages import messages_bp
-from utils.db_helpers import (
-    save_message,
-    user_exists
-)
+from utils.db_helpers import save_message, user_exists
 from controllers.twilio.connect2executives import handle_option_5
-from utils.message_formatter import (
-    create_menu_message,
-    format_about_us,
-    format_contact_info,
-    format_goodbye,
-    format_assistant_mode,
-    format_product_search_options
-)
+from utils.message_formatter import create_menu_message, format_about_us, format_contact_info, format_goodbye, format_assistant_mode, format_product_search_options
 from twilio.rest import Client
 from utils.user_handlers import handle_new_user_flow
 from utils.product_handlers import handle_specific_product_info
@@ -147,6 +137,7 @@ def whatsapp_reply():
         return str(response)
 
     if user_state.get(user_number) == 'assistant_mode':
+        save_message(user_number, incoming_message, 'User') # Si quiero que se guarden los mensajes del mismo assistant_mode, solo hay que agregar este código (puede también para otros estados)
         return handle_assistant_mode(user_number, incoming_message, response, user_state, name, company)
 
     return _handle_main_menu_flow(user_number, incoming_message, response, user)

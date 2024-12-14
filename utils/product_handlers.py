@@ -1,33 +1,12 @@
-from .message_formatter import format_product_info #
+from .message_formatter import format_product_info
 from utils.message_formatter import create_menu_message
-from .db_helpers import save_message #
+from .db_helpers import save_message
 import json
 import requests
 from urllib.parse import quote
 from bs4 import BeautifulSoup
 
-def handle_product_search_options(user_number, incoming_message, response, user, user_state):
-    name, company = user
-    if incoming_message == '1':
-        user_state[user_number] = 'product_info'
-        response.message(
-            "Por favor, ingresa el nombre exacto del producto que estás buscando"
-        )
-    elif incoming_message == '2':
-        user_state[user_number] = 'assistant_mode'
-        response.message(
-            "Describe el producto que necesitas y te ayudaré a encontrarlo"
-        )
-    else:
-        response.message(
-            "⚠️ *Opción no válida*\n\n"
-            "Por favor selecciona:\n"
-            "1️⃣ *Conozco el nombre del producto*\n"
-            "2️⃣ *No conozco el nombre del producto*"
-        )
-    return str(response)
-
-
+# Función que sirve para obtener la información de un producto en específico, el cliente debe ingresar el nombre exacto o no le entregará nada
 def get_product_info(product_name):
     try:
         with open('productos.json', encoding="utf-8") as file:
@@ -41,11 +20,11 @@ def get_product_info(product_name):
                         f"📂 Categorías: {', '.join(product['categories'])}\n"
                         f"{ficha_tecnica_msg}\n"
                         f"📄 {product['description']}\n")
-        return "Lo siento, no encontré un producto con ese nombre. Asegúrate de escribir el nombre exacto."
+        return "Lo siento, no encontré un producto con ese nombre. Si el producto tiene espacios, debes colocarlos. Ej: ARD 170 (no ard170)"
     except FileNotFoundError:
         return "No se encontró el archivo de productos. Por favor, actualízalo usando la ruta /update_products."
 
-
+# Función que sirve para actualizar el archivo JSON de productos
 def handle_specific_product_info(user_number, incoming_message, response, user_state, name, company):
     if incoming_message.lower() == "salir":
         user_state.pop(user_number, None)
@@ -57,7 +36,7 @@ def handle_specific_product_info(user_number, incoming_message, response, user_s
     response.message(format_product_info(product_info))
     return str(response)
 
-
+# Función que sirve para obtener los productos de la página web y guardarlos en un archivo JSON
 def fetch_and_save_products_json():
     base_url = "https://analitiks.cl/categoria-producto/productos/page/{}/"
     page = 1

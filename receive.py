@@ -56,7 +56,7 @@ def _handle_main_menu_flow(user_number, incoming_message, response, user):
             user_state.pop(user_number, None)
         elif incoming_message == '5':
             return handle_option_5(user_number, response)
-
+        
     save_message(user_number, incoming_message, 'User')
     return str(response)
 
@@ -76,7 +76,6 @@ def inactivity_warning(user_number):
             except Exception as e:
                 print(f"Error al enviar mensaje de inactividad: {e}")
 
-            # Solo cancelar el temporizador de Warning 1
             if f"{user_number}_warning1" in timers:
                 timers[f"{user_number}_warning1"].cancel()
                 timers.pop(f"{user_number}_warning1", None)
@@ -97,11 +96,11 @@ def inactivity_warning2(user_number):
             except Exception as e:
                 print(f"Error al enviar mensaje de inactividad: {e}")
 
-            # Limpiar el estado del usuario completamente después del Warning 2
             last_interaction_time.pop(user_number, None)
             if f"{user_number}_warning2" in timers:
                 timers[f"{user_number}_warning2"].cancel()
                 timers.pop(f"{user_number}_warning2", None)
+
 
 @app.route('/whatsapp', methods=['POST'])
 def whatsapp_reply():

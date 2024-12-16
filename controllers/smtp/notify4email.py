@@ -47,7 +47,7 @@ def send_email_with_smtp(to_email, subject, client_id, client_name, client_messa
     except Exception as e:
         print(f"Error al enviar correo mediante SMTP: {e}")
 
-
+# La función notifica al ejecutivo de ventas por correo electrónico
 def notify_executive_smtp(client_id, client_name, client_company, question):
     try:
         response = requests.get(HISTORY_ENDPOINT, params={"user_number": client_id})

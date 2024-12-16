@@ -1,5 +1,5 @@
 from flask import Blueprint
-from utils.product_handlers import fetch_and_save_products_json
+from utils.producthandlers import fetch_and_save_products_json
 
 products_bp = Blueprint('products', __name__)
 

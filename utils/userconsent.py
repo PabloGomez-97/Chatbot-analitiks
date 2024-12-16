@@ -1,10 +1,5 @@
-from .message_formatter import (
-    format_welcome_message,
-    format_company_request,
-    create_menu_message,
-    format_consent_request
-)
-from .db_helpers import save_user
+from .messageformatter import format_welcome_message, format_company_request, create_menu_message, format_consent_request
+from .dbhelpers import save_user
 
 def handle_new_user_flow(user_number, incoming_message, response, user_state):
     if user_number not in user_state:

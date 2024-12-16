@@ -1,5 +1,5 @@
 from flask import Blueprint
-from utils.db_helpers import get_db_connection
+from utils.dbhelpers import get_db_connection
 
 leads_bp = Blueprint('leads', __name__)
 

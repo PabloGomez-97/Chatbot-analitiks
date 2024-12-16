@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from utils.db_helpers import get_db_connection, user_exists
-from utils.message_formatter import format_history
+from utils.dbhelpers import get_db_connection, user_exists
+from utils.messageformatter import format_history
 
 messages_bp = Blueprint('messages', __name__)
 

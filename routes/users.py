@@ -1,5 +1,5 @@
 from flask import Blueprint
-from utils.db_helpers import get_db_connection
+from utils.dbhelpers import get_db_connection
 
 users_bp = Blueprint('users', __name__)
 

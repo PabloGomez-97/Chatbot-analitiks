@@ -1,8 +1,8 @@
 import openai
 from datetime import datetime, timedelta
 from controllers.smtp.notify4email import notify_executive_smtp, notify_executive_smtp1
-from utils.message_formatter import format_assistant_response, create_menu_message
-from utils.db_helpers import save_message, user_exists
+from utils.messageformatter import format_assistant_response, create_menu_message
+from utils.dbhelpers import save_message, user_exists
 from controllers.openai.keywords import keywords_quote, keywords_human, keywords_product
 
 chat_sessions = {}
@@ -31,9 +31,9 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
     messages.extend(history)
     messages.append({"role": "user", "content": question})
 
-    if any(keyword in question.lower() for keyword in keywords_quote): # Si el usuario pregunta por una cotización
+    if any(keyword in question.lower() for keyword in keywords_quote):
         name, company = user_exists(client_id)
-        notify_executive_smtp(client_id, name, company, question)
+        notify_executive_smtp(client_id, name, company, question) # <--- Notifica a un ejecutivo por correo por una cotización
         return (
             "Le hemos notificado a uno de nuestros asesores para que se ponga en contacto con usted a la brevedad.\n\n"
             "En el caso que necesite atención inmediata, favor contactar a nuestros canales directos:\n"
@@ -45,15 +45,15 @@ def ask_openai(client_id, question, name, company, user_number, user_state, resp
             "   📧 Correo: sebastian.alfaro@analitiks.cl\n\n"
         )
 
-    if any(keyword in question.lower() for keyword in keywords_human): # Si el usuario pregunta por un ejecutivo
-        notify_executive_smtp1(client_id, name, company, question)
-        user_state[user_number] = 'executive_mode'
+    if any(keyword in question.lower() for keyword in keywords_human):
+        notify_executive_smtp1(client_id, name, company, question) # <--- Notifica a un ejecutivo por correo por una asistencia humana 
+        user_state[user_number] = 'executive_mode' # Cambia el estado del cliente y lo mueve a 'executive_mode'
         return (
             "¡Espéranos en línea mientras buscamos un agente! 🙌"
         )
     
-    if any(keyword in question.lower() for keyword in keywords_product): # Si el usuario pregunta por un producto
-        user_state[user_number] = 'product_info'
+    if any(keyword in question.lower() for keyword in keywords_product):
+        user_state[user_number] = 'product_info' # Cambia el estado del cliente y lo mueve a 'product_info'
         return (
             "Te invitamos a revisar nuestra página web https://analitiks.cl/categoria-producto/productos/ para conocer más sobre nuestros productos.\n\n"
             "Si tienes una duda respecto a un producto en especifico, por favor escriba el nombre del producto y te entregaremos más información.\n\n"

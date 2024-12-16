@@ -1,4 +1,4 @@
-from utils.global_state import user_state
+from utils.globalstate import user_state
 
 
 def format_consent_request():
@@ -14,7 +14,7 @@ def format_timestamp(timestamp): # Si es utilizado
     return timestamp.strftime("%d/%m/%Y %H:%M")
 
 
-def create_menu_message(name, company):
+def create_menu_message(name, company): # Se mantiene el company en caso que se quiera agregar en el mensaje
     return (
         f"*👋 Hola {name}! Soy tu asistente virtual*\n\n"
         "Escoge una opción para poder ayudarte 👇\n\n"
@@ -24,12 +24,6 @@ def create_menu_message(name, company):
         "4️⃣ *Información de productos* 📦\n"
         "5️⃣ *Hablar con un ejecutivo de ventas* 💼\n"
         "6️⃣ *Finalizar conversación* 👋"
-    )
-
-
-def format_product_info(product_info):
-    return (
-        f"{product_info}"
     )
 
 

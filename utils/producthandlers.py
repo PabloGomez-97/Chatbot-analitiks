@@ -1,6 +1,5 @@
-from .message_formatter import format_product_info
-from utils.message_formatter import create_menu_message
-from .db_helpers import save_message
+from utils.messageformatter import create_menu_message
+from .dbhelpers import save_message
 import json
 import requests
 from urllib.parse import quote
@@ -24,7 +23,7 @@ def get_product_info(product_name):
     except FileNotFoundError:
         return "No se encontró el archivo de productos. Por favor, actualízalo usando la ruta /update_products."
 
-# Función que sirve para actualizar el archivo JSON de productos
+# Función que sirve para actualizar el archivo JSON de productos y además entrega el mensaje con los productos
 def handle_specific_product_info(user_number, incoming_message, response, user_state, name, company):
     if incoming_message.lower() == "salir":
         user_state.pop(user_number, None)
@@ -33,7 +32,7 @@ def handle_specific_product_info(user_number, incoming_message, response, user_s
     
     product_info = get_product_info(incoming_message)
     save_message(user_number, product_info, 'Bot')
-    response.message(format_product_info(product_info))
+    response.message(f"{product_info}")
     return str(response)
 
 # Función que sirve para obtener los productos de la página web y guardarlos en un archivo JSON

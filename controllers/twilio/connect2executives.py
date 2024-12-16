@@ -1,7 +1,7 @@
 from twilio.rest import Client
 import os
 from dotenv import load_dotenv
-from utils.global_state import user_state
+from utils.globalstate import user_state
 
 load_dotenv()
 

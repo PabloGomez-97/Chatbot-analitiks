@@ -10,7 +10,7 @@ load_dotenv()
 EXECUTIVE_EMAIL = os.getenv("EXECUTIVE_EMAIL")
 
 SMTP_SERVER = "smtp.mailgun.org"
-SMTP_PORT = 587  # Puerto para STARTTLS
+SMTP_PORT = 587
 SMTP_USER = os.getenv("MAILGUN_SMTP_USER")
 SMTP_PASSWORD = os.getenv("MAILGUN_SMTP_PASSWORD")
 
